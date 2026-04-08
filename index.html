@@ -164,9 +164,66 @@
          <span class="italic font-medium">near you.</span>
        </h2>
        
-       <p class="text-white/80 text-lg md:text-xl font-normal leading-relaxed max-w-lg tracking-wide">
-         Damas Creative is a collective of designers, strategists, and storytellers who turn bold ideas into meaningful brand expressions. We partner with ambitious companies to shape identities, build trust, and create visual narratives that leave a lasting impression.
-       </p>
+       <!-- Locations Accordion -->
+       <div class="w-full max-w-lg mt-4 flex flex-col gap-4">
+         
+         <!-- Ottawa -->
+         <div class="border border-white/20 rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm transition-colors hover:bg-white/10">
+           <button class="accordion-btn w-full flex justify-between items-center px-6 py-5 text-left group" onclick="toggleAccordion(this)">
+             <span class="text-white text-xl font-medium tracking-wide">Ottawa</span>
+             <i data-lucide="chevron-down" class="text-[#EFCA1D] transition-transform duration-300 transform"></i>
+           </button>
+           <div class="accordion-content hidden px-6 pb-6">
+             <p class="text-white/80 text-lg mb-6 truncate cursor-default">156 Cleopatra drive</p>
+             <a href="https://www.google.com/maps/search/?api=1&query=156+Cleopatra+drive+Ottawa" target="_blank" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-[#EFCA1D] text-[#113A28] px-5 py-2.5 rounded-lg text-sm font-bold tracking-wide hover:bg-white hover:text-black transition-colors shadow-sm">
+               <i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions
+             </a>
+           </div>
+         </div>
+
+         <!-- Toronto -->
+         <div class="border border-white/20 rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm transition-colors hover:bg-white/10">
+           <button class="accordion-btn w-full flex justify-between items-center px-6 py-5 text-left group" onclick="toggleAccordion(this)">
+             <span class="text-white text-xl font-medium tracking-wide">Toronto</span>
+             <i data-lucide="chevron-down" class="text-[#EFCA1D] transition-transform duration-300 transform"></i>
+           </button>
+           <div class="accordion-content hidden px-6 pb-6">
+             <p class="text-white/80 text-lg mb-6 truncate cursor-default">65B Huxley Drive</p>
+             <a href="https://www.google.com/maps/search/?api=1&query=65B+Huxley+Drive+Toronto" target="_blank" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-[#EFCA1D] text-[#113A28] px-5 py-2.5 rounded-lg text-sm font-bold tracking-wide hover:bg-white hover:text-black transition-colors shadow-sm">
+               <i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions
+             </a>
+           </div>
+         </div>
+
+         <!-- Montreal -->
+         <div class="border border-white/20 rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm transition-colors hover:bg-white/10">
+           <button class="accordion-btn w-full flex justify-between items-center px-6 py-5 text-left group" onclick="toggleAccordion(this)">
+             <span class="text-white text-xl font-medium tracking-wide">Montreal</span>
+             <i data-lucide="chevron-down" class="text-[#EFCA1D] transition-transform duration-300 transform"></i>
+           </button>
+           <div class="accordion-content hidden px-6 pb-6">
+             <p class="text-white/80 text-lg mb-6 truncate cursor-default">370 rue guy</p>
+             <a href="https://www.google.com/maps/search/?api=1&query=370+rue+guy+Montreal" target="_blank" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-[#EFCA1D] text-[#113A28] px-5 py-2.5 rounded-lg text-sm font-bold tracking-wide hover:bg-white hover:text-black transition-colors shadow-sm">
+               <i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions
+             </a>
+           </div>
+         </div>
+
+         <!-- New Jersey -->
+         <div class="border border-white/20 rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm transition-colors hover:bg-white/10">
+           <button class="accordion-btn w-full flex justify-between items-center px-6 py-5 text-left group" onclick="toggleAccordion(this)">
+             <span class="text-white text-xl font-medium tracking-wide">New Jersey</span>
+             <i data-lucide="chevron-down" class="text-[#EFCA1D] transition-transform duration-300 transform"></i>
+           </button>
+           <div class="accordion-content hidden px-6 pb-6">
+             <p class="text-white/50 text-lg mb-6 italic cursor-default">TBD</p>
+             <button disabled class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-white/10 text-white/40 px-5 py-2.5 rounded-lg text-sm font-bold tracking-wide cursor-not-allowed">
+               <i data-lucide="clock" class="w-4 h-4"></i> Coming Soon
+             </button>
+           </div>
+         </div>
+
+       </div>
      </div>
 
      <!-- Right Image -->
@@ -513,5 +570,30 @@
      }
    });
  </script>
+<script>
+    // 6. Accordion Logic
+    window.toggleAccordion = function(btn) {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('.lucide-chevron-down') || btn.querySelector('i');
+      
+      // Close all others
+      document.querySelectorAll('.accordion-content').forEach(el => {
+        if (el !== content && !el.classList.contains('hidden')) {
+          el.classList.add('hidden');
+          const previousIcon = el.previousElementSibling.querySelector('.lucide-chevron-down') || el.previousElementSibling.querySelector('i');
+          if (previousIcon) previousIcon.classList.remove('rotate-180');
+        }
+      });
+
+      // Toggle current
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        if (icon) icon.classList.add('rotate-180');
+      } else {
+        content.classList.add('hidden');
+        if (icon) icon.classList.remove('rotate-180');
+      }
+    }
+  </script>
 </body>
 </html>
