@@ -64,8 +64,15 @@
        <a href="#connect" class="hover:text-zinc-500 transition-colors">Connect</a>
      </div>
 
+     <!-- Desktop CTA Button -->
+     <div class="hidden md:block">
+       <a href="#about" class="bg-zinc-900 text-white px-6 py-2.5 rounded-xl text-[13px] font-semibold tracking-wide hover:bg-zinc-700 transition-colors uppercase">
+         Plan a visit
+       </a>
+     </div>
+
      <!-- Mobile Toggle -->
-     <button id="mobile-btn" class="md:hidden text-zinc-900">
+     <button id="mobile-btn" class="md:hidden text-zinc-900 ml-auto">
        <i id="menu-icon-open" data-lucide="menu" class="w-6 h-6"></i>
        <i id="menu-icon-close" data-lucide="x" class="w-6 h-6 hidden"></i>
      </button>
@@ -76,6 +83,9 @@
      <a href="#about" class="mobile-link text-lg font-medium text-zinc-900">About</a>
      <a href="#locations-marquee" class="mobile-link text-lg font-medium text-zinc-900">Locations</a>
      <a href="#connect" class="mobile-link text-lg font-medium text-zinc-900">Connect</a>
+     <a href="#about" class="mobile-link bg-zinc-900 text-white px-6 py-4 rounded-xl text-center font-medium mt-4 uppercase">
+       Plan a visit
+     </a>
    </div>
  </nav>
 
@@ -98,10 +108,11 @@
 
      <!-- Text Content aligned bottom-left -->
      <div class="relative z-20 reveal up w-full pt-12">
-       <p class="text-white/80 text-[11px] md:text-xs font-semibold tracking-[0.15em] mb-4 uppercase">welcome to</p>
+       <p class="text-white/80 text-[11px] md:text-xs font-semibold tracking-[0.15em] mb-4 uppercase">A Community Without Walls</p>
        
        <h1 class="text-white text-6xl md:text-8xl lg:text-[8rem] font-serif leading-[1.05] tracking-tight mb-8 drop-shadow-sm">
-         The tent
+         Find God in <br>
+         <span class="italic font-medium">the tent</span>
        </h1>
        
        <div class="flex flex-col sm:flex-row items-start gap-4">
@@ -124,10 +135,10 @@
    <!-- Headline -->
    <div class="reveal up mb-10 w-full" style="transition-delay: 100ms;">
      <h2 class="text-4xl md:text-[3.5rem] lg:text-[4.5rem] font-serif leading-[1.05] tracking-tight text-zinc-900 mx-auto">
-       We believe the <span id="word-cycler" class="italic text-[#285E45] inline-block transition-opacity duration-300 ease-in-out min-w-[5.5em] text-center">outdoors</span> is <br class="hidden md:block">
-       the original, uncrafted <br class="hidden md:block">
-       sanctuary.
-     </h2>
+        we believe God has called us <br class="hidden md:block">
+        to be a place of <br class="hidden md:block">
+        <span id="word-cycler" class="italic text-[#285E45] inline-block transition-opacity duration-300 ease-in-out min-w-[5.5em] text-center">presence</span>
+      </h2>
    </div>
    
    <!-- Paragraph -->
@@ -873,9 +884,9 @@
  <footer id="contact" class="bg-zinc-900 text-white pt-24 pb-12 px-4 sm:px-6 md:px-12 overflow-hidden">
    <div class="max-w-7xl mx-auto flex flex-col items-center">
      <div class="gsap-fade-up w-full text-center flex justify-center">
-       <h2 class="text-[14vw] sm:text-[13vw] md:text-[11vw] leading-[1] font-serif tracking-tighter mb-20 text-center flex flex-nowrap whitespace-nowrap items-center justify-center -ml-2 drop-shadow-sm w-full">
+       <h2 class="text-[12.2vw] sm:text-[11vw] md:text-[10vw] leading-[1] font-serif tracking-tighter mb-20 text-center flex flex-nowrap whitespace-nowrap items-center justify-center drop-shadow-sm w-full mx-auto">
          <span class="bg-gradient-to-b from-[#F8F5E9] to-[#9a9a9a] bg-clip-text text-transparent uppercase">TENT CHURCH</span>
-         <img src="https://i.imgur.com/wvgIL8r.png" alt="Pointer" class="inline-block h-[0.7em] shrink-0 w-auto ml-2 md:ml-4 align-middle -translate-y-[0.05em]">
+         <img src="https://i.imgur.com/wvgIL8r.png" alt="Pointer" class="inline-block h-[0.7em] shrink-0 w-auto ml-1.5 md:ml-3 align-middle -translate-y-[0.05em]">
        </h2>
      </div>
 
@@ -970,7 +981,7 @@
 
    // 5. Word Cycler
    document.addEventListener('DOMContentLoaded', () => {
-     const words = ["outdoors", "wilderness", "mountains", "design", "creation"]; // tailored to outdoor/divine thematic
+     const words = ["power", "praise", "purpose", "people", "presence"]; // tailored to divine thematic
      let currentWordIndex = 0;
      const cyclerSpan = document.getElementById("word-cycler");
      
@@ -995,7 +1006,7 @@
         btnIcon: "map-pin",
         btnLink: "https://www.google.com/maps/search/?api=1&query=156+Cleopatra+drive+Ottawa",
         disabled: false,
-        image: "https://images.unsplash.com/photo-1549887552-cb1dbdd0f9e1?q=80&w=1500&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1438032005730-c779502df39b?q=80&w=1500&auto=format&fit=crop"
       },
       "Toronto": {
         address: "65B Huxley Drive",
@@ -1003,7 +1014,7 @@
         btnIcon: "map-pin",
         btnLink: "https://www.google.com/maps/search/?api=1&query=65B+Huxley+Drive+Toronto",
         disabled: false,
-        image: "https://images.unsplash.com/photo-1478144592103-25e218a04891?q=80&w=1500&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1548625361-ec84920b7ba4?q=80&w=1500&auto=format&fit=crop"
       },
       "Montreal": {
         address: "370 rue guy",
@@ -1011,7 +1022,7 @@
         btnIcon: "map-pin",
         btnLink: "https://www.google.com/maps/search/?api=1&query=370+rue+guy+Montreal",
         disabled: false,
-        image: "https://images.unsplash.com/photo-1511886929837-354d827aae26?q=80&w=1500&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1510525009512-ad7fc13eefab?q=80&w=1500&auto=format&fit=crop"
       },
       "New Jersey": {
         address: "TBD",
@@ -1019,7 +1030,7 @@
         btnIcon: "clock",
         btnLink: "#",
         disabled: true,
-        image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1500&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1507692049790-de58290a4334?q=80&w=1500&auto=format&fit=crop"
       }
     };
 
