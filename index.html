@@ -495,7 +495,7 @@
          </p>
 
          <a href="https://instagram.com/yourtentchurch" target="_blank" class="mb-10 lg:mb-12 inline-flex items-center gap-2 bg-zinc-900 text-white px-8 py-4 rounded-xl text-[1rem] font-medium tracking-wide hover:bg-zinc-800 transition-colors shadow-md hover:shadow-xl transform hover:-translate-y-0.5 duration-300">
-           <i data-lucide="instagram" class="w-5 h-5"></i>
+           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
            Follow Us
          </a>
 
@@ -525,15 +525,15 @@
          <img src="https://i.imgur.com/tqBvKbG.png" alt="Tent Church Patch" class="absolute -top-10 -left-6 md:-top-12 md:-left-10 w-24 md:w-32 z-20 drop-shadow-xl transform -rotate-12 hover:scale-105 transition-transform duration-500">
 
          <style>
-             @keyframes crossfade {
-               0%, 25% { opacity: 1; }
-               33%, 92% { opacity: 0; }
+             @keyframes fastgif {
+               0%, 30% { opacity: 1; }
+               34%, 96% { opacity: 0; }
                100% { opacity: 1; }
              }
-             .img-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: crossfade 12s infinite; }
+             .img-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: fastgif 2.4s infinite; }
              .img-slide:nth-child(1) { animation-delay: 0s; }
-             .img-slide:nth-child(2) { animation-delay: 4s; }
-             .img-slide:nth-child(3) { animation-delay: 8s; }
+             .img-slide:nth-child(2) { animation-delay: 0.8s; }
+             .img-slide:nth-child(3) { animation-delay: 1.6s; }
          </style>
          <div class="transform rotate-3 hover:rotate-1 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] relative z-10 shadow-2xl rounded-[2.5rem] overflow-hidden border-[6px] border-white w-full aspect-[4/3] bg-zinc-200">
            <!-- Crossfading Photos -->
