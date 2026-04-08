@@ -164,73 +164,33 @@
          <span class="italic font-medium">near you.</span>
        </h2>
        
-       <!-- Locations Accordion -->
-       <div class="w-full max-w-lg mt-4 flex flex-col gap-4">
-         
-         <!-- Ottawa -->
-         <div class="border border-white/20 rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm transition-colors hover:bg-white/10">
-           <button class="accordion-btn w-full flex justify-between items-center px-6 py-5 text-left group" onclick="toggleAccordion(this)">
-             <span class="text-white text-xl font-medium tracking-wide">Ottawa</span>
-             <i data-lucide="chevron-down" class="text-[#EFCA1D] transition-transform duration-300 transform"></i>
-           </button>
-           <div class="accordion-content hidden px-6 pb-6">
-             <p class="text-white/80 text-lg mb-6 truncate cursor-default">156 Cleopatra drive</p>
-             <a href="https://www.google.com/maps/search/?api=1&query=156+Cleopatra+drive+Ottawa" target="_blank" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-[#EFCA1D] text-[#113A28] px-5 py-2.5 rounded-lg text-sm font-bold tracking-wide hover:bg-white hover:text-black transition-colors shadow-sm">
-               <i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions
-             </a>
+       <!-- Location Select & Details -->
+       <div class="w-full max-w-lg mt-8 flex flex-col gap-6">
+         <!-- The Dropdown -->
+         <div class="relative w-full sm:w-[85%]">
+           <select id="location-select" class="w-full bg-white/10 border border-white/30 text-white rounded-[1.25rem] px-6 py-4 appearance-none focus:outline-none focus:ring-2 focus:border-transparent focus:ring-[#EFCA1D] cursor-pointer text-xl tracking-wide font-medium transition-colors hover:bg-white/15 shadow-sm" onchange="updateLocationView()">
+             <option value="Ottawa" class="text-zinc-900">Ottawa</option>
+             <option value="Toronto" class="text-zinc-900">Toronto</option>
+             <option value="Montreal" class="text-zinc-900">Montreal</option>
+             <option value="New Jersey" class="text-zinc-900">New Jersey</option>
+           </select>
+           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-6 text-[#EFCA1D]">
+             <i data-lucide="chevron-down" class="w-6 h-6"></i>
            </div>
          </div>
 
-         <!-- Toronto -->
-         <div class="border border-white/20 rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm transition-colors hover:bg-white/10">
-           <button class="accordion-btn w-full flex justify-between items-center px-6 py-5 text-left group" onclick="toggleAccordion(this)">
-             <span class="text-white text-xl font-medium tracking-wide">Toronto</span>
-             <i data-lucide="chevron-down" class="text-[#EFCA1D] transition-transform duration-300 transform"></i>
-           </button>
-           <div class="accordion-content hidden px-6 pb-6">
-             <p class="text-white/80 text-lg mb-6 truncate cursor-default">65B Huxley Drive</p>
-             <a href="https://www.google.com/maps/search/?api=1&query=65B+Huxley+Drive+Toronto" target="_blank" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-[#EFCA1D] text-[#113A28] px-5 py-2.5 rounded-lg text-sm font-bold tracking-wide hover:bg-white hover:text-black transition-colors shadow-sm">
-               <i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions
-             </a>
-           </div>
+         <!-- Displayed Info -->
+         <div id="location-info-wrapper" class="flex flex-col items-start gap-5 p-7 border border-white/10 rounded-[1.5rem] bg-white/5 backdrop-blur-md mt-2 md:mt-4 shadow-xl">
+           <!-- Populated by JS -->
          </div>
-
-         <!-- Montreal -->
-         <div class="border border-white/20 rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm transition-colors hover:bg-white/10">
-           <button class="accordion-btn w-full flex justify-between items-center px-6 py-5 text-left group" onclick="toggleAccordion(this)">
-             <span class="text-white text-xl font-medium tracking-wide">Montreal</span>
-             <i data-lucide="chevron-down" class="text-[#EFCA1D] transition-transform duration-300 transform"></i>
-           </button>
-           <div class="accordion-content hidden px-6 pb-6">
-             <p class="text-white/80 text-lg mb-6 truncate cursor-default">370 rue guy</p>
-             <a href="https://www.google.com/maps/search/?api=1&query=370+rue+guy+Montreal" target="_blank" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-[#EFCA1D] text-[#113A28] px-5 py-2.5 rounded-lg text-sm font-bold tracking-wide hover:bg-white hover:text-black transition-colors shadow-sm">
-               <i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions
-             </a>
-           </div>
-         </div>
-
-         <!-- New Jersey -->
-         <div class="border border-white/20 rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm transition-colors hover:bg-white/10">
-           <button class="accordion-btn w-full flex justify-between items-center px-6 py-5 text-left group" onclick="toggleAccordion(this)">
-             <span class="text-white text-xl font-medium tracking-wide">New Jersey</span>
-             <i data-lucide="chevron-down" class="text-[#EFCA1D] transition-transform duration-300 transform"></i>
-           </button>
-           <div class="accordion-content hidden px-6 pb-6">
-             <p class="text-white/50 text-lg mb-6 italic cursor-default">TBD</p>
-             <button disabled class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-white/10 text-white/40 px-5 py-2.5 rounded-lg text-sm font-bold tracking-wide cursor-not-allowed">
-               <i data-lucide="clock" class="w-4 h-4"></i> Coming Soon
-             </button>
-           </div>
-         </div>
-
        </div>
      </div>
 
-     <!-- Right Image -->
+     <!-- Right Image Showcase -->
      <div class="reveal up lg:col-span-6 xl:col-span-6 relative w-full flex justify-center lg:justify-end" style="transition-delay: 200ms;">
        <!-- Rotated container with shadow -->
-       <div class="transform -rotate-2 hover:rotate-1 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] w-full sm:w-[85%] md:w-[75%] lg:w-[95%] relative mt-6 lg:mt-0">
-         <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1470&auto=format&fit=crop" alt="Impact" class="w-full aspect-[16/10] object-cover rounded-[2rem] shadow-2xl ring-1 ring-white/10">
+       <div class="transform -rotate-2 hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] w-full sm:w-[90%] md:w-[80%] lg:w-[95%] relative mt-10 lg:mt-0">
+         <img id="location-image" src="https://images.unsplash.com/photo-1549887552-cb1dbdd0f9e1?q=80&w=1500&auto=format&fit=crop" alt="Location" class="w-full aspect-[4/3] lg:aspect-[16/10] object-cover rounded-[2rem] shadow-2xl ring-1 ring-white/10 opacity-0">
          
          <!-- Yellow Marker Decoration -->
          <svg class="absolute -top-12 -right-4 lg:-top-16 lg:-right-10 w-24 h-24 lg:w-32 lg:h-32 text-[#EFCA1D] pointer-events-none" fill="none" stroke="currentColor" stroke-linecap="round" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -571,29 +531,90 @@
    });
  </script>
 <script>
-    // 6. Accordion Logic
-    window.toggleAccordion = function(btn) {
-      const content = btn.nextElementSibling;
-      const icon = btn.querySelector('.lucide-chevron-down') || btn.querySelector('i');
-      
-      // Close all others
-      document.querySelectorAll('.accordion-content').forEach(el => {
-        if (el !== content && !el.classList.contains('hidden')) {
-          el.classList.add('hidden');
-          const previousIcon = el.previousElementSibling.querySelector('.lucide-chevron-down') || el.previousElementSibling.querySelector('i');
-          if (previousIcon) previousIcon.classList.remove('rotate-180');
-        }
-      });
-
-      // Toggle current
-      if (content.classList.contains('hidden')) {
-        content.classList.remove('hidden');
-        if (icon) icon.classList.add('rotate-180');
-      } else {
-        content.classList.add('hidden');
-        if (icon) icon.classList.remove('rotate-180');
+    // 6. Dynamic Location Selector Logic
+    const locationsData = {
+      "Ottawa": {
+        address: "156 Cleopatra drive",
+        btnLabel: "Get Directions",
+        btnIcon: "map-pin",
+        btnLink: "https://www.google.com/maps/search/?api=1&query=156+Cleopatra+drive+Ottawa",
+        disabled: false,
+        image: "https://images.unsplash.com/photo-1549887552-cb1dbdd0f9e1?q=80&w=1500&auto=format&fit=crop"
+      },
+      "Toronto": {
+        address: "65B Huxley Drive",
+        btnLabel: "Get Directions",
+        btnIcon: "map-pin",
+        btnLink: "https://www.google.com/maps/search/?api=1&query=65B+Huxley+Drive+Toronto",
+        disabled: false,
+        image: "https://images.unsplash.com/photo-1478144592103-25e218a04891?q=80&w=1500&auto=format&fit=crop"
+      },
+      "Montreal": {
+        address: "370 rue guy",
+        btnLabel: "Get Directions",
+        btnIcon: "map-pin",
+        btnLink: "https://www.google.com/maps/search/?api=1&query=370+rue+guy+Montreal",
+        disabled: false,
+        image: "https://images.unsplash.com/photo-1511886929837-354d827aae26?q=80&w=1500&auto=format&fit=crop"
+      },
+      "New Jersey": {
+        address: "TBD",
+        btnLabel: "Coming Soon",
+        btnIcon: "clock",
+        btnLink: "#",
+        disabled: true,
+        image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1500&auto=format&fit=crop"
       }
+    };
+
+    window.updateLocationView = function() {
+      const select = document.getElementById('location-select');
+      const infoWrapper = document.getElementById('location-info-wrapper');
+      const img = document.getElementById('location-image');
+      
+      if(!select || !infoWrapper || !img) return;
+
+      const data = locationsData[select.value];
+      
+      // Update text and buttons
+      let buttonHTML = '';
+      if(data.disabled) {
+        buttonHTML = `<button disabled class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-white/10 text-white/40 px-6 py-3 rounded-xl font-bold tracking-wide cursor-not-allowed">
+                        <i data-lucide="${data.btnIcon}" class="w-5 h-5"></i> ${data.btnLabel}
+                      </button>`;
+      } else {
+        buttonHTML = `<a href="${data.btnLink}" target="_blank" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-[#EFCA1D] text-[#113A28] px-6 py-3 rounded-xl font-bold tracking-wide hover:bg-white hover:text-black transition-colors shadow-sm">
+                        <i data-lucide="${data.btnIcon}" class="w-5 h-5"></i> ${data.btnLabel}
+                      </a>`;
+      }
+
+      // Fade out for transition
+      infoWrapper.style.opacity = '0';
+      img.style.opacity = '0';
+      
+      setTimeout(() => {
+        infoWrapper.innerHTML = `
+          <p class="text-white/90 text-[1.35rem] font-serif tracking-wide mb-1">${data.address}</p>
+          ${buttonHTML}
+        `;
+        img.src = data.image;
+        if(window.lucide) {
+          window.lucide.createIcons();
+        }
+        
+        infoWrapper.style.opacity = '1';
+        img.style.opacity = '1';
+      }, 300);
     }
+    
+    // Init on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const img = document.getElementById('location-image');
+      const infoWrapper = document.getElementById('location-info-wrapper');
+      if(img) img.style.transition = "opacity 0.3s ease-in-out";
+      if(infoWrapper) infoWrapper.style.transition = "opacity 0.3s ease-in-out";
+      setTimeout(window.updateLocationView, 100);
+    });
   </script>
 </body>
 </html>
