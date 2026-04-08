@@ -95,7 +95,7 @@
      <!-- Background Video Wrapper -->
      <div class="absolute inset-0 z-0 pointer-events-none">
        <!-- Oversized iframe to hide youtube edges and simulate object-cover -->
-       <iframe class="absolute top-1/2 left-1/2 w-[350vw] h-[350vh] md:w-[150vw] md:h-[150vw] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+       <iframe class="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none scale-[1.15]"
                src="https://www.youtube.com/embed/bD7mXGIAZgM?autoplay=1&mute=1&controls=0&playsinline=1&showinfo=0&rel=0&loop=1&playlist=bD7mXGIAZgM&start=0&end=60"
                frameborder="0" allow="autoplay; fullscreen"></iframe>
        
@@ -153,47 +153,40 @@
  </section>
 
 
- <!-- About / Services -->
- <section id="services" class="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-zinc-300/60">
-   <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
-     <div class="lg:col-span-3">
-       <div class="reveal up">
-         <h3 class="text-xs font-bold tracking-[0.2em] uppercase text-zinc-400">Our Services.</h3>
+ <!-- Damas Style Green About Section -->
+ <section id="about" class="w-full bg-[#113A28] py-28 md:py-40 px-6 md:px-12 overflow-hidden border-t-2 border-zinc-200">
+   <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-center">
+     
+     <!-- Left Content -->
+     <div class="reveal up lg:col-span-6 xl:col-span-6">
+       <h3 class="text-[#EFCA1D] font-bold text-sm tracking-widest mb-6 lg:mb-8 uppercase">About Us</h3>
+       
+       <h2 class="text-white text-6xl md:text-[5.5rem] lg:text-[6.5rem] font-sans font-black tracking-tighter leading-[0.9] mb-8 lg:mb-12">
+         Ideas Crafted <br>
+         Into Impact
+       </h2>
+       
+       <p class="text-white/80 text-lg md:text-xl font-normal leading-relaxed max-w-lg tracking-wide">
+         Damas Creative is a collective of designers, strategists, and storytellers who turn bold ideas into meaningful brand expressions. We partner with ambitious companies to shape identities, build trust, and create visual narratives that leave a lasting impression.
+       </p>
+     </div>
+
+     <!-- Right Image -->
+     <div class="reveal up lg:col-span-6 xl:col-span-6 relative w-full flex justify-center lg:justify-end" style="transition-delay: 200ms;">
+       <!-- Rotated container with shadow -->
+       <div class="transform -rotate-2 hover:rotate-1 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] w-full sm:w-[85%] md:w-[75%] lg:w-[95%] relative mt-6 lg:mt-0">
+         <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1470&auto=format&fit=crop" alt="Impact" class="w-full aspect-[16/10] object-cover rounded-[2rem] shadow-2xl ring-1 ring-white/10">
+         
+         <!-- Yellow Marker Decoration -->
+         <svg class="absolute -top-12 -right-4 lg:-top-16 lg:-right-10 w-24 h-24 lg:w-32 lg:h-32 text-[#EFCA1D] pointer-events-none" fill="none" stroke="currentColor" stroke-linecap="round" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+           <!-- Hand drawn aesthetic strokes pointing outwards -->
+           <path d="M 20,80 Q 25,45 35,10" stroke-width="5"/>
+           <path d="M 40,85 Q 55,55 80,30" stroke-width="5"/>
+           <path d="M 50,105 Q 80,75 110,60" stroke-width="5"/>
+         </svg>
        </div>
      </div>
-    
-     <div class="lg:col-span-9">
-       <div class="reveal up" style="transition-delay: 100ms;">
-         <h2 class="text-3xl md:text-5xl font-medium tracking-tight mb-8">Ideas Crafted Into Impact.</h2>
-         <p class="text-xl md:text-2xl text-zinc-600 leading-relaxed max-w-3xl mb-16">
-           Damas Creative is a collective of designers, strategists, and storytellers who turn bold ideas into meaningful brand expressions. We partner with ambitious companies to shape identities, build trust, and create visual narratives that leave a lasting impression.
-         </p>
-       </div>
-
-
-       <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 border-t border-zinc-200/60 pt-12">
-         <!-- Service 1 -->
-         <div class="reveal up" style="transition-delay: 200ms;">
-           <h4 class="text-xl font-semibold mb-3">Creative Direction</h4>
-           <p class="text-zinc-500 leading-relaxed">Guiding the visual story and ensuring every detail aligns with your mission.</p>
-         </div>
-         <!-- Service 2 -->
-         <div class="reveal up" style="transition-delay: 300ms;">
-           <h4 class="text-xl font-semibold mb-3">Brand Identity</h4>
-           <p class="text-zinc-500 leading-relaxed">Crafting distinct logos, typography, and color palettes that define who you are.</p>
-         </div>
-         <!-- Service 3 -->
-         <div class="reveal up" style="transition-delay: 400ms;">
-           <h4 class="text-xl font-semibold mb-3">UI/UX Design</h4>
-           <p class="text-zinc-500 leading-relaxed">Building intuitive, stunning digital products that engage and convert users.</p>
-         </div>
-         <!-- Service 4 -->
-         <div class="reveal up" style="transition-delay: 500ms;">
-           <h4 class="text-xl font-semibold mb-3">Strategy</h4>
-           <p class="text-zinc-500 leading-relaxed">Positioning your brand in the market with clear, actionable, and bold roadmaps.</p>
-         </div>
-       </div>
-     </div>
+     
    </div>
  </section>
 
