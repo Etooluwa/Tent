@@ -489,15 +489,27 @@
         
        <!-- Left: Text & Form -->
        <div class="gsap-fade-up w-full lg:w-5/12 flex flex-col items-start z-10 order-2 lg:order-1">
-         <p class="text-zinc-800 text-[1.2rem] sm:text-[1.4rem] font-medium leading-[1.6] mb-6 font-sans">
-           Connect with us on instagram 
-           <a href="https://instagram.com/yourtentchurch" target="_blank" class="text-[#113A28] font-bold hover:underline">@yourtentchurch</a>
-         </p>
+         <div class="mb-10 lg:mb-12 w-full">
+           <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#EFCA1D] text-zinc-900 mb-6 drop-shadow-md">
+             <i data-lucide="instagram" class="w-7 h-7"></i>
+           </div>
+           
+           <h3 class="text-zinc-900 text-[2.2rem] sm:text-[2.75rem] font-serif leading-tight tracking-tight mb-3">
+             Follow Our <br class="hidden sm:block">
+             <span class="italic text-[#113A28]">digital journey.</span>
+           </h3>
+           
+           <p class="text-zinc-600 text-[1.1rem] sm:text-[1.2rem] font-medium mb-8 max-w-sm leading-relaxed">
+             Experience the latest updates, inspiration, and moments happening within the community.
+           </p>
 
-         <a href="https://instagram.com/yourtentchurch" target="_blank" class="mb-10 lg:mb-12 inline-flex items-center gap-2 bg-zinc-900 text-white px-8 py-4 rounded-xl text-[1rem] font-medium tracking-wide hover:bg-zinc-800 transition-colors shadow-md hover:shadow-xl transform hover:-translate-y-0.5 duration-300">
-           <i data-lucide="instagram" class="w-5 h-5"></i>
-           Follow Us
-         </a>
+           <a href="https://instagram.com/yourtentchurch" target="_blank" class="group flex items-center justify-between bg-white border border-zinc-200 pl-6 pr-2 py-2 rounded-full shadow-sm hover:shadow-md transition-all duration-300 w-full sm:w-[22rem]">
+             <span class="text-zinc-900 font-bold tracking-wide">@yourtentchurch</span>
+             <div class="w-10 h-10 rounded-full bg-[#113A28] flex items-center justify-center text-white transform group-hover:bg-zinc-900 group-hover:scale-105 transition-all">
+               <i data-lucide="arrow-right" class="w-4 h-4"></i>
+             </div>
+           </a>
+         </div>
 
          <!-- Contact Form -->
          <div class="w-full bg-white border border-zinc-200/60 p-8 rounded-2xl shadow-xl">
@@ -524,9 +536,22 @@
          <!-- Decorative Patch -> user's image https://i.imgur.com/tqBvKbG.png -->
          <img src="https://i.imgur.com/tqBvKbG.png" alt="Tent Church Patch" class="absolute -top-10 -left-6 md:-top-12 md:-left-10 w-24 md:w-32 z-20 drop-shadow-xl transform -rotate-12 hover:scale-105 transition-transform duration-500">
 
-         <div class="transform rotate-3 hover:rotate-1 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] relative z-10 shadow-2xl rounded-[2.5rem] overflow-hidden border-[6px] border-white block">
-           <!-- Actual Photo -->
-           <img src="https://images.unsplash.com/photo-1529070381656-11f26a1ac130?q=80&w=1500&auto=format&fit=crop" alt="Connect with community" class="w-full aspect-[4/3] object-cover">
+         <style>
+             @keyframes crossfade {
+               0%, 25% { opacity: 1; }
+               33%, 92% { opacity: 0; }
+               100% { opacity: 1; }
+             }
+             .img-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: crossfade 12s infinite; }
+             .img-slide:nth-child(1) { animation-delay: 0s; }
+             .img-slide:nth-child(2) { animation-delay: 4s; }
+             .img-slide:nth-child(3) { animation-delay: 8s; }
+         </style>
+         <div class="transform rotate-3 hover:rotate-1 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] relative z-10 shadow-2xl rounded-[2.5rem] overflow-hidden border-[6px] border-white w-full aspect-[4/3] bg-zinc-200">
+           <!-- Crossfading Photos -->
+           <img src="https://images.unsplash.com/photo-1544427920-c49ccfb85579?q=80&w=1500&auto=format&fit=crop" alt="Church Gathering" class="img-slide">
+           <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=1500&auto=format&fit=crop" alt="Worship Together" class="img-slide">
+           <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=1500&auto=format&fit=crop" alt="Praise" class="img-slide">
          </div>
        </div>
        
