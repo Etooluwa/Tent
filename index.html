@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Damas Creative Agency</title>
+  <!-- Tailwind CSS -->
+ <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+ <script src="https://unpkg.com/lucide@latest"></script>
+ <!-- Google Fonts -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+ <script>
+   tailwind.config = {
+     theme: {
+       extend: {
+         fontFamily: {
+           serif: ['Playfair Display', 'serif'],
+         }
+       }
+     }
+   }
+ </script>
+
+ <style>
+   /* Custom CSS for Scroll Reveal Animations */
+   .reveal {
+     opacity: 0;
+     transition: all 1000ms ease-out;
+   }
+   .reveal.up { transform: translateY(3rem); }
+   .reveal.down { transform: translateY(-3rem); }
+   .reveal.left { transform: translateX(3rem); }
+   .reveal.right { transform: translateX(-3rem); }
+  
+   .reveal.is-visible {
+     opacity: 1;
+     transform: translate(0, 0);
+   }
+ </style>
+</head>
+<body class="bg-[#FAF7F0] text-zinc-900 font-sans selection:bg-zinc-900 selection:text-white">
+
+
+ <!-- Navbar -->
+ <nav id="navbar" class="sticky top-0 w-full z-50 transition-all duration-300 bg-[#FAF7F0] py-5 text-zinc-900">
+   <div class="max-w-[96%] mx-auto px-4 md:px-8 flex justify-between items-center">
+     <!-- Logo -->
+     <a href="#" class="text-2xl font-semibold tracking-tight flex items-center gap-1.5 uppercase">
+       TENT <span class="italic font-serif font-medium">CHURCH</span>
+     </a>
+
+     <!-- Desktop Links -->
+     <div class="hidden md:flex flex-1 justify-center space-x-12 text-[13px] font-semibold tracking-wide">
+       <a href="#about" class="hover:text-zinc-500 transition-colors">About</a>
+       <a href="#gatherings" class="hover:text-zinc-500 transition-colors">Gatherings</a>
+       <a href="#get-involved" class="hover:text-zinc-500 transition-colors">Get Involved</a>
+       <a href="#give" class="hover:text-zinc-500 transition-colors">Give</a>
+     </div>
+
+     <!-- CTA Button -->
+     <div class="hidden md:block">
+       <a href="#visit" class="bg-zinc-900 text-white px-6 py-3 rounded-xl text-xs font-semibold tracking-wide hover:bg-zinc-700 transition-colors">
+         Join Us This Sunday
+       </a>
+     </div>
+
+     <!-- Mobile Toggle -->
+     <button id="mobile-btn" class="md:hidden text-zinc-900">
+       <i id="menu-icon-open" data-lucide="menu" class="w-6 h-6"></i>
+       <i id="menu-icon-close" data-lucide="x" class="w-6 h-6 hidden"></i>
+     </button>
+   </div>
+
+   <!-- Mobile Menu -->
+   <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#FAF7F0] py-6 px-6 flex-col space-y-4 shadow-xl z-50 border-t border-zinc-200">
+     <a href="#about" class="mobile-link text-lg font-medium text-zinc-900">About</a>
+     <a href="#gatherings" class="mobile-link text-lg font-medium text-zinc-900">Gatherings</a>
+     <a href="#get-involved" class="mobile-link text-lg font-medium text-zinc-900">Get Involved</a>
+     <a href="#give" class="mobile-link text-lg font-medium text-zinc-900">Give</a>
+     <a href="#visit" class="mobile-link bg-zinc-900 text-white px-6 py-4 rounded-xl text-center font-medium mt-4">
+       Join Us This Sunday
+     </a>
+   </div>
+ </nav>
+
+
+ <!-- Hero Section - Boxed with Bottom-Left Text Alignment -->
+ <section class="w-full px-4 md:px-6 pb-6 bg-[#FAF7F0] pt-2">
+   <!-- The rounded container that holds the gradient/image and text -->
+   <div class="relative w-full h-[88vh] rounded-[2rem] overflow-hidden flex flex-col justify-end p-8 md:p-14 lg:p-20 text-left bg-gradient-to-b from-[#E7E4D8] to-[#4F4B42]">
+     
+     <!-- Background Video Wrapper -->
+     <div class="absolute inset-0 z-0 pointer-events-none">
+       <!-- Oversized iframe to hide youtube edges and simulate object-cover -->
+       <iframe class="absolute top-1/2 left-1/2 w-[350vw] h-[350vh] md:w-[150vw] md:h-[150vw] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+               src="https://www.youtube.com/embed/-aHVOiNT_rw?autoplay=1&mute=1&controls=0&playsinline=1&showinfo=0&rel=0&loop=1&playlist=-aHVOiNT_rw&start=0&end=30"
+               frameborder="0" allow="autoplay; fullscreen"></iframe>
+       
+       <!-- Elegant dark overlay to ensure text legibility and aesthetic -->
+       <div class="absolute inset-0 bg-gradient-to-b from-[#35332c]/50 to-[#22211c]/80 z-10"></div>
+     </div>
+
+     <!-- Text Content aligned bottom-left -->
+     <div class="relative z-20 reveal up w-full pt-12">
+       <p class="text-white/80 text-[11px] md:text-xs font-semibold tracking-[0.15em] mb-4 uppercase">A Community Without Walls</p>
+       
+       <h1 class="text-white text-6xl md:text-8xl lg:text-[8rem] font-serif leading-[1.05] tracking-tight mb-8 drop-shadow-sm">
+         Find God in <br>
+         <span class="italic font-medium">the Wilderness</span>
+       </h1>
+       
+       <div class="flex flex-col sm:flex-row items-start gap-4">
+         <a href="#visit" class="bg-[#FAF8F5] text-zinc-900 px-8 py-4 rounded-xl text-sm font-semibold hover:bg-white transition-colors text-center w-full sm:w-auto shadow-sm">
+           Plan Your Visit
+         </a>
+         <a href="#vision" class="bg-[#5C5C55]/60 hover:bg-[#5C5C55]/80 backdrop-blur-md text-white px-8 py-4 rounded-xl text-sm font-semibold transition-colors text-center w-full sm:w-auto border border-white/5">
+           Our Vision
+         </a>
+       </div>
+     </div>
+   </div>
+ </section>
+
+
+ <!-- Philosophy / Core Belief Open Sky -->
+ <section class="py-28 md:py-44 px-6 md:px-12 max-w-[55rem] mx-auto flex flex-col items-center text-center">
+   <!-- Icon -->
+   <div class="reveal up mb-10 w-32 md:w-44 mx-auto flex justify-center">
+     <img src="https://i.imgur.com/tqBvKbG.png" alt="Tent Church Patch" class="w-full h-auto drop-shadow-sm">
+   </div>
+   
+   <!-- Headline -->
+   <div class="reveal up mb-10 w-full" style="transition-delay: 100ms;">
+     <h2 class="text-4xl md:text-[3.5rem] lg:text-[4.5rem] font-serif leading-[1.05] tracking-tight text-zinc-900 mx-auto">
+       We believe the <span id="word-cycler" class="italic text-[#285E45] inline-block transition-opacity duration-300 ease-in-out min-w-[5.5em] text-center">outdoors</span> is <br class="hidden md:block">
+       the original, uncrafted <br class="hidden md:block">
+       sanctuary.
+     </h2>
+   </div>
+   
+   <!-- Paragraph -->
+   <div class="reveal up w-full" style="transition-delay: 200ms;">
+     <p class="text-[15px] md:text-base text-zinc-600 leading-[1.8] max-w-3xl mx-auto font-normal tracking-wide">
+       Tent Church is a gathering of people who find peace, connection, and divine<br class="hidden md:block">
+       presence under the open sky. We trade stained glass for towering pines, and<br class="hidden md:block">
+       wooden pews for camp chairs. Whether you're a seasoned hiker or just looking for<br class="hidden md:block">
+       a breath of fresh air, there's a place for you by the fire.
+     </p>
+   </div>
+ </section>
+
+
+ <!-- About / Services -->
+ <section id="services" class="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-zinc-300/60">
+   <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+     <div class="lg:col-span-3">
+       <div class="reveal up">
+         <h3 class="text-xs font-bold tracking-[0.2em] uppercase text-zinc-400">Our Services.</h3>
+       </div>
+     </div>
+    
+     <div class="lg:col-span-9">
+       <div class="reveal up" style="transition-delay: 100ms;">
+         <h2 class="text-3xl md:text-5xl font-medium tracking-tight mb-8">Ideas Crafted Into Impact.</h2>
+         <p class="text-xl md:text-2xl text-zinc-600 leading-relaxed max-w-3xl mb-16">
+           Damas Creative is a collective of designers, strategists, and storytellers who turn bold ideas into meaningful brand expressions. We partner with ambitious companies to shape identities, build trust, and create visual narratives that leave a lasting impression.
+         </p>
+       </div>
+
+
+       <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 border-t border-zinc-200/60 pt-12">
+         <!-- Service 1 -->
+         <div class="reveal up" style="transition-delay: 200ms;">
+           <h4 class="text-xl font-semibold mb-3">Creative Direction</h4>
+           <p class="text-zinc-500 leading-relaxed">Guiding the visual story and ensuring every detail aligns with your mission.</p>
+         </div>
+         <!-- Service 2 -->
+         <div class="reveal up" style="transition-delay: 300ms;">
+           <h4 class="text-xl font-semibold mb-3">Brand Identity</h4>
+           <p class="text-zinc-500 leading-relaxed">Crafting distinct logos, typography, and color palettes that define who you are.</p>
+         </div>
+         <!-- Service 3 -->
+         <div class="reveal up" style="transition-delay: 400ms;">
+           <h4 class="text-xl font-semibold mb-3">UI/UX Design</h4>
+           <p class="text-zinc-500 leading-relaxed">Building intuitive, stunning digital products that engage and convert users.</p>
+         </div>
+         <!-- Service 4 -->
+         <div class="reveal up" style="transition-delay: 500ms;">
+           <h4 class="text-xl font-semibold mb-3">Strategy</h4>
+           <p class="text-zinc-500 leading-relaxed">Positioning your brand in the market with clear, actionable, and bold roadmaps.</p>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+
+
+ <!-- Works -->
+ <section id="works" class="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-zinc-300/60">
+   <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
+     <div class="reveal up">
+       <h3 class="text-xs font-bold tracking-[0.2em] uppercase text-zinc-400 mb-6">Selected Works.</h3>
+       <h2 class="text-4xl md:text-6xl font-medium tracking-tight">Our Brightest Creations.</h2>
+     </div>
+     <div class="reveal up" style="transition-delay: 200ms;">
+       <button class="flex items-center gap-2 text-zinc-900 font-medium hover:text-zinc-500 transition-colors group">
+         View All Projects <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+       </button>
+     </div>
+   </div>
+
+
+   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+     <!-- Project 1 -->
+     <div class="reveal up group cursor-pointer" style="transition-delay: 0ms;">
+       <div class="overflow-hidden rounded-2xl bg-zinc-200 mb-6 relative aspect-[4/5] sm:aspect-square md:aspect-[4/5]">
+         <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1000&auto=format&fit=crop" alt="Nimble Apparel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" />
+         <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+       </div>
+       <div class="flex justify-between items-start">
+         <div>
+           <h3 class="text-2xl font-medium mb-1 group-hover:text-zinc-600 transition-colors">Nimble Apparel</h3>
+           <p class="text-zinc-500 text-sm">Illustration</p>
+         </div>
+         <span class="text-zinc-400 text-sm font-medium">Aug 2024</span>
+       </div>
+     </div>
+    
+     <!-- Project 2 -->
+     <div class="reveal up group cursor-pointer md:mt-16" style="transition-delay: 150ms;">
+       <div class="overflow-hidden rounded-2xl bg-zinc-200 mb-6 relative aspect-[4/5] sm:aspect-square md:aspect-[4/5]">
+         <img src="https://images.unsplash.com/photo-1503376760367-15ea2fb5333f?q=80&w=1000&auto=format&fit=crop" alt="Heritage Motor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" />
+         <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+       </div>
+       <div class="flex justify-between items-start">
+         <div>
+           <h3 class="text-2xl font-medium mb-1 group-hover:text-zinc-600 transition-colors">Heritage Motor</h3>
+           <p class="text-zinc-500 text-sm">Branding</p>
+         </div>
+         <span class="text-zinc-400 text-sm font-medium">Oct 2025</span>
+       </div>
+     </div>
+
+
+     <!-- Project 3 -->
+     <div class="reveal up group cursor-pointer" style="transition-delay: 300ms;">
+       <div class="overflow-hidden rounded-2xl bg-zinc-200 mb-6 relative aspect-[4/5] sm:aspect-square md:aspect-[4/5]">
+         <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop" alt="Root & Rise" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" />
+         <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+       </div>
+       <div class="flex justify-between items-start">
+         <div>
+           <h3 class="text-2xl font-medium mb-1 group-hover:text-zinc-600 transition-colors">Root & Rise</h3>
+           <p class="text-zinc-500 text-sm">Branding</p>
+         </div>
+         <span class="text-zinc-400 text-sm font-medium">Nov 2023</span>
+       </div>
+     </div>
+
+
+     <!-- Project 4 -->
+     <div class="reveal up group cursor-pointer md:mt-16" style="transition-delay: 450ms;">
+       <div class="overflow-hidden rounded-2xl bg-zinc-200 mb-6 relative aspect-[4/5] sm:aspect-square md:aspect-[4/5]">
+         <img src="https://images.unsplash.com/photo-1513506003901-1e6a229e9d15?q=80&w=1000&auto=format&fit=crop" alt="Velocity Motors" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" />
+         <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+       </div>
+       <div class="flex justify-between items-start">
+         <div>
+           <h3 class="text-2xl font-medium mb-1 group-hover:text-zinc-600 transition-colors">Velocity Motors</h3>
+           <p class="text-zinc-500 text-sm">Web Design</p>
+         </div>
+         <span class="text-zinc-400 text-sm font-medium">Feb 2025</span>
+       </div>
+     </div>
+   </div>
+ </section>
+
+
+ <!-- Testimonials -->
+ <section id="testimonials" class="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-zinc-300/60 flex flex-col items-center text-center">
+   <div class="reveal up">
+     <h3 class="text-xs font-bold tracking-[0.2em] uppercase text-zinc-400 mb-12">What Our Clients Say.</h3>
+   </div>
+   <div class="reveal up max-w-4xl" style="transition-delay: 100ms;">
+     <h2 class="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-snug mb-12">
+       "Damas elevated our brand far beyond expectations. The campaign they crafted felt authentic, fresh, and exactly what our audience needed."
+     </h2>
+     <div class="flex flex-col items-center">
+       <div class="w-16 h-16 bg-zinc-300 rounded-full mb-4 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop" alt="Client" class="w-full h-full object-cover" />
+       </div>
+       <h4 class="font-semibold text-lg">Yakoub Kashmiri</h4>
+       <p class="text-zinc-500">Marketing Director at StyleStack</p>
+     </div>
+   </div>
+ </section>
+
+
+ <!-- Pricing -->
+ <section id="pricing" class="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-zinc-300/60">
+   <div class="reveal up text-center mb-16 md:mb-24">
+     <h3 class="text-xs font-bold tracking-[0.2em] uppercase text-zinc-400 mb-6">Pricing.</h3>
+     <h2 class="text-4xl md:text-5xl font-medium tracking-tight">Affordable Plans For Everyone.</h2>
+   </div>
+
+
+   <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+     <!-- Starter Plan -->
+     <div class="reveal up p-8 md:p-10 rounded-3xl flex flex-col bg-white text-zinc-900 border border-zinc-200" style="transition-delay: 0ms;">
+       <h4 class="text-2xl font-semibold mb-3">Starter</h4>
+       <p class="mb-8 min-h-[48px] text-zinc-500">Perfect for small teams exploring creative and general support.</p>
+       <div class="mb-8">
+         <span class="text-5xl font-medium tracking-tight">$999</span>
+         <span class="text-sm text-zinc-500"> /month</span>
+       </div>
+       <ul class="space-y-4 mb-10 flex-grow">
+         <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 text-zinc-900"></i><span class="text-sm text-zinc-600">Manage up to 3 brand assets</span></li>
+         <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 text-zinc-900"></i><span class="text-sm text-zinc-600">Access to basic design templates</span></li>
+         <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 text-zinc-900"></i><span class="text-sm text-zinc-600">Standard project comments</span></li>
+         <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 text-zinc-900"></i><span class="text-sm text-zinc-600">Community discussions</span></li>
+       </ul>
+       <button class="w-full py-4 rounded-full font-medium transition-all duration-300 bg-zinc-100 text-zinc-900 hover:bg-zinc-200">
+         Let's Collab!
+       </button>
+     </div>
+
+
+     <!-- Studio Plan (Highlighted) -->
+     <div class="reveal up p-8 md:p-10 rounded-3xl flex flex-col bg-zinc-900 text-white shadow-2xl scale-100 lg:scale-105 z-10" style="transition-delay: 150ms;">
+       <h4 class="text-2xl font-semibold mb-3">Studio</h4>
+       <p class="mb-8 min-h-[48px] text-zinc-400">Designed for growing brands that need consistent creative output.</p>
+       <div class="mb-8">
+         <span class="text-5xl font-medium tracking-tight">$1999</span>
+         <span class="text-sm text-zinc-400"> /month</span>
+       </div>
+       <ul class="space-y-4 mb-10 flex-grow">
+         <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 text-zinc-300"></i><span class="text-sm text-zinc-300">Unlimited brand assets</span></li>
+         <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 text-zinc-300"></i><span class="text-sm text-zinc-300">Collaboration with up to 5 members</span></li>
+         <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 text-zinc-300"></i><span class="text-sm text-zinc-300">Reusable component library</span></li>
+         <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 text-zinc-300"></i><span class="text-sm text-zinc-300">Priority design reviews</span></li>
+       </ul>
+       <button class="w-full py-4 rounded-full font-medium transition-all duration-300 bg-white text-zinc-900 hover:bg-zinc-200">
+         Let's Collab!
+       </button>
+     </div>
+
+
+     <!-- Agency Plan -->
+     <div class="reveal up p-8 md:p-10 rounded-3xl flex flex-col bg-white text-zinc-900 border border-zinc-200" style="transition-delay: 300ms;">
+       <h4 class="text-2xl font-semibold mb-3">Agency</h4>
+       <p class="mb-8 min-h-[48px] text-zinc-500">End-to-end creative partnership for scaling businesses.</p>
+       <div class="mb-8">
+         <span class="text-5xl font-medium tracking-tight">$2999</span>
+         <span class="text-sm text-zinc-500"> /month</span>
+       </div>
+       <ul class="space-y-4 mb-10 flex-grow">
+         <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 text-zinc-900"></i><span class="text-sm text-zinc-600">Unlimited team members</span></li>
+         <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 text-zinc-900"></i><span class="text-sm text-zinc-600">White-label client dashboards</span></li>
+         <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 text-zinc-900"></i><span class="text-sm text-zinc-600">Advanced workflow automation</span></li>
+         <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 text-zinc-900"></i><span class="text-sm text-zinc-600">Dedicated account specialist</span></li>
+       </ul>
+       <button class="w-full py-4 rounded-full font-medium transition-all duration-300 bg-zinc-100 text-zinc-900 hover:bg-zinc-200">
+         Let's Collab!
+       </button>
+     </div>
+   </div>
+ </section>
+
+
+ <!-- Footer -->
+ <footer id="contact" class="bg-zinc-900 text-white pt-24 pb-12 px-6 md:px-12 mt-24">
+   <div class="max-w-7xl mx-auto">
+     <div class="reveal up">
+       <h2 class="text-[12vw] leading-none font-medium tracking-tighter mb-16 text-center lg:text-left text-zinc-100 uppercase">
+         Let's Create<br />Together.
+       </h2>
+     </div>
+
+
+     <div class="grid grid-cols-1 md:grid-cols-4 gap-12 border-t border-zinc-800 pt-16">
+       <div class="md:col-span-2">
+          <h3 class="text-2xl font-semibold mb-6">Damas.</h3>
+          <p class="text-zinc-400 max-w-sm mb-8">Ready to bring your vision to life? Get in touch and let's craft something impactful.</p>
+          <button class="bg-white text-zinc-900 px-8 py-4 rounded-full font-medium hover:bg-zinc-200 transition-colors">
+            Start a Project
+          </button>
+       </div>
+      
+       <div>
+         <h4 class="text-zinc-500 font-medium mb-6 uppercase tracking-wider text-sm">Visit Us</h4>
+         <p class="text-zinc-300 leading-relaxed mb-8">
+           7814 Harrison Blvd.<br />
+           Wilmington, 19804<br />
+           United States
+         </p>
+       </div>
+
+
+       <div>
+          <h4 class="text-zinc-500 font-medium mb-6 uppercase tracking-wider text-sm">Contact Us</h4>
+          <ul class="space-y-4 text-zinc-300">
+            <li><a href="#" class="hover:text-white transition-colors">hello@framer.com</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">+1 (234) 567-8910</a></li>
+          </ul>
+         
+          <div class="flex gap-4 mt-8">
+             <a href="#" class="text-sm text-zinc-500 hover:text-white transition-colors">Instagram</a>
+             <a href="#" class="text-sm text-zinc-500 hover:text-white transition-colors">Twitter</a>
+             <a href="#" class="text-sm text-zinc-500 hover:text-white transition-colors">LinkedIn</a>
+          </div>
+       </div>
+     </div>
+
+
+     <div class="border-t border-zinc-800 mt-24 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-zinc-600">
+       <p>© 2025 Damas Creative - All rights reserved.</p>
+       <div class="flex gap-6 mt-4 md:mt-0">
+         <a href="#" class="hover:text-zinc-400">Terms & Conditions</a>
+         <a href="#" class="hover:text-zinc-400">Privacy Policy</a>
+       </div>
+     </div>
+   </div>
+ </footer>
+
+
+ <!-- Functionality Scripts -->
+ <script>
+   // 1. Initialize Icons
+   lucide.createIcons();
+
+
+   // 2. Scroll Reveal Animations (Intersection Observer)
+   const observerOptions = {
+     root: null,
+     rootMargin: '0px',
+     threshold: 0.1
+   };
+
+
+   const observer = new IntersectionObserver((entries, observer) => {
+     entries.forEach(entry => {
+       if (entry.isIntersecting) {
+         entry.target.classList.add('is-visible');
+         observer.unobserve(entry.target); // Only animate once
+       }
+     });
+   }, observerOptions);
+
+
+   document.querySelectorAll('.reveal').forEach(el => {
+     observer.observe(el);
+   });
+
+
+   // 3. Sticky Navbar Styling on Scroll
+   const navbar = document.getElementById('navbar');
+   window.addEventListener('scroll', () => {
+     if (window.scrollY > 10) {
+       navbar.classList.add('shadow-sm');
+       navbar.classList.remove('py-5');
+       navbar.classList.add('py-4');
+     } else {
+       navbar.classList.remove('shadow-sm');
+       navbar.classList.add('py-5');
+       navbar.classList.remove('py-4');
+     }
+   });
+
+
+   // 4. Mobile Menu Toggle
+   const mobileBtn = document.getElementById('mobile-btn');
+   const mobileMenu = document.getElementById('mobile-menu');
+   const menuIconOpen = document.getElementById('menu-icon-open');
+   const menuIconClose = document.getElementById('menu-icon-close');
+   const mobileLinks = document.querySelectorAll('.mobile-link');
+   let isMenuOpen = false;
+
+
+   function toggleMenu() {
+     isMenuOpen = !isMenuOpen;
+     if (isMenuOpen) {
+       mobileMenu.classList.remove('hidden');
+       mobileMenu.classList.add('flex');
+       menuIconOpen.classList.add('hidden');
+       menuIconClose.classList.remove('hidden');
+     } else {
+       mobileMenu.classList.add('hidden');
+       mobileMenu.classList.remove('flex');
+       menuIconOpen.classList.remove('hidden');
+       menuIconClose.classList.add('hidden');
+     }
+   }
+
+
+   mobileBtn.addEventListener('click', toggleMenu);
+  
+   // Close mobile menu when a link is clicked
+   mobileLinks.forEach(link => {
+     link.addEventListener('click', () => {
+       if (isMenuOpen) toggleMenu();
+     });
+   });
+
+   // 5. Word Cycler
+   document.addEventListener('DOMContentLoaded', () => {
+     const words = ["outdoors", "wilderness", "mountains", "design", "creation"]; // tailored to outdoor/divine thematic
+     let currentWordIndex = 0;
+     const cyclerSpan = document.getElementById("word-cycler");
+     
+     if (cyclerSpan) {
+       setInterval(() => {
+         cyclerSpan.classList.add("opacity-0");
+         setTimeout(() => {
+           currentWordIndex = (currentWordIndex + 1) % words.length;
+           cyclerSpan.innerText = words[currentWordIndex];
+           cyclerSpan.classList.remove("opacity-0");
+         }, 300);
+       }, 1800); 
+     }
+   });
+ </script>
+</body>
+</html>
