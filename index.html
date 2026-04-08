@@ -153,63 +153,346 @@
  </section>
 
 
- <!-- Damas Style Green About Section -->
- <section id="about" class="w-full bg-[#113A28] py-28 md:py-40 px-6 md:px-12 relative overflow-hidden border-t-2 border-zinc-200">
+
+ <!-- Find a Tent Marquee Section -->
+ <section id="about" class="w-full bg-[#113A28] py-28 md:py-40 relative overflow-hidden border-t-2 border-zinc-200">
    <!-- Map Background Texture -->
    <div class="absolute inset-0 z-0 pointer-events-none opacity-[0.20] lg:opacity-[0.14] bg-[position:15%_25%] md:bg-[position:center_center]" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg'); background-size: cover; filter: invert(1);"></div>
    <!-- Blend Gradients with a darker vignette to let text stand out -->
-   <div class="absolute inset-0 z-0 bg-gradient-to-b from-[#113A28] via-[#091e14]/40 lg:via-[#091e14]/70 to-[#113A28] pointer-events-none"></div>
+   <div class="absolute inset-0 z-0 bg-gradient-to-b from-[#113A28] via-[#091e14]/50 lg:via-[#091e14]/70 to-[#113A28] pointer-events-none"></div>
 
-   <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-center relative z-10">
-     
-     <!-- Left Content -->
-     <div class="reveal up lg:col-span-6 xl:col-span-6">
-       <h2 class="text-white text-5xl sm:text-6xl md:text-[5.5rem] lg:text-[6.5rem] font-serif leading-[1.05] tracking-tight mb-8 lg:mb-12 drop-shadow-sm mt-8">
-         Find a tent <br>
+   <div class="relative z-10 w-full flex flex-col items-center">
+     <!-- Section Header -->
+     <div class="gsap-fade-up text-center mb-16 lg:mb-24 px-6 md:px-12 w-full max-w-7xl">
+       <h2 class="text-white text-5xl sm:text-6xl md:text-[5.5rem] lg:text-[6.5rem] font-serif leading-[1] tracking-tight drop-shadow-sm pointer-events-none">
+         Find a tent <br class="hidden sm:block">
          <span class="italic font-medium whitespace-nowrap">near you.<img src="https://i.imgur.com/wvgIL8r.png" alt="Pointer" class="inline-block h-[0.7em] w-auto ml-1 md:ml-2 align-middle -translate-y-[0.1em]"></span>
        </h2>
+     </div>
+
+     <!-- Marquee Wrapper -->
+     <div class="w-full flex flex-col gap-6 lg:gap-8 overflow-hidden py-4">
+       <style>
+         @keyframes marquee-left {
+           0% { transform: translateX(0%); }
+           100% { transform: translateX(-50%); }
+         }
+         @keyframes marquee-right {
+           0% { transform: translateX(-50%); }
+           100% { transform: translateX(0%); }
+         }
+         .animate-marquee-left {
+           animation: marquee-left 45s linear infinite;
+         }
+         .animate-marquee-right {
+           animation: marquee-right 45s linear infinite;
+         }
+         .animate-marquee-left:hover, .animate-marquee-right:hover {
+           animation-play-state: paused;
+         }
+       </style>
+
+       <!-- Top Row (Moving Left) -->
+       <div class="flex gap-6 lg:gap-8 min-w-max animate-marquee-left px-3 lg:px-4">
+
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Ottawa</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">156 Cleopatra drive</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=156+Cleopatra+drive+Ottawa" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Toronto</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">65B Huxley Drive</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=65B+Huxley+Drive+Toronto" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Montreal</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">370 rue guy</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=370+rue+guy+Montreal" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">New Jersey</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">TBD</span>
+            </div>
+            <div class="mt-5 flex items-center gap-2 text-white/40 font-bold tracking-widest uppercase text-xs"><i data-lucide="clock" class="w-4 h-4"></i> Coming Soon</div>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Ottawa</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">156 Cleopatra drive</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=156+Cleopatra+drive+Ottawa" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Toronto</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">65B Huxley Drive</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=65B+Huxley+Drive+Toronto" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Montreal</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">370 rue guy</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=370+rue+guy+Montreal" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">New Jersey</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">TBD</span>
+            </div>
+            <div class="mt-5 flex items-center gap-2 text-white/40 font-bold tracking-widest uppercase text-xs"><i data-lucide="clock" class="w-4 h-4"></i> Coming Soon</div>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Ottawa</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">156 Cleopatra drive</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=156+Cleopatra+drive+Ottawa" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Toronto</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">65B Huxley Drive</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=65B+Huxley+Drive+Toronto" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Montreal</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">370 rue guy</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=370+rue+guy+Montreal" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">New Jersey</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">TBD</span>
+            </div>
+            <div class="mt-5 flex items-center gap-2 text-white/40 font-bold tracking-widest uppercase text-xs"><i data-lucide="clock" class="w-4 h-4"></i> Coming Soon</div>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Ottawa</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">156 Cleopatra drive</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=156+Cleopatra+drive+Ottawa" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Toronto</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">65B Huxley Drive</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=65B+Huxley+Drive+Toronto" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Montreal</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">370 rue guy</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=370+rue+guy+Montreal" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">New Jersey</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">TBD</span>
+            </div>
+            <div class="mt-5 flex items-center gap-2 text-white/40 font-bold tracking-widest uppercase text-xs"><i data-lucide="clock" class="w-4 h-4"></i> Coming Soon</div>
+          </div>
+       </div>
+
+       <!-- Bottom Row (Moving Right) -->
+       <div class="flex gap-6 lg:gap-8 min-w-max animate-marquee-right px-3 lg:px-4">
+
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Montreal</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">370 rue guy</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=370+rue+guy+Montreal" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">New Jersey</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">TBD</span>
+            </div>
+            <div class="mt-5 flex items-center gap-2 text-white/40 font-bold tracking-widest uppercase text-xs"><i data-lucide="clock" class="w-4 h-4"></i> Coming Soon</div>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Ottawa</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">156 Cleopatra drive</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=156+Cleopatra+drive+Ottawa" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Toronto</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">65B Huxley Drive</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=65B+Huxley+Drive+Toronto" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Montreal</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">370 rue guy</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=370+rue+guy+Montreal" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">New Jersey</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">TBD</span>
+            </div>
+            <div class="mt-5 flex items-center gap-2 text-white/40 font-bold tracking-widest uppercase text-xs"><i data-lucide="clock" class="w-4 h-4"></i> Coming Soon</div>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Ottawa</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">156 Cleopatra drive</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=156+Cleopatra+drive+Ottawa" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Toronto</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">65B Huxley Drive</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=65B+Huxley+Drive+Toronto" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Montreal</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">370 rue guy</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=370+rue+guy+Montreal" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">New Jersey</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">TBD</span>
+            </div>
+            <div class="mt-5 flex items-center gap-2 text-white/40 font-bold tracking-widest uppercase text-xs"><i data-lucide="clock" class="w-4 h-4"></i> Coming Soon</div>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Ottawa</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">156 Cleopatra drive</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=156+Cleopatra+drive+Ottawa" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Toronto</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">65B Huxley Drive</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=65B+Huxley+Drive+Toronto" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Montreal</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">370 rue guy</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=370+rue+guy+Montreal" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">New Jersey</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">TBD</span>
+            </div>
+            <div class="mt-5 flex items-center gap-2 text-white/40 font-bold tracking-widest uppercase text-xs"><i data-lucide="clock" class="w-4 h-4"></i> Coming Soon</div>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Ottawa</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">156 Cleopatra drive</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=156+Cleopatra+drive+Ottawa" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+          <!-- Location Card -->
+          <div class="min-w-[280px] sm:min-w-[340px] border border-white/20 bg-white/[0.02] hover:bg-white/[0.06] backdrop-blur-sm rounded-[1.25rem] p-7 lg:p-9 flex flex-col items-start transition-all duration-300 shrink-0 group cursor-pointer">
+            <h3 class="text-white text-[1.8rem] lg:text-[2.2rem] font-serif tracking-tight mb-5 group-hover:text-[#EFCA1D] transition-colors">Toronto</h3>
+            <div class="flex items-center gap-3 text-white/70 font-medium mb-2">
+              <i data-lucide="map-pin" class="w-5 h-5 opacity-70"></i>
+              <span class="text-[1.1rem] tracking-wide">65B Huxley Drive</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=65B+Huxley+Drive+Toronto" target="_blank" class="mt-5 flex items-center gap-2 text-[#EFCA1D] font-bold tracking-widest uppercase text-xs group-hover:translate-x-2 transition-transform"><i data-lucide="map-pin" class="w-4 h-4"></i> Get Directions</a>
+          </div>
+       </div>
        
-       <!-- Location Select & Details -->
-       <div class="w-full max-w-lg mt-8 flex flex-col gap-6">
-         <!-- The Dropdown -->
-         <div class="relative w-full sm:w-[85%]">
-           <select id="location-select" class="w-full bg-white/10 border border-white/30 text-white rounded-[1.25rem] px-6 py-4 appearance-none focus:outline-none focus:ring-2 focus:border-transparent focus:ring-[#EFCA1D] cursor-pointer text-xl tracking-wide font-medium transition-colors hover:bg-white/15 shadow-sm" onchange="updateLocationView()">
-             <option value="Ottawa" class="text-zinc-900">Ottawa</option>
-             <option value="Toronto" class="text-zinc-900">Toronto</option>
-             <option value="Montreal" class="text-zinc-900">Montreal</option>
-             <option value="New Jersey" class="text-zinc-900">New Jersey</option>
-           </select>
-           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-6 text-[#EFCA1D]">
-             <i data-lucide="chevron-down" class="w-6 h-6"></i>
-           </div>
-         </div>
-
-         <!-- Displayed Info -->
-         <div id="location-info-wrapper" class="flex flex-col items-start gap-5 p-7 border border-white/10 rounded-[1.5rem] bg-white/5 backdrop-blur-md mt-2 md:mt-4 shadow-xl">
-           <!-- Populated by JS -->
-         </div>
-       </div>
      </div>
-
-     <!-- Right Image Showcase -->
-     <div class="reveal up lg:col-span-6 xl:col-span-6 relative w-full flex justify-center lg:justify-end" style="transition-delay: 200ms;">
-       <!-- Rotated container with shadow -->
-       <div class="transform -rotate-2 hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] w-full sm:w-[90%] md:w-[80%] lg:w-[95%] relative mt-10 lg:mt-0">
-         <img id="location-image" src="https://images.unsplash.com/photo-1549887552-cb1dbdd0f9e1?q=80&w=1500&auto=format&fit=crop" alt="Location" class="w-full aspect-[4/3] lg:aspect-[16/10] object-cover rounded-[2rem] shadow-2xl ring-1 ring-white/10 opacity-0">
-         
-         <!-- Yellow Marker Decoration -->
-         <svg class="absolute -top-12 -right-4 lg:-top-16 lg:-right-10 w-24 h-24 lg:w-32 lg:h-32 text-[#EFCA1D] pointer-events-none" fill="none" stroke="currentColor" stroke-linecap="round" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-           <!-- Hand drawn aesthetic strokes pointing outwards -->
-           <path d="M 20,80 Q 25,45 35,10" stroke-width="5"/>
-           <path d="M 40,85 Q 55,55 80,30" stroke-width="5"/>
-           <path d="M 50,105 Q 80,75 110,60" stroke-width="5"/>
-         </svg>
-       </div>
-     </div>
-     
    </div>
  </section>
-
 
  <!-- Our Pastor -->
  <section id="pastors" class="py-24 md:py-32 px-6 md:px-12 bg-[#F8F5E9]">
