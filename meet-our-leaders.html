@@ -41,15 +41,24 @@
      transform: translate(0, 0);
    }
 
-   /* Minimalistic Loader Fade */
-   @keyframes video-cover-fade {
-     0%   { opacity: 1; }
-     70%  { opacity: 1; }
-     100% { opacity: 0; }
+   /* Navbar adjustment for sticky headers */
+   :root {
+     --nav-height: 88px;
    }
-   .yt-loading-cover {
-     animation: video-cover-fade 2.5s ease-in-out forwards;
-     pointer-events: none;
+   
+   .sticky-section-title {
+     position: sticky;
+     top: var(--nav-height);
+     align-self: start;
+     z-index: 10;
+   }
+
+   /* Smooth hover for cards */
+   .leader-card img {
+     transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+   }
+   .leader-card:hover img {
+     transform: scale(1.05);
    }
  </style>
 </head>
@@ -64,10 +73,10 @@
       </a>
 
       <!-- Desktop Links -->
-      <div class="hidden md:flex flex-1 justify-center space-x-12 text-[13px] font-semibold tracking-wide">
+      <div class="hidden md:flex flex-1 justify-center space-x-12 text-[13px] font-semibold tracking-wide uppercase">
         <a href="index.html#about" class="hover:text-zinc-500 transition-colors">About</a>
         <a href="index.html#locations-marquee" class="hover:text-zinc-500 transition-colors">Locations</a>
-        <a href="meet-our-leaders.html" class="text-zinc-500">Leaders</a>
+        <a href="meet-our-leaders.html" class="text-zinc-500 border-b border-zinc-900">Leaders</a>
         <a href="index.html#connect" class="hover:text-zinc-500 transition-colors">Connect</a>
       </div>
 
@@ -98,113 +107,134 @@
   </nav>
 
   <!-- Page Hero -->
-  <section class="pt-20 pb-12 px-6 md:px-12 text-center bg-[#FAF7F0]">
+  <section class="py-24 px-6 md:px-12 text-center bg-[#FAF7F0] border-b border-zinc-100">
     <div class="max-w-4xl mx-auto reveal up is-visible">
-      <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif tracking-tight leading-[1.1] text-zinc-900 mb-6">
+      <h1 class="text-6xl md:text-8xl font-serif tracking-tight leading-[1.1] text-zinc-900 mb-8">
         Meet Our <br>
         <span class="italic font-medium text-zinc-400">Leaders.</span>
       </h1>
-      <p class="text-lg md:text-xl text-zinc-500 font-sans max-w-2xl mx-auto leading-relaxed">
-        The hearts behind the vision. Dedicated to building communities without walls across every campus.
+      <p class="text-xl md:text-2xl text-zinc-500 font-serif italic max-w-2xl mx-auto leading-relaxed">
+        The hearts behind the vision, dedicated to building communities without walls across every campus.
       </p>
     </div>
   </section>
 
   <!-- Leadership Content -->
-  <main class="pb-32 px-6 md:px-12 max-w-[1400px] mx-auto space-y-32">
+  <main class="w-full">
     
-    <!-- Ottawa Section -->
-    <section id="ottawa" class="reveal up">
-      <div class="flex items-baseline gap-4 mb-10 border-b border-zinc-200 pb-4">
-        <h2 class="text-4xl md:text-5xl font-serif italic text-zinc-900">Tent Ottawa</h2>
-        <span class="text-sm font-semibold tracking-widest text-zinc-400 uppercase">Primary Campus</span>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Leader 1 -->
-        <div class="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-zinc-200 shadow-lg transition-transform duration-700 hover:-translate-y-2">
-           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" alt="Pastor Kofi Dartey" class="absolute inset-0 w-full h-full object-cover">
-           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
-           <div class="absolute bottom-8 left-8 right-8">
-             <h3 class="text-white text-3xl font-serif tracking-tight leading-none mb-1">Pastor Kofi Dartey</h3>
-             <p class="text-white/70 text-sm font-sans uppercase tracking-widest">General Overseer</p>
-           </div>
+    <!-- OTTAWA SECTION -->
+    <section id="ottawa" class="border-b border-zinc-100">
+      <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2">
+        <!-- Sticky Name (Left) -->
+        <div class="sticky-section-title bg-[#FAF7F0] md:bg-transparent p-8 md:p-12 md:h-[calc(100vh-88px)] flex flex-col justify-center">
+            <h2 class="text-5xl md:text-7xl font-serif italic text-zinc-900 mb-4">Tent Ottawa</h2>
+            <p class="text-sm tracking-[0.2em] font-bold uppercase text-zinc-400">Headquarters / Primary Campus</p>
         </div>
-        <!-- Leader 2 -->
-        <div class="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-zinc-200 shadow-lg transition-transform duration-700 hover:-translate-y-2">
-           <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000&auto=format&fit=crop" alt="Prophet Ralph Dartey II" class="absolute inset-0 w-full h-full object-cover">
-           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
-           <div class="absolute bottom-8 left-8 right-8">
-             <h3 class="text-white text-3xl font-serif tracking-tight leading-none mb-1">Prophet Ralph Dartey II</h3>
-             <p class="text-white/70 text-sm font-sans uppercase tracking-widest">Visionary Leader</p>
-           </div>
-        </div>
-        <!-- Leader 3 -->
-        <div class="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-zinc-200 shadow-lg transition-transform duration-700 hover:-translate-y-2 flex flex-col justify-end p-8">
-           <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop" alt="Pastors Polo and Anissa Francillon" class="absolute inset-0 w-full h-full object-cover">
-           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
-           <div class="relative z-10">
-             <h3 class="text-white text-2xl md:text-3xl font-serif tracking-tight leading-snug mb-1">Pastors Polo & <br>Anissa Francillon</h3>
-             <p class="text-white/70 text-sm font-sans uppercase tracking-widest">Location Directors</p>
-           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Toronto Section -->
-    <section id="toronto" class="reveal up">
-      <div class="flex items-baseline gap-4 mb-10 border-b border-zinc-200 pb-4">
-        <h2 class="text-4xl md:text-5xl font-serif italic text-zinc-900">Tent Toronto</h2>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-zinc-200 shadow-lg transition-transform duration-700 hover:-translate-y-2">
-           <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1000&auto=format&fit=crop" alt="Pastor Dunsin Adebimpe" class="absolute inset-0 w-full h-full object-cover">
-           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
-           <div class="absolute bottom-8 left-8 right-8">
-             <h3 class="text-white text-3xl font-serif tracking-tight leading-none mb-1">Pastor Dunsin Adebimpe</h3>
-             <p class="text-white/70 text-sm font-sans uppercase tracking-widest">Campus Pastor</p>
-           </div>
+        <!-- Pastors (Right) -->
+        <div class="p-8 md:p-12 space-y-12">
+            <!-- Pastor 1 -->
+            <div class="leader-card reveal up">
+               <div class="relative aspect-[3/4] rounded-[3rem] overflow-hidden bg-zinc-200 shadow-xl mb-6 group">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" alt="Pastor Kofi Dartey" class="absolute inset-0 w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-zinc-900/80 via-transparent to-transparent opacity-60"></div>
+               </div>
+               <h3 class="text-4xl font-serif mb-1">Pastor Kofi Dartey</h3>
+               <p class="text-sm font-bold uppercase tracking-[0.2em] text-zinc-500">General Overseer</p>
+            </div>
+            <!-- Pastor 2 -->
+            <div class="leader-card reveal up">
+               <div class="relative aspect-[3/4] rounded-[3rem] overflow-hidden bg-zinc-200 shadow-xl mb-6 group">
+                  <img src="https://i.imgur.com/62Ax9qn.jpg" alt="Prophet Ralph Dartey II" class="absolute inset-0 w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-zinc-900/80 via-transparent to-transparent opacity-60"></div>
+               </div>
+               <h3 class="text-4xl font-serif mb-1">Prophet Ralph Dartey II</h3>
+               <p class="text-sm font-bold uppercase tracking-[0.2em] text-zinc-500">Visionary Leader</p>
+            </div>
+            <!-- Pastor 3 -->
+            <div class="leader-card reveal up">
+               <div class="relative aspect-[3/4] rounded-[3rem] overflow-hidden bg-zinc-200 shadow-xl mb-6 group">
+                  <img src="https://i.imgur.com/E1qYuiw.jpg" alt="Pastors Polo and Anissa Francillon" class="absolute inset-0 w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-zinc-900/80 via-transparent to-transparent opacity-60"></div>
+               </div>
+               <h3 class="text-4xl font-serif mb-1 leading-tight">Pastors Polo & Anissa Francillon</h3>
+               <p class="text-sm font-bold uppercase tracking-[0.2em] text-zinc-500">Location Directors</p>
+            </div>
         </div>
       </div>
     </section>
 
-    <!-- Montreal Section -->
-    <section id="montreal" class="reveal up">
-      <div class="flex items-baseline gap-4 mb-10 border-b border-zinc-200 pb-4">
-        <h2 class="text-4xl md:text-5xl font-serif italic text-zinc-900">Tent Montreal</h2>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-zinc-200 shadow-lg transition-transform duration-700 hover:-translate-y-2">
-           <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=1000&auto=format&fit=crop" alt="Pastor Sam and Sarah Osaribie" class="absolute inset-0 w-full h-full object-cover">
-           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
-           <div class="absolute bottom-8 left-8 right-8">
-             <h3 class="text-white text-3xl font-serif tracking-tight leading-snug mb-1">Pastor Sam & <br>Sarah Osaribie</h3>
-             <p class="text-white/70 text-sm font-sans uppercase tracking-widest">Campus Pastors</p>
-           </div>
+    <!-- TORONTO SECTION -->
+    <section id="toronto" class="border-b border-zinc-100">
+      <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2">
+        <!-- Sticky Name (Left) -->
+        <div class="sticky-section-title bg-[#FAF7F0] md:bg-transparent p-8 md:p-12 md:h-[calc(100vh-88px)] flex flex-col justify-center">
+            <h2 class="text-5xl md:text-7xl font-serif italic text-zinc-900 mb-4">Tent Toronto</h2>
+            <p class="text-sm tracking-[0.2em] font-bold uppercase text-zinc-400">Ontario Campus</p>
+        </div>
+        <!-- Pastors (Right) -->
+        <div class="p-8 md:p-12 space-y-12">
+            <div class="leader-card reveal up">
+               <div class="relative aspect-[3/4] rounded-[3rem] overflow-hidden bg-zinc-200 shadow-xl mb-6 group">
+                  <img src="https://i.imgur.com/SDAJrPP.jpg" alt="Pastor Dunsin Adebimpe" class="absolute inset-0 w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-zinc-900/80 via-transparent to-transparent opacity-60"></div>
+               </div>
+               <h3 class="text-4xl font-serif mb-1">Pastor Dunsin Adebimpe</h3>
+               <p class="text-sm font-bold uppercase tracking-[0.2em] text-zinc-500">Campus Pastor</p>
+            </div>
         </div>
       </div>
     </section>
 
-    <!-- New Jersey Section -->
-    <section id="new-jersey" class="reveal up">
-      <div class="flex items-baseline gap-4 mb-10 border-b border-zinc-200 pb-4">
-        <h2 class="text-4xl md:text-5xl font-serif italic text-zinc-900">Tent New Jersey</h2>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-zinc-200 shadow-lg transition-transform duration-700 hover:-translate-y-2">
-           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" alt="Pastor Kofi Dartey" class="absolute inset-0 w-full h-full object-cover">
-           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
-           <div class="absolute bottom-8 left-8 right-8">
-             <h3 class="text-white text-3xl font-serif tracking-tight leading-none mb-1">Pastor Kofi Dartey</h3>
-             <p class="text-white/70 text-sm font-sans uppercase tracking-widest">Overseer</p>
-           </div>
+    <!-- MONTREAL SECTION -->
+    <section id="montreal" class="border-b border-zinc-100">
+      <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2">
+        <!-- Sticky Name (Left) -->
+        <div class="sticky-section-title bg-[#FAF7F0] md:bg-transparent p-8 md:p-12 md:h-[calc(100vh-88px)] flex flex-col justify-center">
+            <h2 class="text-5xl md:text-7xl font-serif italic text-zinc-900 mb-4">Tent Montreal</h2>
+            <p class="text-sm tracking-[0.2em] font-bold uppercase text-zinc-400">Quebec Campus</p>
         </div>
-        <div class="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-zinc-200 shadow-lg transition-transform duration-700 hover:-translate-y-2">
-           <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000&auto=format&fit=crop" alt="Prophet Ralph Dartey II" class="absolute inset-0 w-full h-full object-cover">
-           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
-           <div class="absolute bottom-8 left-8 right-8">
-             <h3 class="text-white text-3xl font-serif tracking-tight leading-none mb-1">Prophet Ralph Dartey II</h3>
-             <p class="text-white/70 text-sm font-sans uppercase tracking-widest">Leader</p>
-           </div>
+        <!-- Pastors (Right) -->
+        <div class="p-8 md:p-12 space-y-12">
+            <div class="leader-card reveal up">
+               <div class="relative aspect-[3/4] rounded-[3rem] overflow-hidden bg-zinc-200 shadow-xl mb-6 group">
+                  <img src="https://i.imgur.com/1RECLtD.jpg" alt="Pastor Sam and Sarah Osaribie" class="absolute inset-0 w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-zinc-900/80 via-transparent to-transparent opacity-60"></div>
+               </div>
+               <h3 class="text-4xl font-serif mb-1 leading-tight">Pastor Sam & Sarah Osaribie</h3>
+               <p class="text-sm font-bold uppercase tracking-[0.2em] text-zinc-500">Campus Pastors</p>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW JERSEY SECTION -->
+    <section id="new-jersey" class="border-b border-zinc-100">
+      <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2">
+        <!-- Sticky Name (Left) -->
+        <div class="sticky-section-title bg-[#FAF7F0] md:bg-transparent p-8 md:p-12 md:h-[calc(100vh-88px)] flex flex-col justify-center">
+            <h2 class="text-5xl md:text-7xl font-serif italic text-zinc-900 mb-4">Tent New Jersey</h2>
+            <p class="text-sm tracking-[0.2em] font-bold uppercase text-zinc-400">United States Campus</p>
+        </div>
+        <!-- Pastors (Right) -->
+        <div class="p-8 md:p-12 space-y-12">
+            <!-- Pastor 1 -->
+            <div class="leader-card reveal up">
+               <div class="relative aspect-[3/4] rounded-[3rem] overflow-hidden bg-zinc-200 shadow-xl mb-6 group">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" alt="Pastor Kofi Dartey" class="absolute inset-0 w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-zinc-900/80 via-transparent to-transparent opacity-60"></div>
+               </div>
+               <h3 class="text-4xl font-serif mb-1">Pastor Kofi Dartey</h3>
+               <p class="text-sm font-bold uppercase tracking-[0.2em] text-zinc-500">Overseer</p>
+            </div>
+            <!-- Pastor 2 -->
+            <div class="leader-card reveal up">
+               <div class="relative aspect-[3/4] rounded-[3rem] overflow-hidden bg-zinc-200 shadow-xl mb-6 group">
+                  <img src="https://i.imgur.com/62Ax9qn.jpg" alt="Prophet Ralph Dartey II" class="absolute inset-0 w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-zinc-900/80 via-transparent to-transparent opacity-60"></div>
+               </div>
+               <h3 class="text-4xl font-serif mb-1">Prophet Ralph Dartey II</h3>
+               <p class="text-sm font-bold uppercase tracking-[0.2em] text-zinc-500">Leader</p>
+            </div>
         </div>
       </div>
     </section>
@@ -212,31 +242,35 @@
   </main>
 
   <!-- Footer -->
-  <footer id="contact" class="bg-zinc-900 text-white pt-24 pb-12 px-4 sm:px-6 md:px-12 overflow-hidden">
-    <div class="max-w-7xl mx-auto flex flex-col items-center">
-      <div class="gsap-fade-up w-full text-center flex justify-center">
-        <h2 class="text-[12.2vw] sm:text-[11vw] md:text-[10vw] leading-[1] font-serif tracking-tighter mb-20 text-center flex flex-nowrap whitespace-nowrap items-center justify-center drop-shadow-sm w-full mx-auto">
-          <span class="bg-gradient-to-b from-[#F8F5E9] to-[#9a9a9a] bg-clip-text text-transparent uppercase">TENT CHURCH</span>
-          <img src="https://i.imgur.com/wvgIL8r.png" alt="Pointer" class="inline-block h-[0.7em] shrink-0 w-auto ml-1.5 md:ml-3 align-middle -translate-y-[0.05em]">
+  <footer id="contact" class="bg-zinc-900 text-white pt-24 pb-12 px-6 md:px-12 overflow-hidden border-t border-white/5">
+    <div class="max-w-[1400px] mx-auto text-center">
+      <div class="gsap-fade-up w-full text-center flex flex-col items-center">
+        <h2 class="text-[12.2vw] sm:text-[11vw] md:text-[8vw] leading-[1] font-serif tracking-tighter mb-16 uppercase opacity-80">
+          TENT CHURCH
         </h2>
+        <div class="flex gap-10 text-[11px] font-bold tracking-[0.2em] uppercase text-zinc-500 mb-12">
+           <a href="index.html" class="hover:text-white transition-colors">Home</a>
+           <a href="index.html#about" class="hover:text-white transition-colors">About</a>
+           <a href="index.html#locations-marquee" class="hover:text-white transition-colors">Locations</a>
+           <a href="index.html#connect" class="hover:text-white transition-colors">Connect</a>
+        </div>
       </div>
 
-      <div class="w-full border-t border-zinc-800 pt-8 flex flex-col sm:flex-row justify-between items-center text-sm text-zinc-500 font-sans mt-8 lg:mt-16">
+      <div class="pt-12 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-[10px] font-bold tracking-[0.15em] uppercase text-zinc-500">
         <p>© 2024 Tent Church. All rights reserved.</p>
-        <div class="flex gap-6 mt-4 sm:mt-0 font-medium">
-          <a href="#" class="hover:text-zinc-300 transition-colors">Privacy Policy</a>
-          <a href="#" class="hover:text-zinc-300 transition-colors">Terms of Service</a>
+        <div class="flex gap-8 mt-4 sm:mt-0">
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Functionality Scripts -->
+  <!-- Scripts -->
   <script>
-    // 1. Initialize Icons
     lucide.createIcons();
 
-    // 2. Mobile Menu Toggle
+    // Mobile Menu
     const mobileBtn = document.getElementById('mobile-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const menuIconOpen = document.getElementById('menu-icon-open');
@@ -249,46 +283,44 @@
       menuIconClose.classList.toggle('hidden');
     });
 
-    // 3. Scroll Reveal Animations (Intersection Observer)
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
+    // Reveal Observer
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target); 
         }
       });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    
+    // Navbar height calculation for sticky
+    const updateNavHeight = () => {
+      const nav = document.getElementById('navbar');
+      document.documentElement.style.setProperty('--nav-height', `${nav.offsetHeight}px`);
+    };
+    window.addEventListener('resize', updateNavHeight);
+    updateNavHeight();
   </script>
 
-  <!-- GSAP Animation Core -->
+  <!-- GSAP Animation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script>
     gsap.registerPlugin(ScrollTrigger);
-    
-    document.addEventListener("DOMContentLoaded", () => {
-      gsap.fromTo(".gsap-fade-up", 
-        { y: 50, opacity: 0 },
-        { 
-          y: 0, 
-          opacity: 1, 
-          duration: 1, 
-          ease: "power3.out", 
-          scrollTrigger: { 
-            trigger: "footer", 
-            start: "top 90%" 
-          } 
-        }
-      );
-    });
+    gsap.fromTo(".gsap-fade-up", 
+      { y: 50, opacity: 0 },
+      { 
+        y: 0, 
+        opacity: 1, 
+        duration: 1, 
+        ease: "power3.out", 
+        scrollTrigger: { 
+          trigger: "footer", 
+          start: "top 90%" 
+        } 
+      }
+    );
   </script>
 </body>
 </html>
