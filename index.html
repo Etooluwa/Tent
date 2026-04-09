@@ -45,6 +45,19 @@
      transform: translate(0, 0);
    }
  </style>
+
+  <style>
+    @keyframes video-cover-fade {
+      0%   { opacity: 1; }
+      70%  { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    .yt-loading-cover {
+      animation: video-cover-fade 3.5s ease-in-out forwards;
+      pointer-events: none;
+    }
+  </style>
+
 </head>
 <body class="bg-[#FAF7F0] text-zinc-900 font-sans selection:bg-zinc-900 selection:text-white">
 
@@ -102,7 +115,9 @@
                src="https://www.youtube.com/embed/bD7mXGIAZgM?autoplay=1&mute=1&controls=0&playsinline=1&showinfo=0&rel=0&loop=1&playlist=bD7mXGIAZgM"
                allow="autoplay; encrypted-media; fullscreen" frameborder="0" ></iframe>
        
-       <!-- Elegant dark overlay to ensure text legibility and aesthetic -->
+       <!-- Loading cover to hide YouTube title on load -->
+        <div class="yt-loading-cover absolute inset-0 bg-black z-[5]"></div>
+        <!-- Elegant dark overlay to ensure text legibility and aesthetic -->
        <div class="absolute inset-0 bg-gradient-to-b from-[#35332c]/50 to-[#22211c]/80 z-10"></div>
      </div>
 
@@ -254,7 +269,8 @@
      <!-- Card: Power -->
      <div class="gsap-card-up relative rounded-[2.5rem] overflow-hidden aspect-square w-full sm:w-[calc(50%-0.75rem)] group shadow-xl">
        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-         <iframe class="absolute top-1/2 left-1/2 w-[185%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/dTxpGf8xLEc?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=dTxpGf8xLEc&playsinline=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+         <iframe class="absolute top-1/2 left-1/2 w-[185%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/dTxpGf8xLEc?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=dTxpGf8xLEc&playsinline=1&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+          <div class="yt-loading-cover absolute inset-0 bg-black z-[5]"></div>
        </div>
        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/10 to-black/90 pointer-events-none z-10 transition-opacity duration-1000 group-hover:opacity-80"></div>
        <div class="absolute inset-x-8 top-8 z-20 pointer-events-none">
@@ -267,7 +283,8 @@
      <!-- Card: Presence -->
      <div class="gsap-card-up relative rounded-[2.5rem] overflow-hidden aspect-square w-full sm:w-[calc(50%-0.75rem)] group shadow-xl">
        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-         <iframe class="absolute top-1/2 left-1/2 w-[185%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/-aHVOiNT_rw?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=-aHVOiNT_rw&playsinline=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+         <iframe class="absolute top-1/2 left-1/2 w-[185%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/-aHVOiNT_rw?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=-aHVOiNT_rw&playsinline=1&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+          <div class="yt-loading-cover absolute inset-0 bg-black z-[5]"></div>
        </div>
        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/10 to-black/90 pointer-events-none z-10 transition-opacity duration-1000 group-hover:opacity-80"></div>
        <div class="absolute inset-x-8 top-8 z-20 pointer-events-none">
@@ -280,7 +297,8 @@
      <!-- Card: People -->
      <div class="gsap-card-up relative rounded-[2.5rem] overflow-hidden aspect-square w-full sm:w-[calc(50%-0.75rem)] group shadow-xl">
        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-         <iframe class="absolute top-1/2 left-1/2 w-[185%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/5jJnWivD_g8?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=5jJnWivD_g8&playsinline=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+         <iframe class="absolute top-1/2 left-1/2 w-[185%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/5jJnWivD_g8?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=5jJnWivD_g8&playsinline=1&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+          <div class="yt-loading-cover absolute inset-0 bg-black z-[5]"></div>
        </div>
        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/10 to-black/90 pointer-events-none z-10 transition-opacity duration-1000 group-hover:opacity-80"></div>
        <div class="absolute inset-x-8 top-8 z-20 pointer-events-none">
@@ -293,7 +311,8 @@
      <!-- Card: Praise -->
      <div class="gsap-card-up relative rounded-[2.5rem] overflow-hidden aspect-square w-full sm:w-[calc(50%-0.75rem)] group shadow-xl">
        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-         <iframe class="absolute top-1/2 left-1/2 w-[185%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/TccnbhZfUAI?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=TccnbhZfUAI&start=92&playsinline=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+         <iframe class="absolute top-1/2 left-1/2 w-[185%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/TccnbhZfUAI?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=TccnbhZfUAI&start=92&playsinline=1&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+          <div class="yt-loading-cover absolute inset-0 bg-black z-[5]"></div>
        </div>
        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/10 to-black/90 pointer-events-none z-10 transition-opacity duration-1000 group-hover:opacity-80"></div>
        <div class="absolute inset-x-8 top-8 z-20 pointer-events-none">
@@ -306,7 +325,8 @@
      <!-- Card: Purpose -->
      <div class="gsap-card-up relative rounded-[2.5rem] overflow-hidden aspect-square w-full sm:w-[calc(50%-0.75rem)] group shadow-xl">
        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-         <iframe class="absolute top-1/2 left-1/2 w-[185%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/4ADU7BfvpUo?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=4ADU7BfvpUo&playsinline=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+         <iframe class="absolute top-1/2 left-1/2 w-[185%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/4ADU7BfvpUo?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=4ADU7BfvpUo&playsinline=1&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+          <div class="yt-loading-cover absolute inset-0 bg-black z-[5]"></div>
        </div>
        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/10 to-black/90 pointer-events-none z-10 transition-opacity duration-1000 group-hover:opacity-80"></div>
        <div class="absolute inset-x-8 top-8 z-20 pointer-events-none">
@@ -339,7 +359,8 @@
        <!-- Set 1 -->
        <div class="relative rounded-[2.5rem] overflow-hidden aspect-[4/5] w-[26rem] group shadow-xl shrink-0">
          <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/dTxpGf8xLEc?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=dTxpGf8xLEc&playsinline=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/dTxpGf8xLEc?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=dTxpGf8xLEc&playsinline=1&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+          <div class="yt-loading-cover absolute inset-0 bg-black z-[5]"></div>
          </div>
          <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/10 to-black/90 pointer-events-none z-10 transition-opacity duration-1000 group-hover:opacity-80"></div>
          <div class="absolute inset-x-10 top-10 whitespace-normal z-20 pointer-events-none">
@@ -351,7 +372,8 @@
        </div>
        <div class="relative rounded-[2.5rem] overflow-hidden aspect-[4/5] w-[26rem] group shadow-xl shrink-0">
          <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/-aHVOiNT_rw?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=-aHVOiNT_rw&playsinline=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/-aHVOiNT_rw?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=-aHVOiNT_rw&playsinline=1&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+          <div class="yt-loading-cover absolute inset-0 bg-black z-[5]"></div>
          </div>
          <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/10 to-black/90 pointer-events-none z-10 transition-opacity duration-1000 group-hover:opacity-80"></div>
          <div class="absolute inset-x-10 top-10 whitespace-normal z-20 pointer-events-none">
@@ -363,7 +385,8 @@
        </div>
        <div class="relative rounded-[2.5rem] overflow-hidden aspect-[4/5] w-[26rem] group shadow-xl shrink-0">
          <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/5jJnWivD_g8?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=5jJnWivD_g8&playsinline=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/5jJnWivD_g8?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=5jJnWivD_g8&playsinline=1&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+          <div class="yt-loading-cover absolute inset-0 bg-black z-[5]"></div>
          </div>
          <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/10 to-black/90 pointer-events-none z-10 transition-opacity duration-1000 group-hover:opacity-80"></div>
          <div class="absolute inset-x-10 top-10 whitespace-normal z-20 pointer-events-none">
@@ -375,7 +398,8 @@
        </div>
        <div class="relative rounded-[2.5rem] overflow-hidden aspect-[4/5] w-[26rem] group shadow-xl shrink-0">
          <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/TccnbhZfUAI?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=TccnbhZfUAI&start=92&playsinline=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/TccnbhZfUAI?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=TccnbhZfUAI&start=92&playsinline=1&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+          <div class="yt-loading-cover absolute inset-0 bg-black z-[5]"></div>
          </div>
          <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/10 to-black/90 pointer-events-none z-10 transition-opacity duration-1000 group-hover:opacity-80"></div>
          <div class="absolute inset-x-10 top-10 whitespace-normal z-20 pointer-events-none">
@@ -387,7 +411,8 @@
        </div>
        <div class="relative rounded-[2.5rem] overflow-hidden aspect-[4/5] w-[26rem] group shadow-xl shrink-0">
          <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/4ADU7BfvpUo?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=4ADU7BfvpUo&playsinline=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/4ADU7BfvpUo?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=4ADU7BfvpUo&playsinline=1&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+          <div class="yt-loading-cover absolute inset-0 bg-black z-[5]"></div>
          </div>
          <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/10 to-black/90 pointer-events-none z-10 transition-opacity duration-1000 group-hover:opacity-80"></div>
          <div class="absolute inset-x-10 top-10 whitespace-normal z-20 pointer-events-none">
@@ -401,7 +426,8 @@
        <!-- Set 2 -->
        <div class="relative rounded-[2.5rem] overflow-hidden aspect-[4/5] w-[26rem] group shadow-xl shrink-0">
          <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/dTxpGf8xLEc?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=dTxpGf8xLEc&playsinline=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/dTxpGf8xLEc?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=dTxpGf8xLEc&playsinline=1&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+          <div class="yt-loading-cover absolute inset-0 bg-black z-[5]"></div>
          </div>
          <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/10 to-black/90 pointer-events-none z-10 transition-opacity duration-1000 group-hover:opacity-80"></div>
          <div class="absolute inset-x-10 top-10 whitespace-normal z-20 pointer-events-none">
@@ -413,7 +439,8 @@
        </div>
        <div class="relative rounded-[2.5rem] overflow-hidden aspect-[4/5] w-[26rem] group shadow-xl shrink-0">
          <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/-aHVOiNT_rw?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=-aHVOiNT_rw&playsinline=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/-aHVOiNT_rw?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=-aHVOiNT_rw&playsinline=1&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+          <div class="yt-loading-cover absolute inset-0 bg-black z-[5]"></div>
          </div>
          <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/10 to-black/90 pointer-events-none z-10 transition-opacity duration-1000 group-hover:opacity-80"></div>
          <div class="absolute inset-x-10 top-10 whitespace-normal z-20 pointer-events-none">
@@ -425,7 +452,8 @@
        </div>
        <div class="relative rounded-[2.5rem] overflow-hidden aspect-[4/5] w-[26rem] group shadow-xl shrink-0">
          <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/5jJnWivD_g8?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=5jJnWivD_g8&playsinline=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/5jJnWivD_g8?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=5jJnWivD_g8&playsinline=1&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+          <div class="yt-loading-cover absolute inset-0 bg-black z-[5]"></div>
          </div>
          <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/10 to-black/90 pointer-events-none z-10 transition-opacity duration-1000 group-hover:opacity-80"></div>
          <div class="absolute inset-x-10 top-10 whitespace-normal z-20 pointer-events-none">
@@ -437,7 +465,8 @@
        </div>
        <div class="relative rounded-[2.5rem] overflow-hidden aspect-[4/5] w-[26rem] group shadow-xl shrink-0">
          <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/TccnbhZfUAI?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=TccnbhZfUAI&start=92&playsinline=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/TccnbhZfUAI?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=TccnbhZfUAI&start=92&playsinline=1&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+          <div class="yt-loading-cover absolute inset-0 bg-black z-[5]"></div>
          </div>
          <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/10 to-black/90 pointer-events-none z-10 transition-opacity duration-1000 group-hover:opacity-80"></div>
          <div class="absolute inset-x-10 top-10 whitespace-normal z-20 pointer-events-none">
@@ -449,7 +478,8 @@
        </div>
        <div class="relative rounded-[2.5rem] overflow-hidden aspect-[4/5] w-[26rem] group shadow-xl shrink-0">
          <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
-           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/4ADU7BfvpUo?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=4ADU7BfvpUo&playsinline=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+           <iframe class="absolute top-1/2 left-1/2 w-[235%] max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2" src="https://www.youtube.com/embed/4ADU7BfvpUo?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=4ADU7BfvpUo&playsinline=1&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" frameborder="0"  tabindex="-1"></iframe>
+          <div class="yt-loading-cover absolute inset-0 bg-black z-[5]"></div>
          </div>
          <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/10 to-black/90 pointer-events-none z-10 transition-opacity duration-1000 group-hover:opacity-80"></div>
          <div class="absolute inset-x-10 top-10 whitespace-normal z-20 pointer-events-none">
