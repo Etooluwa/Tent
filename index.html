@@ -130,17 +130,26 @@
      </button>
    </div>
 
-   <!-- Mobile Menu -->
-   <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#FAF7F0] py-6 px-6 flex-col space-y-4 shadow-xl z-50 border-t border-zinc-200">
-     <a href="#about" class="mobile-link text-lg font-medium text-zinc-900">About</a>
-     <a href="#locations-marquee" class="mobile-link text-lg font-medium text-zinc-900">Locations</a>
-     <a href="meet-our-leaders.html" class="mobile-link text-lg font-medium text-zinc-900">Meet Our Leaders</a>
-      <a href="tent-school-of-ministry.html" class="mobile-link text-lg font-medium text-zinc-900">TSM</a>
-      <a href="campus-rush.html" class="mobile-link text-lg font-medium text-zinc-900">Campus Rush</a>
-     <a href="#connect" class="mobile-link text-lg font-medium text-zinc-900">Connect</a>
-     <a href="#about" class="mobile-link bg-zinc-900 text-white px-6 py-4 rounded-xl text-center font-medium mt-4 uppercase">
+   <!-- Improved Mobile Menu Overlay -->
+   <div id="mobile-menu" class="fixed inset-0 bg-[#FAF7F0] z-[60] flex-col items-center justify-center space-y-8 px-10 text-center translate-x-full hidden transition-transform duration-500">
+     <div class="space-y-6 flex flex-col items-center">
+       <a href="#about" class="mobile-link text-4xl font-serif italic text-zinc-900 opacity-0 transform translate-y-4">About</a>
+       <a href="#locations-marquee" class="mobile-link text-4xl font-serif italic text-zinc-900 opacity-0 transform translate-y-4">Locations</a>
+       <a href="meet-our-leaders.html" class="mobile-link text-4xl font-serif italic text-zinc-900 opacity-0 transform translate-y-4">Meet Our Leaders</a>
+       <a href="tent-school-of-ministry.html" class="mobile-link text-4xl font-serif italic text-zinc-900 opacity-0 transform translate-y-4">TSM</a>
+       <a href="campus-rush.html" class="mobile-link text-4xl font-serif italic text-zinc-900 opacity-0 transform translate-y-4">Campus Rush</a>
+       <a href="#connect" class="mobile-link text-4xl font-serif italic text-zinc-900 opacity-0 transform translate-y-4">Connect</a>
+     </div>
+     <a href="#about" class="mobile-link bg-zinc-900 text-white px-10 py-5 rounded-2xl font-bold tracking-[0.2em] uppercase mt-12 opacity-0 transform translate-y-4">
        Plan a visit
      </a>
+     
+     <!-- Socials in Menu -->
+     <div class="absolute bottom-12 flex space-x-8 opacity-0 transform translate-y-4 mobile-link">
+       <a href="#" class="text-zinc-400 hover:text-zinc-900 transition-colors"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+       <a href="#" class="text-zinc-400 hover:text-zinc-900 transition-colors"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+       <a href="#" class="text-zinc-400 hover:text-zinc-900 transition-colors"><i data-lucide="youtube" class="w-6 h-6"></i></a>
+     </div>
    </div>
  </nav>
 
@@ -1049,14 +1058,56 @@
 
    function toggleMenu() {
      isMenuOpen = !isMenuOpen;
+     
      if (isMenuOpen) {
+       // Open
+       document.body.style.overflow = 'hidden'; // Prevent scroll
        mobileMenu.classList.remove('hidden');
        mobileMenu.classList.add('flex');
+       
+       gsap.to(mobileMenu, {
+         x: 0,
+         duration: 0.6,
+         ease: "expo.out"
+       });
+       
+       gsap.to(".mobile-link", {
+         opacity: 1,
+         y: 0,
+         duration: 0.6,
+         stagger: 0.1,
+         ease: "back.out(1.7)",
+         delay: 0.2
+       });
+       
        menuIconOpen.classList.add('hidden');
        menuIconClose.classList.remove('hidden');
      } else {
-       mobileMenu.classList.add('hidden');
-       mobileMenu.classList.remove('flex');
+       // Close
+       document.body.style.overflow = ''; 
+       
+       gsap.to(".mobile-link", {
+         opacity: 0,
+         y: 20,
+         duration: 0.3,
+         stagger: {
+           each: 0.05,
+           from: "end"
+         },
+         ease: "power2.in"
+       });
+       
+       gsap.to(mobileMenu, {
+         x: "100%",
+         duration: 0.5,
+         ease: "expo.in",
+         delay: 0.2,
+         onComplete: () => {
+           mobileMenu.classList.add('hidden');
+           mobileMenu.classList.remove('flex');
+         }
+       });
+
        menuIconOpen.classList.remove('hidden');
        menuIconClose.classList.add('hidden');
      }
