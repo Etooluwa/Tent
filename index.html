@@ -1131,27 +1131,24 @@
   </script>
 
   
-  <!-- Unified YouTube Background Optimization & Loop Fix -->
+  
+  <!-- Robust YouTube Background Optimization & Loop Fix -->
   <script>
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    var players = new Map(); // Use a Map to track players by iframe ID
+    var players = new Map(); 
 
     function onYouTubeIframeAPIReady() {
-      loadActiveVideos(); // Load the correct videos first
+      loadActiveVideos(); 
     }
 
     function initYTPayers() {
       if (typeof YT === 'undefined' || !YT.Player) return;
-      
-      const iframes = document.querySelectorAll('iframe[src*="youtube.com/embed"]');
-      iframes.forEach((iframe, index) => {
+      document.querySelectorAll('iframe[src*="youtube.com/embed"]').forEach((iframe, index) => {
         if (!iframe.id) iframe.id = 'yt-player-' + index;
-        
-        // Only init if not already tracked AND has a valid src
         if (!players.has(iframe.id) && iframe.src) {
            const player = new YT.Player(iframe.id, {
              events: {
@@ -1175,28 +1172,35 @@
       });
     }
 
-    // Memory Optimization: Only load YouTube iframes for the active layout (Mobile vs Desktop)
     function loadActiveVideos() {
       const isDesktop = window.innerWidth >= 1024;
-      const selectorToLoad = isDesktop ? '.lg\:flex [data-src]' : '.lg\:hidden [data-src]';
-      const selectorToCleanup = isDesktop ? '.lg\:hidden [data-src]' : '.lg\:flex [data-src]';
       
-      // Hero video is always loaded
-      const heroVideo = document.querySelector('section iframe[src*="youtube.com/embed"]');
-      if (heroVideo && !heroVideo.id) heroVideo.id = 'hero-video';
-
-      document.querySelectorAll(selectorToLoad).forEach(iframe => {
-        if (!iframe.src || iframe.src === 'about:blank') {
-          iframe.src = iframe.getAttribute('data-src');
+      // Select all iframes with data-src
+      document.querySelectorAll('[data-src]').forEach(iframe => {
+        // Check if this iframe is inside the mobile or desktop container via class matching
+        let parent = iframe.parentElement;
+        let isMobileContainer = false;
+        let isDesktopContainer = false;
+        
+        while (parent && parent !== document.body) {
+          if (parent.classList.contains('lg:hidden')) isMobileContainer = true;
+          if (parent.classList.contains('lg:flex')) isDesktopContainer = true;
+          parent = parent.parentElement;
         }
-      });
 
-      document.querySelectorAll(selectorToCleanup).forEach(iframe => {
-        if (iframe.src && iframe.src !== 'about:blank') {
-          iframe.src = '';
-          if (players.has(iframe.id)) {
-             try { players.get(iframe.id).destroy(); } catch(e) {}
-             players.delete(iframe.id);
+        const shouldLoad = (isDesktop && isDesktopContainer) || (!isDesktop && isMobileContainer) || (!isMobileContainer && !isDesktopContainer);
+
+        if (shouldLoad) {
+          if (!iframe.src || iframe.src === window.location.href || iframe.src === 'about:blank') {
+            iframe.src = iframe.getAttribute('data-src');
+          }
+        } else {
+          if (iframe.src && iframe.src !== window.location.href && iframe.src !== 'about:blank') {
+            iframe.src = '';
+            if (players.has(iframe.id)) {
+              try { players.get(iframe.id).destroy(); } catch(e) {}
+              players.delete(iframe.id);
+            }
           }
         }
       });
@@ -1215,11 +1219,10 @@
       };
     }
 
-    // Fail-safe interval for background looping
     setInterval(() => {
       players.forEach((player) => {
         if (player && typeof player.getPlayerState === 'function') {
-          if (player.getPlayerState() === 0) { // ENDED
+          if (player.getPlayerState() === 0) {
              const playerSrc = player.getIframe().getAttribute('src') || '';
              const startMatch = playerSrc.match(/[?&]start=(\d+)/);
              const startTime = startMatch ? parseInt(startMatch[1]) : 0;
