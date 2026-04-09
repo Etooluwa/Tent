@@ -9,7 +9,44 @@
  <!-- Tailwind CSS -->
  <script src="https://cdn.tailwindcss.com"></script>
  <!-- Lucide Icons -->
- <script src="https://unpkg.com/lucide@latest"></script>
+ <script>
+    // Lightweight inline Lucide icons
+    const lucideIcons = {
+      menu: '<line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>',
+      x: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+      'chevron-down': '<path d="m6 9 6 6 6-6"/>',
+      'arrow-right': '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+      'map-pin': '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
+      clock: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+      instagram: '<rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>',
+      facebook: '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
+      youtube: '<path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/>'
+    };
+    window.lucide = {
+      createIcons: function() {
+        document.querySelectorAll('[data-lucide]').forEach(el => {
+          const name = el.getAttribute('data-lucide');
+          if (lucideIcons[name]) {
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+            svg.setAttribute('width', '24');
+            svg.setAttribute('height', '24');
+            svg.setAttribute('viewBox', '0 0 24 24');
+            svg.setAttribute('fill', 'none');
+            svg.setAttribute('stroke', 'currentColor');
+            svg.setAttribute('stroke-width', '2');
+            svg.setAttribute('stroke-linecap', 'round');
+            svg.setAttribute('stroke-linejoin', 'round');
+            if (el.className) svg.setAttribute('class', el.className);
+            if (el.id) svg.setAttribute('id', el.id);
+            svg.innerHTML = lucideIcons[name];
+            el.replaceWith(svg);
+          }
+        });
+      }
+    };
+    document.addEventListener('DOMContentLoaded', () => window.lucide.createIcons());
+  </script>
  <!-- Google Fonts -->
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
