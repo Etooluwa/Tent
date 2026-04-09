@@ -23,13 +23,6 @@
        extend: {
          fontFamily: {
            serif: ['Playfair Display', 'serif'],
-         },
-         colors: {
-           brand: {
-             green: '#113A28',
-             olive: '#2d4d3c',
-             cream: '#FAF7F0',
-           }
          }
        }
      }
@@ -40,37 +33,30 @@
    /* Custom CSS for Scroll Reveal Animations */
    .reveal {
      opacity: 0;
-     transition: all 1200ms cubic-bezier(0.23, 1, 0.32, 1);
+     transition: all 1000ms ease-out;
    }
-   .reveal.up { transform: translateY(4rem); }
+   .reveal.up { transform: translateY(3rem); }
    .reveal.is-visible {
      opacity: 1;
      transform: translate(0, 0);
    }
 
-   /* Section Alternating styles */
-   .section-odd { background-color: #FAF7F0; }
-   .section-even { background-color: #FFFFFF; }
-   .section-dark { background-color: #113A28; color: white; }
-
-   /* Card Hover Parallax effect helper */
-   .leader-card img {
-     transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+   /* Minimalistic Loader Fade */
+   @keyframes video-cover-fade {
+     0%   { opacity: 1; }
+     70%  { opacity: 1; }
+     100% { opacity: 0; }
    }
-   .leader-card:hover img {
-     transform: scale(1.05);
+   .yt-loading-cover {
+     animation: video-cover-fade 2.5s ease-in-out forwards;
+     pointer-events: none;
    }
-
-   /* Custom Scrollbar */
-   ::-webkit-scrollbar { width: 8px; }
-   ::-webkit-scrollbar-track { background: #FAF7F0; }
-   ::-webkit-scrollbar-thumb { background: #113A28; border-radius: 10px; }
  </style>
 </head>
-<body class="bg-brand-cream text-zinc-900 font-sans selection:bg-brand-green selection:text-white antialiased">
+<body class="bg-[#FAF7F0] text-zinc-900 font-sans selection:bg-zinc-900 selection:text-white">
 
   <!-- Navbar -->
-  <nav id="navbar" class="sticky top-0 w-full z-50 transition-all duration-300 bg-brand-cream/90 backdrop-blur-md py-5 text-zinc-900 border-b border-zinc-100">
+  <nav id="navbar" class="sticky top-0 w-full z-50 transition-all duration-300 bg-[#FAF7F0] py-5 text-zinc-900 border-b border-zinc-100">
     <div class="max-w-[96%] mx-auto px-4 md:px-8 flex justify-between items-center">
       <!-- Logo -->
       <a href="index.html" class="flex items-center shrink-0">
@@ -78,16 +64,16 @@
       </a>
 
       <!-- Desktop Links -->
-      <div class="hidden md:flex flex-1 justify-center space-x-12 text-[13px] font-semibold tracking-[0.1em] uppercase">
-        <a href="index.html#about" class="hover:text-brand-green transition-colors">About</a>
-        <a href="index.html#locations-marquee" class="hover:text-brand-green transition-colors">Locations</a>
-        <a href="meet-our-leaders.html" class="text-brand-green border-b border-brand-green pb-1">Leaders</a>
-        <a href="index.html#connect" class="hover:text-brand-green transition-colors">Connect</a>
+      <div class="hidden md:flex flex-1 justify-center space-x-12 text-[13px] font-semibold tracking-wide">
+        <a href="index.html#about" class="hover:text-zinc-500 transition-colors">About</a>
+        <a href="index.html#locations-marquee" class="hover:text-zinc-500 transition-colors">Locations</a>
+        <a href="meet-our-leaders.html" class="text-zinc-500">Leaders</a>
+        <a href="index.html#connect" class="hover:text-zinc-500 transition-colors">Connect</a>
       </div>
 
       <!-- Desktop CTA Button -->
       <div class="hidden md:block">
-        <a href="index.html#about" class="bg-zinc-900 text-white px-7 py-3 rounded-full text-[12px] font-bold tracking-widest hover:bg-zinc-700 transition-all duration-300 uppercase shadow-sm">
+        <a href="index.html#about" class="bg-zinc-900 text-white px-6 py-2.5 rounded-xl text-[13px] font-semibold tracking-wide hover:bg-zinc-700 transition-colors uppercase">
           Plan a visit
         </a>
       </div>
@@ -100,195 +86,125 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-brand-cream py-8 px-8 flex-col space-y-6 shadow-2xl z-50 border-t border-zinc-200">
-      <a href="index.html#about" class="mobile-link text-2xl font-serif text-zinc-900">About</a>
-      <a href="index.html#locations-marquee" class="mobile-link text-2xl font-serif text-zinc-900">Locations</a>
-      <a href="meet-our-leaders.html" class="mobile-link text-2xl font-serif text-brand-green font-semibold">Leaders</a>
-      <a href="index.html#connect" class="mobile-link text-2xl font-serif text-zinc-900">Connect</a>
-      <a href="index.html#about" class="mobile-link bg-brand-green text-white px-6 py-5 rounded-2xl text-center font-bold tracking-widest uppercase">
+    <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#FAF7F0] py-6 px-6 flex-col space-y-4 shadow-xl z-50 border-t border-zinc-200">
+      <a href="index.html#about" class="mobile-link text-lg font-medium text-zinc-900">About</a>
+      <a href="index.html#locations-marquee" class="mobile-link text-lg font-medium text-zinc-900">Locations</a>
+      <a href="meet-our-leaders.html" class="mobile-link text-lg font-medium text-zinc-500">Leaders</a>
+      <a href="index.html#connect" class="mobile-link text-lg font-medium text-zinc-900">Connect</a>
+      <a href="index.html#about" class="mobile-link bg-zinc-900 text-white px-6 py-4 rounded-xl text-center font-medium mt-4 uppercase">
         Plan a visit
       </a>
     </div>
   </nav>
 
-  <!-- Page Hero: More Cinematic -->
-  <section class="relative min-h-[70vh] flex flex-col items-center justify-center pt-20 pb-20 px-6 text-center overflow-hidden">
-    <!-- Abstract texture background -->
-    <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');"></div>
-    
-    <div class="relative z-10 max-w-5xl mx-auto">
-      <span class="block text-[11px] font-bold tracking-[0.3em] uppercase text-brand-green mb-8 reveal up">The Hearts Behind the Vision</span>
-      <h1 class="text-6xl md:text-8xl lg:text-9xl font-serif tracking-tighter leading-[0.9] text-zinc-900 mb-10 reveal up" style="transition-delay: 200ms;">
+  <!-- Page Hero -->
+  <section class="pt-20 pb-12 px-6 md:px-12 text-center bg-[#FAF7F0]">
+    <div class="max-w-4xl mx-auto reveal up is-visible">
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif tracking-tight leading-[1.1] text-zinc-900 mb-6">
         Meet Our <br>
-        <span class="italic font-medium text-zinc-300">Leadership.</span>
+        <span class="italic font-medium text-zinc-400">Leaders.</span>
       </h1>
-      <div class="w-16 h-px bg-brand-green mx-auto mb-10 reveal up" style="transition-delay: 400ms;"></div>
-      <p class="text-xl md:text-2xl text-zinc-500 font-serif italic max-w-2xl mx-auto leading-relaxed reveal up" style="transition-delay: 600ms;">
-        Dedicated to cultivating an atmosphere where the Spirit moves freely and communities are built without walls.
+      <p class="text-lg md:text-xl text-zinc-500 font-sans max-w-2xl mx-auto leading-relaxed">
+        The hearts behind the vision. Dedicated to building communities without walls across every campus.
       </p>
-    </div>
-    
-    <!-- Floating scroll indicator -->
-    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-30">
-      <i data-lucide="chevron-down" class="w-6 h-6"></i>
     </div>
   </section>
 
-  <!-- Navigation Anchors for Campuses -->
-  <div class="sticky top-[89px] bg-brand-cream/80 backdrop-blur-md z-40 border-b border-zinc-100 py-3 overflow-x-auto no-scrollbar">
-    <div class="max-w-fit mx-auto px-6 flex justify-center space-x-8 md:space-x-16 whitespace-nowrap text-[10px] font-bold tracking-[0.2em] uppercase text-zinc-400">
-       <a href="#ottawa" class="hover:text-brand-green transition-colors">Ottawa</a>
-       <a href="#toronto" class="hover:text-brand-green transition-colors">Toronto</a>
-       <a href="#montreal" class="hover:text-brand-green transition-colors">Montreal</a>
-       <a href="#new-jersey" class="hover:text-brand-green transition-colors">New Jersey</a>
-    </div>
-  </div>
-
-  <!-- CONTENT START -->
-  <main class="w-full">
+  <!-- Leadership Content -->
+  <main class="pb-32 px-6 md:px-12 max-w-[1400px] mx-auto space-y-32">
     
-    <!-- OTTAWA SECTION: Dramatic Full-Width Style -->
-    <section id="ottawa" class="section-dark relative py-32 px-6 md:px-12 overflow-hidden">
-      <!-- Vignette and texture -->
-      <div class="absolute inset-0 bg-gradient-to-br from-brand-green to-black opacity-40 z-0"></div>
-      
-      <div class="relative z-10 max-w-[1400px] mx-auto">
-        <div class="flex flex-col lg:flex-row justify-between items-end mb-20 gap-8">
-          <div class="reveal up">
-            <h2 class="text-5xl md:text-7xl font-serif italic mb-4">Tent Ottawa</h2>
-            <p class="text-sm tracking-[0.2em] font-bold uppercase text-white/40">The Global Primary Campus</p>
-          </div>
+    <!-- Ottawa Section -->
+    <section id="ottawa" class="reveal up">
+      <div class="flex items-baseline gap-4 mb-10 border-b border-zinc-200 pb-4">
+        <h2 class="text-4xl md:text-5xl font-serif italic text-zinc-900">Tent Ottawa</h2>
+        <span class="text-sm font-semibold tracking-widest text-zinc-400 uppercase">Primary Campus</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Leader 1 -->
+        <div class="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-zinc-200 shadow-lg transition-transform duration-700 hover:-translate-y-2">
+           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" alt="Pastor Kofi Dartey" class="absolute inset-0 w-full h-full object-cover">
+           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+           <div class="absolute bottom-8 left-8 right-8">
+             <h3 class="text-white text-3xl font-serif tracking-tight leading-none mb-1">Pastor Kofi Dartey</h3>
+             <p class="text-white/70 text-sm font-sans uppercase tracking-widest">General Overseer</p>
+           </div>
         </div>
-
-        <!-- Asymmetrical Editorial Layout for Ottawa -->
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
-          <!-- Spotlight Leader 1 -->
-          <div class="md:col-span-7 leader-card reveal up">
-             <div class="relative aspect-[16/10] lg:aspect-[16/8] rounded-[3rem] overflow-hidden group">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" alt="Pastor Kofi Dartey" class="absolute inset-0 w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-brand-green/90 via-transparent to-transparent opacity-60"></div>
-                <div class="absolute bottom-12 left-12 right-12 z-20">
-                   <h3 class="text-white text-4xl md:text-5xl lg:text-6xl font-serif tracking-tight leading-none mb-2">Pastor Kofi Dartey</h3>
-                   <p class="text-white/60 text-xs md:text-sm font-bold uppercase tracking-[0.3em]">General Overseer</p>
-                </div>
-             </div>
-          </div>
-          
-          <!-- Leader 2 -->
-          <div class="md:col-span-5 leader-card reveal up" style="transition-delay: 200ms;">
-             <div class="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden group">
-                <img src="https://i.imgur.com/62Ax9qn.jpg" alt="Prophet Ralph Dartey II" class="absolute inset-0 w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
-                <div class="absolute bottom-10 left-10 right-10">
-                   <h3 class="text-white text-3xl md:text-4xl font-serif tracking-tight leading-none mb-2">Prophet Ralph Dartey II</h3>
-                   <p class="text-white/60 text-xs font-bold uppercase tracking-[0.2em]">Visionary Leader</p>
-                </div>
-             </div>
-          </div>
-
-          <!-- Space / Quote -->
-          <div class="md:col-span-4 py-8 reveal up" style="transition-delay: 300ms;">
-             <p class="text-2xl md:text-3xl font-serif italic text-white/30 leading-snug">
-               "We are a people of presence, purpose, and power."
-             </p>
-          </div>
-
-          <!-- Leader 3 (Francillon) -->
-          <div class="md:col-span-8 leader-card reveal up" style="transition-delay: 400ms;">
-             <div class="relative aspect-[16/9] rounded-[3rem] overflow-hidden group">
-                <img src="https://i.imgur.com/E1qYuiw.jpg" alt="Pastors Polo and Anissa Francillon" class="absolute inset-0 w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-70"></div>
-                <div class="absolute bottom-12 left-12 right-12">
-                   <h3 class="text-white text-4xl font-serif tracking-tight leading-none mb-2">Pastors Polo & Anissa Francillon</h3>
-                   <p class="text-white/60 text-xs font-bold uppercase tracking-[0.2em]">Location Directors</p>
-                </div>
-             </div>
-          </div>
+        <!-- Leader 2 -->
+        <div class="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-zinc-200 shadow-lg transition-transform duration-700 hover:-translate-y-2">
+           <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000&auto=format&fit=crop" alt="Prophet Ralph Dartey II" class="absolute inset-0 w-full h-full object-cover">
+           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+           <div class="absolute bottom-8 left-8 right-8">
+             <h3 class="text-white text-3xl font-serif tracking-tight leading-none mb-1">Prophet Ralph Dartey II</h3>
+             <p class="text-white/70 text-sm font-sans uppercase tracking-widest">Visionary Leader</p>
+           </div>
+        </div>
+        <!-- Leader 3 -->
+        <div class="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-zinc-200 shadow-lg transition-transform duration-700 hover:-translate-y-2 flex flex-col justify-end p-8">
+           <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop" alt="Pastors Polo and Anissa Francillon" class="absolute inset-0 w-full h-full object-cover">
+           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+           <div class="relative z-10">
+             <h3 class="text-white text-2xl md:text-3xl font-serif tracking-tight leading-snug mb-1">Pastors Polo & <br>Anissa Francillon</h3>
+             <p class="text-white/70 text-sm font-sans uppercase tracking-widest">Location Directors</p>
+           </div>
         </div>
       </div>
     </section>
 
-    <!-- TORONTO SECTION: Minimalist White Style -->
-    <section id="toronto" class="section-even py-32 px-6 md:px-12">
-      <div class="max-w-[1400px] mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <div class="reveal up">
-            <span class="text-[10px] font-bold tracking-[0.4em] uppercase text-brand-green block mb-6">Toronto Campus</span>
-            <h2 class="text-6xl md:text-8xl font-serif italic text-zinc-900 mb-8 leading-[0.9]">Meet <br>Toronto.</h2>
-            <p class="text-lg text-zinc-500 font-serif leading-relaxed italic max-w-sm">
-              Rooted in connection, grace, and authentic community in the heart of the city.
-            </p>
-          </div>
-          <div class="leader-card reveal up" style="transition-delay: 300ms;">
-             <div class="relative aspect-[4/5] max-w-xl mx-auto rounded-[4rem] overflow-hidden group shadow-2xl">
-                <img src="https://i.imgur.com/SDAJrPP.jpg" alt="Pastor Dunsin Adebimpe" class="absolute inset-0 w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-brand-olive/80 via-transparent to-transparent"></div>
-                <div class="absolute bottom-14 left-14 right-14">
-                   <h3 class="text-white text-4xl md:text-5xl font-serif tracking-tight leading-none mb-3">Pastor Dunsin Adebimpe</h3>
-                   <p class="text-white/70 text-xs font-bold uppercase tracking-[0.3em]">Campus Pastor</p>
-                </div>
-             </div>
-          </div>
+    <!-- Toronto Section -->
+    <section id="toronto" class="reveal up">
+      <div class="flex items-baseline gap-4 mb-10 border-b border-zinc-200 pb-4">
+        <h2 class="text-4xl md:text-5xl font-serif italic text-zinc-900">Tent Toronto</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-zinc-200 shadow-lg transition-transform duration-700 hover:-translate-y-2">
+           <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1000&auto=format&fit=crop" alt="Pastor Dunsin Adebimpe" class="absolute inset-0 w-full h-full object-cover">
+           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+           <div class="absolute bottom-8 left-8 right-8">
+             <h3 class="text-white text-3xl font-serif tracking-tight leading-none mb-1">Pastor Dunsin Adebimpe</h3>
+             <p class="text-white/70 text-sm font-sans uppercase tracking-widest">Campus Pastor</p>
+           </div>
         </div>
       </div>
     </section>
 
-    <!-- MONTREAL SECTION: Light Cream / Split Style -->
-    <section id="montreal" class="section-odd py-32 px-6 md:px-12 border-y border-zinc-100">
-      <div class="max-w-[1400px] mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <div class="order-2 lg:order-1 leader-card reveal up" style="transition-delay: 200ms;">
-             <div class="relative aspect-[4/5] max-w-xl mx-auto rounded-[4rem] overflow-hidden group shadow-2xl">
-                <img src="https://i.imgur.com/1RECLtD.jpg" alt="Pastor Sam and Sarah Osaribie" class="absolute inset-0 w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-brand-green/80 via-transparent to-transparent"></div>
-                <div class="absolute bottom-14 left-14 right-14">
-                   <h3 class="text-white text-4xl md:text-5xl font-serif tracking-tight leading-none mb-3 text-shadow">Pastor Sam & <br>Sarah Osaribie</h3>
-                   <p class="text-white/70 text-xs font-bold uppercase tracking-[0.3em]">Campus Pastors</p>
-                </div>
-             </div>
-          </div>
-          <div class="order-1 lg:order-2 reveal up px-4 lg:text-right flex flex-col items-start lg:items-end">
-            <span class="text-[10px] font-bold tracking-[0.4em] uppercase text-brand-green block mb-6">Montreal Campus</span>
-            <h2 class="text-6xl md:text-8xl font-serif italic text-zinc-900 mb-8 leading-[0.9]">Bienvenue à <br>Montréal.</h2>
-            <p class="text-lg text-zinc-500 font-serif leading-relaxed italic max-w-sm">
-              Cultivating an atmosphere where the Holy Spirit dwells and moves freely across languages and borders.
-            </p>
-          </div>
+    <!-- Montreal Section -->
+    <section id="montreal" class="reveal up">
+      <div class="flex items-baseline gap-4 mb-10 border-b border-zinc-200 pb-4">
+        <h2 class="text-4xl md:text-5xl font-serif italic text-zinc-900">Tent Montreal</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-zinc-200 shadow-lg transition-transform duration-700 hover:-translate-y-2">
+           <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=1000&auto=format&fit=crop" alt="Pastor Sam and Sarah Osaribie" class="absolute inset-0 w-full h-full object-cover">
+           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+           <div class="absolute bottom-8 left-8 right-8">
+             <h3 class="text-white text-3xl font-serif tracking-tight leading-snug mb-1">Pastor Sam & <br>Sarah Osaribie</h3>
+             <p class="text-white/70 text-sm font-sans uppercase tracking-widest">Campus Pastors</p>
+           </div>
         </div>
       </div>
     </section>
 
-    <!-- NEW JERSEY SECTION: Centered Minimalist Style -->
-    <section id="new-jersey" class="section-even py-32 px-6 md:px-12">
-      <div class="max-w-7xl mx-auto text-center">
-        <div class="reveal up mb-20">
-          <span class="text-[10px] font-bold tracking-[0.4em] uppercase text-zinc-400 block mb-6">The Garden State</span>
-          <h2 class="text-6xl md:text-8xl font-serif italic text-zinc-900 leading-none">Tent New Jersey</h2>
+    <!-- New Jersey Section -->
+    <section id="new-jersey" class="reveal up">
+      <div class="flex items-baseline gap-4 mb-10 border-b border-zinc-200 pb-4">
+        <h2 class="text-4xl md:text-5xl font-serif italic text-zinc-900">Tent New Jersey</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-zinc-200 shadow-lg transition-transform duration-700 hover:-translate-y-2">
+           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" alt="Pastor Kofi Dartey" class="absolute inset-0 w-full h-full object-cover">
+           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+           <div class="absolute bottom-8 left-8 right-8">
+             <h3 class="text-white text-3xl font-serif tracking-tight leading-none mb-1">Pastor Kofi Dartey</h3>
+             <p class="text-white/70 text-sm font-sans uppercase tracking-widest">Overseer</p>
+           </div>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          <!-- Leader 1 -->
-          <div class="leader-card reveal up">
-             <div class="relative aspect-[3/4] rounded-[3rem] overflow-hidden group shadow-xl">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" alt="Pastor Kofi Dartey" class="absolute inset-0 w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-brand-olive/80 via-transparent to-transparent"></div>
-                <div class="absolute bottom-10 left-10 right-10 text-left">
-                   <h3 class="text-white text-3xl md:text-4xl font-serif tracking-tight leading-none mb-2">Pastor Kofi Dartey</h3>
-                   <p class="text-white/60 text-[10px] font-bold uppercase tracking-[0.3em]">Overseer</p>
-                </div>
-             </div>
-          </div>
-          <!-- Leader 2 -->
-          <div class="leader-card reveal up" style="transition-delay: 200ms;">
-             <div class="relative aspect-[3/4] rounded-[3rem] overflow-hidden group shadow-xl">
-                <img src="https://i.imgur.com/62Ax9qn.jpg" alt="Prophet Ralph Dartey II" class="absolute inset-0 w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-brand-green/80 via-transparent to-transparent"></div>
-                <div class="absolute bottom-10 left-10 right-10 text-left">
-                   <h3 class="text-white text-3xl md:text-4xl font-serif tracking-tight leading-none mb-2">Prophet Ralph Dartey II</h3>
-                   <p class="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em]">Leader</p>
-                </div>
-             </div>
-          </div>
+        <div class="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-zinc-200 shadow-lg transition-transform duration-700 hover:-translate-y-2">
+           <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000&auto=format&fit=crop" alt="Prophet Ralph Dartey II" class="absolute inset-0 w-full h-full object-cover">
+           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+           <div class="absolute bottom-8 left-8 right-8">
+             <h3 class="text-white text-3xl font-serif tracking-tight leading-none mb-1">Prophet Ralph Dartey II</h3>
+             <p class="text-white/70 text-sm font-sans uppercase tracking-widest">Leader</p>
+           </div>
         </div>
       </div>
     </section>
@@ -296,36 +212,20 @@
   </main>
 
   <!-- Footer -->
-  <footer id="contact" class="bg-zinc-900 text-white pt-32 pb-16 px-6 md:px-12 overflow-hidden border-t border-white/5">
-    <div class="max-w-[1400px] mx-auto">
-      <div class="flex flex-col items-center mb-24">
-        <div class="gsap-fade-up w-full text-center">
-          <h2 class="text-[13vw] sm:text-[11vw] md:text-[10vw] leading-[0.8] font-serif tracking-tighter text-center whitespace-nowrap opacity-10 uppercase select-none">
-            TENT CHURCH
-          </h2>
-          <div class="relative -mt-10 md:-mt-16 lg:-mt-24 reveal up">
-             <p class="text-[10px] font-bold tracking-[0.8em] uppercase text-zinc-500 mb-4">Building communities without walls</p>
-             <a href="index.html" class="inline-block">
-               <img src="https://i.imgur.com/X6NbyF3.png" alt="Tent Church Logo" class="h-16 w-auto brightness-0 invert opacity-80 hover:opacity-100 transition-opacity mx-auto">
-             </a>
-          </div>
-        </div>
+  <footer id="contact" class="bg-zinc-900 text-white pt-24 pb-12 px-4 sm:px-6 md:px-12 overflow-hidden">
+    <div class="max-w-7xl mx-auto flex flex-col items-center">
+      <div class="gsap-fade-up w-full text-center flex justify-center">
+        <h2 class="text-[12.2vw] sm:text-[11vw] md:text-[10vw] leading-[1] font-serif tracking-tighter mb-20 text-center flex flex-nowrap whitespace-nowrap items-center justify-center drop-shadow-sm w-full mx-auto">
+          <span class="bg-gradient-to-b from-[#F8F5E9] to-[#9a9a9a] bg-clip-text text-transparent uppercase">TENT CHURCH</span>
+          <img src="https://i.imgur.com/wvgIL8r.png" alt="Pointer" class="inline-block h-[0.7em] shrink-0 w-auto ml-1.5 md:ml-3 align-middle -translate-y-[0.05em]">
+        </h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 pt-12 border-t border-white/10 text-[11px] font-bold tracking-[0.2em] uppercase text-zinc-500">
-        <div class="flex flex-col items-start space-y-4">
-          <p>© 2024 Tent Church.</p>
-          <div class="flex space-x-8">
-            <a href="#" class="hover:text-white transition-colors">Privacy</a>
-            <a href="#" class="hover:text-white transition-colors">Terms</a>
-          </div>
-        </div>
-        <div class="flex flex-col items-start md:items-end space-y-4">
-          <p>Made With Purpose.</p>
-          <div class="flex space-x-6">
-            <a href="#" class="hover:text-white transition-colors">Instagram</a>
-            <a href="#" class="hover:text-white transition-colors">YouTube</a>
-          </div>
+      <div class="w-full border-t border-zinc-800 pt-8 flex flex-col sm:flex-row justify-between items-center text-sm text-zinc-500 font-sans mt-8 lg:mt-16">
+        <p>© 2024 Tent Church. All rights reserved.</p>
+        <div class="flex gap-6 mt-4 sm:mt-0 font-medium">
+          <a href="#" class="hover:text-zinc-300 transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-zinc-300 transition-colors">Terms of Service</a>
         </div>
       </div>
     </div>
@@ -333,8 +233,10 @@
 
   <!-- Functionality Scripts -->
   <script>
+    // 1. Initialize Icons
     lucide.createIcons();
 
+    // 2. Mobile Menu Toggle
     const mobileBtn = document.getElementById('mobile-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const menuIconOpen = document.getElementById('menu-icon-open');
@@ -347,6 +249,7 @@
       menuIconClose.classList.toggle('hidden');
     });
 
+    // 3. Scroll Reveal Animations (Intersection Observer)
     const observerOptions = {
       root: null,
       rootMargin: '0px',
@@ -357,6 +260,7 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target); 
         }
       });
     }, observerOptions);
@@ -370,20 +274,21 @@
   <script>
     gsap.registerPlugin(ScrollTrigger);
     
-    // Smooth fade in footer
-    gsap.fromTo(".gsap-fade-up", 
-      { y: 30, opacity: 0 },
-      { 
-        y: 0, 
-        opacity: 1, 
-        duration: 1.2, 
-        ease: "power3.out", 
-        scrollTrigger: { 
-          trigger: "footer", 
-          start: "top 85%" 
-        } 
-      }
-    );
+    document.addEventListener("DOMContentLoaded", () => {
+      gsap.fromTo(".gsap-fade-up", 
+        { y: 50, opacity: 0 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 1, 
+          ease: "power3.out", 
+          scrollTrigger: { 
+            trigger: "footer", 
+            start: "top 90%" 
+          } 
+        }
+      );
+    });
   </script>
 </body>
 </html>
