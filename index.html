@@ -11,31 +11,45 @@
  <link rel="icon" href="https://i.imgur.com/O5ecjdZ.png" type="image/png">
   <!-- Tailwind CSS -->
  <script src="https://cdn.tailwindcss.com">
-    // Smoothly fade out video posters when YT is ready
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.querySelectorAll('.yt-loading-cover').forEach(cover => {
-          cover.style.transition = 'opacity 2s ease-out';
-          cover.style.opacity = '0';
-          setTimeout(() => cover.style.display = 'none', 2000);
-        });
-      }, 1500);
-    });
+    
 
   </script>
   <!-- Lucide Icons -->
- <script src="https://unpkg.com/lucide@latest">
-    // Smoothly fade out video posters when YT is ready
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.querySelectorAll('.yt-loading-cover').forEach(cover => {
-          cover.style.transition = 'opacity 2s ease-out';
-          cover.style.opacity = '0';
-          setTimeout(() => cover.style.display = 'none', 2000);
+ <script>
+    // Lightweight inline Lucide icons - only the 6 icons we use
+    const lucideIcons = {
+      menu: '<line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>',
+      x: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+      'chevron-down': '<path d="m6 9 6 6 6-6"/>',
+      'arrow-right': '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+      'map-pin': '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
+      clock: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>'
+    };
+    window.lucide = {
+      createIcons: function() {
+        document.querySelectorAll('[data-lucide]').forEach(el => {
+          const name = el.getAttribute('data-lucide');
+          if (lucideIcons[name]) {
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+            svg.setAttribute('width', '24');
+            svg.setAttribute('height', '24');
+            svg.setAttribute('viewBox', '0 0 24 24');
+            svg.setAttribute('fill', 'none');
+            svg.setAttribute('stroke', 'currentColor');
+            svg.setAttribute('stroke-width', '2');
+            svg.setAttribute('stroke-linecap', 'round');
+            svg.setAttribute('stroke-linejoin', 'round');
+            // Copy classes from original element
+            if (el.className) svg.setAttribute('class', el.className);
+            if (el.id) svg.setAttribute('id', el.id);
+            svg.innerHTML = lucideIcons[name];
+            el.replaceWith(svg);
+          }
         });
-      }, 1500);
-    });
-
+      }
+    };
+    document.addEventListener('DOMContentLoaded', () => window.lucide.createIcons());
   </script>
  <!-- Google Fonts -->
  <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,16 +66,7 @@
      }
    }
  
-    // Smoothly fade out video posters when YT is ready
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.querySelectorAll('.yt-loading-cover').forEach(cover => {
-          cover.style.transition = 'opacity 2s ease-out';
-          cover.style.opacity = '0';
-          setTimeout(() => cover.style.display = 'none', 2000);
-        });
-      }, 1500);
-    });
+    
 
   </script>
 
@@ -82,17 +87,7 @@
    }
  </style>
 
-  <style>
-    @keyframes video-cover-fade {
-      0%   { opacity: 1; }
-      70%  { opacity: 1; }
-      100% { opacity: 0; }
-    }
-    .yt-loading-cover {
-      animation: video-cover-fade 3.5s ease-in-out forwards;
-      pointer-events: none;
-    }
-  </style>
+
 
 </head>
 <body class="bg-[#FAF7F0] text-zinc-900 font-sans selection:bg-zinc-900 selection:text-white">
@@ -152,7 +147,7 @@
      
      <!-- Background Video -->
      <div class="absolute inset-0 z-0 pointer-events-none">
-       <video autoplay muted loop playsinline preload="auto"
+       <video autoplay muted loop playsinline preload="auto" poster="https://img.youtube.com/vi/XqudOR7kcJM/maxresdefault.jpg"
               class="absolute inset-0 w-full h-full object-cover">
          <source src="assets/TENT.mp4" type="video/mp4">
          
@@ -1088,16 +1083,7 @@
      }
    });
  
-    // Smoothly fade out video posters when YT is ready
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.querySelectorAll('.yt-loading-cover').forEach(cover => {
-          cover.style.transition = 'opacity 2s ease-out';
-          cover.style.opacity = '0';
-          setTimeout(() => cover.style.display = 'none', 2000);
-        });
-      }, 1500);
-    });
+    
 
   </script>
 <script>
@@ -1186,44 +1172,17 @@
       setTimeout(window.updateLocationView, 100);
     });
   
-    // Smoothly fade out video posters when YT is ready
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.querySelectorAll('.yt-loading-cover').forEach(cover => {
-          cover.style.transition = 'opacity 2s ease-out';
-          cover.style.opacity = '0';
-          setTimeout(() => cover.style.display = 'none', 2000);
-        });
-      }, 1500);
-    });
+    
 
   </script>
 
   <!-- GSAP Animation Core & ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js">
-    // Smoothly fade out video posters when YT is ready
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.querySelectorAll('.yt-loading-cover').forEach(cover => {
-          cover.style.transition = 'opacity 2s ease-out';
-          cover.style.opacity = '0';
-          setTimeout(() => cover.style.display = 'none', 2000);
-        });
-      }, 1500);
-    });
+    
 
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js">
-    // Smoothly fade out video posters when YT is ready
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.querySelectorAll('.yt-loading-cover').forEach(cover => {
-          cover.style.transition = 'opacity 2s ease-out';
-          cover.style.opacity = '0';
-          setTimeout(() => cover.style.display = 'none', 2000);
-        });
-      }, 1500);
-    });
+    
 
   </script>
   <script>
@@ -1277,16 +1236,7 @@
       );
     });
   
-    // Smoothly fade out video posters when YT is ready
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.querySelectorAll('.yt-loading-cover').forEach(cover => {
-          cover.style.transition = 'opacity 2s ease-out';
-          cover.style.opacity = '0';
-          setTimeout(() => cover.style.display = 'none', 2000);
-        });
-      }, 1500);
-    });
+    
 
   </script>
 
