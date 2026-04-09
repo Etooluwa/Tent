@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Campus Rush | Transforming Lives & Raising Leaders</title>
+ <meta name="description" content="Campus Rush - The campus expression that evolved into Tent Church. Founded in 2014 at Carleton University.">
+ <link rel="icon" href="https://i.imgur.com/O5ecjdZ.png" type="image/png">
+ <!-- Tailwind CSS -->
+ <script src="https://cdn.tailwindcss.com"></script>
+ <!-- Lucide Icons -->
+ <script src="https://unpkg.com/lucide@latest"></script>
+ <!-- Google Fonts -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+ <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['Playfair Display', 'serif'],
+        }
+      }
+    }
+  }
+ </script>
+
+ <style>
+  .reveal { opacity: 0; transition: all 1000ms ease-out; }
+  .reveal.up { transform: translateY(3rem); }
+  .reveal.is-visible { opacity: 1; transform: translate(0, 0); }
+ </style>
+</head>
+<body class="bg-[#FAF7F0] text-zinc-900 font-sans selection:bg-zinc-900 selection:text-white">
+
+  <!-- Navbar -->
+  <nav id="navbar" class="sticky top-0 w-full z-50 transition-all duration-300 bg-[#FAF7F0] py-5 text-zinc-900 border-b border-zinc-100">
+    <div class="max-w-[96%] mx-auto px-4 md:px-8 flex justify-between items-center">
+      <a href="index.html" class="flex items-center shrink-0">
+        <img src="https://i.imgur.com/X6NbyF3.png" alt="Tent Church" class="h-10 md:h-12 w-auto object-contain">
+      </a>
+
+      <div class="hidden md:flex flex-1 justify-center space-x-10 text-[12px] font-bold tracking-[0.1em] uppercase">
+        <a href="index.html#about" class="hover:text-zinc-500 transition-colors">About</a>
+        <a href="index.html#locations-marquee" class="hover:text-zinc-500 transition-colors">Locations</a>
+        <a href="meet-our-leaders.html" class="hover:text-zinc-500 transition-colors">Meet Our Leaders</a>
+        <a href="tent-school-of-ministry.html" class="hover:text-zinc-500 transition-colors">TSM</a>
+        <a href="campus-rush.html" class="text-zinc-500 border-b border-zinc-900">Campus Rush</a>
+        <a href="index.html#connect" class="hover:text-zinc-500 transition-colors">Connect</a>
+      </div>
+
+      <div class="hidden md:block">
+        <a href="index.html#about" class="bg-zinc-900 text-white px-6 py-2.5 rounded-xl text-[12px] font-bold tracking-wide hover:bg-zinc-700 transition-colors uppercase">
+          Plan a visit
+        </a>
+      </div>
+
+      <button id="mobile-btn" class="md:hidden text-zinc-900 ml-auto">
+        <i id="menu-icon-open" data-lucide="menu" class="w-6 h-6"></i>
+        <i id="menu-icon-close" data-lucide="x" class="w-6 h-6 hidden"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#FAF7F0] py-6 px-6 flex-col space-y-4 shadow-xl z-50 border-t border-zinc-200">
+      <a href="index.html#about" class="mobile-link text-lg font-medium text-zinc-900">About</a>
+      <a href="meet-our-leaders.html" class="mobile-link text-lg font-medium text-zinc-900">Meet Our Leaders</a>
+      <a href="tent-school-of-ministry.html" class="mobile-link text-lg font-medium text-zinc-900">TSM</a>
+      <a href="campus-rush.html" class="mobile-link text-lg font-medium text-zinc-500">Campus Rush</a>
+      <a href="index.html#connect" class="mobile-link text-lg font-medium text-zinc-900">Connect</a>
+    </div>
+  </nav>
+
+  <!-- Hero Content -->
+  <main class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      
+      <!-- Left: Imagery & Aesthetic -->
+      <div class="lg:col-span-12 reveal up mb-12 text-center">
+         <h1 class="text-6xl md:text-8xl lg:text-[7.5rem] font-serif tracking-tight leading-none text-zinc-900 mb-8">
+            Campus <br><span class="italic font-medium text-[#c41e3a]">Rush.</span>
+         </h1>
+         <p class="text-[12px] md:text-sm font-bold tracking-[0.4em] uppercase text-zinc-500">Transforming Lives • Raising Leaders</p>
+      </div>
+
+      <!-- Main Body -->
+      <div class="lg:col-span-12 max-w-4xl mx-auto space-y-12">
+        <div class="reveal up" style="transition-delay: 100ms;">
+           <p class="text-2xl md:text-3xl font-serif italic text-zinc-800 leading-snug">
+              Although Tent is the city church, there is also a campus church that was started on university campuses in 2014 at Carleton University.
+           </p>
+        </div>
+
+        <div class="reveal up bg-white p-8 md:p-16 rounded-[4rem] shadow-sm border border-zinc-100 space-y-8" style="transition-delay: 200ms;">
+           <p class="text-lg md:text-xl text-zinc-700 leading-relaxed">
+              The campus church is called <strong class="text-zinc-900">Campus Rush</strong> and this was the ministry that evolved over time into Tent Church to reach a wider demographic than just university and college students. 
+           </p>
+           <p class="text-lg md:text-xl text-zinc-700 leading-relaxed">
+              Every city you find a Campus Rush campus, you'll find a Tent location. They share a common DNA of transforming lives and raising leaders across diverse environments.
+           </p>
+
+           <div class="pt-8 border-t border-zinc-100 flex flex-col gap-6">
+              <h4 class="text-sm font-black uppercase tracking-widest text-zinc-400">Current Campuses</h4>
+              <div class="flex flex-wrap gap-x-8 gap-y-4 text-lg font-medium text-zinc-600">
+                 <span>Carleton University</span>
+                 <span>University of Ottawa</span>
+                 <span>Queens University</span>
+                 <span>Concordia University</span>
+                 <span>La Cite College</span>
+                 <span>Dalhousie University</span>
+                 <span>Seneca College</span>
+                 <span>Algonquin College</span>
+                 <span>Toronto Metropolitan University</span>
+                 <span>York University</span>
+              </div>
+              <p class="italic text-[#c41e3a] font-serif">...and it is constantly growing.</p>
+           </div>
+        </div>
+
+        <!-- Social & Link -->
+        <div class="reveal up flex flex-col md:flex-row items-center justify-center gap-8 pt-12" style="transition-delay: 300ms;">
+           <div class="flex flex-col items-center gap-4">
+              <a href="https://instagram.com/campusrushglobal" target="_blank" class="flex items-center gap-2 text-zinc-900 font-bold hover:text-zinc-600 transition-colors">
+                 <i data-lucide="instagram" class="w-6 h-6"></i>
+                 @campusrushglobal
+              </a>
+           </div>
+           <a href="https://campusrush.org" target="_blank" class="bg-zinc-900 text-white px-10 py-5 rounded-2xl text-[1rem] font-bold tracking-widest hover:bg-zinc-700 transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-1 uppercase">
+              Visit the Website
+           </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-zinc-900 text-white pt-24 pb-12 px-6 md:px-12 overflow-hidden border-t border-white/5 mt-32">
+    <div class="max-w-[1400px] mx-auto text-center">
+      <h2 class="text-[12.2vw] leading-[1] font-serif tracking-tighter mb-16 uppercase opacity-80">CAMPUS RUSH</h2>
+      <div class="flex flex-wrap justify-center gap-8 text-[11px] font-bold tracking-[0.2em] uppercase text-zinc-500">
+         <a href="index.html" class="hover:text-white transition-colors">Tent Church</a>
+         <a href="meet-our-leaders.html" class="hover:text-white transition-colors">Leaders</a>
+         <a href="tent-school-of-ministry.html" class="hover:text-white transition-colors">TSM</a>
+      </div>
+      <p class="mt-12 text-[10px] text-zinc-600 tracking-widest uppercase font-bold">© 2024 Campus Rush Global. ALL RIGHTS RESERVED.</p>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    const mobileBtn = document.getElementById('mobile-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      document.getElementById('menu-icon-open').classList.toggle('hidden');
+      document.getElementById('menu-icon-close').classList.toggle('hidden');
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
