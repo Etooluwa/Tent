@@ -147,10 +147,11 @@
      
      <!-- Background Video -->
      <div class="absolute inset-0 z-0 pointer-events-none">
+       <div class="hero-video-fallback absolute inset-0 bg-cover bg-center transition-opacity duration-500" style="background-image: url('assets/remote/hero-poster.jpg'); opacity: 1;"></div>
        <video autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture
               aria-hidden="true"
               poster="assets/remote/hero-poster.jpg"
-              class="absolute inset-0 w-full h-full object-cover">
+              class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500" style="opacity: 0;">
          <source src="assets/TENT.mp4" type="video/mp4">
          
        </video>
@@ -1028,6 +1029,14 @@
 
      if (heroVideo) {
        let heroPlaybackPoll = null;
+       const heroFallback = document.querySelector('.hero-video-fallback');
+
+       const setHeroPlaybackState = (isPlaying) => {
+         heroVideo.style.opacity = isPlaying ? '1' : '0';
+         if (heroFallback) {
+           heroFallback.style.opacity = isPlaying ? '0' : '1';
+         }
+       };
 
        const tryPlayHeroVideo = () => {
          heroVideo.muted = true;
@@ -1043,6 +1052,7 @@
          }
        };
 
+       setHeroPlaybackState(false);
        heroVideo.setAttribute('muted', '');
        heroVideo.setAttribute('playsinline', '');
        heroVideo.setAttribute('webkit-playsinline', '');
@@ -1053,12 +1063,20 @@
        });
 
        heroVideo.addEventListener('pause', () => {
+         if (heroVideo.currentTime === 0 || heroVideo.ended) {
+           setHeroPlaybackState(false);
+         }
          if (!document.hidden && heroVideo.currentTime > 0 && !heroVideo.ended) {
            tryPlayHeroVideo();
          }
        });
 
+       heroVideo.addEventListener('playing', () => setHeroPlaybackState(true));
+       heroVideo.addEventListener('play', () => setHeroPlaybackState(true));
+       heroVideo.addEventListener('error', () => setHeroPlaybackState(false));
+
        heroVideo.addEventListener('ended', () => {
+         setHeroPlaybackState(false);
          heroVideo.currentTime = 0;
          tryPlayHeroVideo();
        });
@@ -1086,7 +1104,44 @@
 
      if (!fivePVideos.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-     const buildFivePIframe = (container) => {
+     const fivePPlayers = new Map();
+     const revealFivePVideo = (container, isPlaying) => {
+       const iframe = container.querySelector('iframe');
+       if (!iframe) return;
+       iframe.style.opacity = isPlaying ? '1' : '0';
+     };
+
+     const ensureYouTubeAPI = () => {
+       if (window.YT && window.YT.Player) {
+         return Promise.resolve(window.YT);
+       }
+
+       if (window.tentYouTubeAPIPromise) {
+         return window.tentYouTubeAPIPromise;
+       }
+
+       window.tentYouTubeAPIPromise = new Promise((resolve) => {
+         const existingReady = window.onYouTubeIframeAPIReady;
+         window.onYouTubeIframeAPIReady = () => {
+           if (typeof existingReady === 'function') {
+             existingReady();
+           }
+           resolve(window.YT);
+         };
+
+         if (!document.querySelector('script[data-youtube-api]')) {
+           const script = document.createElement('script');
+           script.src = 'https://www.youtube.com/iframe_api';
+           script.async = true;
+           script.setAttribute('data-youtube-api', 'true');
+           document.head.appendChild(script);
+         }
+       });
+
+       return window.tentYouTubeAPIPromise;
+     };
+
+     const buildFivePIframe = async (container) => {
        if (container.querySelector('iframe')) return;
 
        const videoId = container.dataset.youtubeId;
@@ -1105,23 +1160,49 @@
        videoUrl.searchParams.set('iv_load_policy', '3');
        videoUrl.searchParams.set('disablekb', '1');
        videoUrl.searchParams.set('fs', '0');
+       videoUrl.searchParams.set('enablejsapi', '1');
+       if (window.location.origin.startsWith('http')) {
+         videoUrl.searchParams.set('origin', window.location.origin);
+       }
 
        if (start) {
          videoUrl.searchParams.set('start', start);
        }
 
        const iframe = document.createElement('iframe');
-       iframe.className = 'absolute top-1/2 left-1/2 max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2';
+       iframe.className = 'absolute top-1/2 left-1/2 max-w-none h-auto aspect-video -translate-x-1/2 -translate-y-1/2 transition-opacity duration-500';
        iframe.style.width = `${width}%`;
+       iframe.style.opacity = '0';
        iframe.src = videoUrl.toString();
        iframe.title = 'Tent Church background video';
        iframe.tabIndex = -1;
        iframe.loading = 'eager';
-       iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+       iframe.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
        iframe.setAttribute('aria-hidden', 'true');
 
        container.appendChild(iframe);
+
+       const YT = await ensureYouTubeAPI();
+       const player = new YT.Player(iframe, {
+         events: {
+           onReady: (event) => {
+             event.target.mute();
+             event.target.playVideo();
+           },
+           onStateChange: (event) => {
+             const isPlaying = event.data === YT.PlayerState.PLAYING || event.data === YT.PlayerState.BUFFERING;
+             revealFivePVideo(container, isPlaying);
+
+             if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED || event.data === YT.PlayerState.CUED) {
+               event.target.mute();
+               event.target.playVideo();
+             }
+           }
+         }
+       });
+
+       fivePPlayers.set(container, player);
      };
 
      const fivePObserver = new IntersectionObserver((entries, observerInstance) => {
@@ -1139,6 +1220,25 @@
      fivePVideos.forEach((container) => {
        fivePObserver.observe(container);
      });
+
+     const resumeFivePPlayers = () => {
+       fivePPlayers.forEach((player, container) => {
+         try {
+           player.mute();
+           player.playVideo();
+           revealFivePVideo(container, true);
+         } catch (error) {}
+       });
+     };
+
+     document.addEventListener('visibilitychange', () => {
+       if (!document.hidden) {
+         tryPlayHeroVideo();
+         resumeFivePPlayers();
+       }
+     });
+
+     window.addEventListener('focus', resumeFivePPlayers);
    });
 
    // 6. Word Cycler
