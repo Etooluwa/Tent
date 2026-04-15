@@ -148,11 +148,11 @@
      <!-- Background Video -->
      <div class="absolute inset-0 z-0 pointer-events-none">
        <div class="hero-video-fallback absolute inset-0 bg-cover bg-center transition-opacity duration-500" style="background-image: url('assets/remote/hero-poster.jpg'); opacity: 1;"></div>
-       <video autoplay muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture
+       <video autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture
               aria-hidden="true"
               poster="assets/remote/hero-poster.jpg"
               class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500" style="opacity: 0;">
-         <source src="assets/TENT-optimized.mp4?v=20260415" type="video/mp4">
+         <source src="assets/TENT2.mp4?v=20260411" type="video/mp4">
          
        </video>
        <!-- Elegant dark overlay to ensure text legibility and aesthetic -->
@@ -1055,34 +1055,12 @@
 
    // 5. Background Video Playback
    document.addEventListener('DOMContentLoaded', () => {
-     const heroVideo = document.querySelector('.hero-video-fallback + video');
-     const heroFallback = document.querySelector('.hero-video-fallback');
-     const fivePBackgroundVideos = Array.from(document.querySelectorAll('.five-p-local-video'));
-
-     const prepareVideo = (video) => {
-       if (!video) return;
-       video.muted = true;
-       video.defaultMuted = true;
-       video.playsInline = true;
-       video.loop = true;
-       video.autoplay = true;
-       video.setAttribute('muted', '');
-       video.setAttribute('playsinline', '');
-       video.setAttribute('webkit-playsinline', '');
-       video.setAttribute('loop', '');
-       video.setAttribute('autoplay', '');
-     };
-
-     const safePlay = (video) => {
-       if (!video) return;
-       prepareVideo(video);
-       const playAttempt = video.play();
-       if (playAttempt && typeof playAttempt.catch === 'function') {
-         playAttempt.catch(() => {});
-       }
-     };
+     const heroVideo = document.querySelector('section video');
 
      if (heroVideo) {
+       let heroPlaybackPoll = null;
+       const heroFallback = document.querySelector('.hero-video-fallback');
+
        const setHeroPlaybackState = (isPlaying) => {
          heroVideo.style.opacity = isPlaying ? '1' : '0';
          if (heroFallback) {
@@ -1091,34 +1069,44 @@
        };
 
        const tryPlayHeroVideo = () => {
+         heroVideo.muted = true;
+         heroVideo.defaultMuted = true;
+         heroVideo.playsInline = true;
+         heroVideo.loop = true;
          if (heroVideo.readyState === 0) {
            heroVideo.load();
          }
-         safePlay(heroVideo);
+         const playAttempt = heroVideo.play();
+         if (playAttempt && typeof playAttempt.catch === 'function') {
+           playAttempt.catch(() => {});
+         }
        };
 
        setHeroPlaybackState(false);
-       prepareVideo(heroVideo);
+       heroVideo.setAttribute('muted', '');
+       heroVideo.setAttribute('playsinline', '');
+       heroVideo.setAttribute('webkit-playsinline', '');
+       heroVideo.setAttribute('loop', '');
 
-       ['loadeddata', 'canplay', 'playing'].forEach((eventName) => {
-         heroVideo.addEventListener(eventName, () => {
-           setHeroPlaybackState(true);
-         });
-       });
-
-       ['stalled', 'suspend', 'waiting', 'error'].forEach((eventName) => {
-         heroVideo.addEventListener(eventName, () => {
-           setHeroPlaybackState(false);
-         });
+       ['loadedmetadata', 'loadeddata', 'canplay', 'canplaythrough', 'suspend', 'stalled'].forEach((eventName) => {
+         heroVideo.addEventListener(eventName, tryPlayHeroVideo);
        });
 
        heroVideo.addEventListener('pause', () => {
-         if (!document.hidden) {
+         if (heroVideo.currentTime === 0 || heroVideo.ended) {
+           setHeroPlaybackState(false);
+         }
+         if (!document.hidden && heroVideo.currentTime > 0 && !heroVideo.ended) {
            tryPlayHeroVideo();
          }
        });
 
+       heroVideo.addEventListener('playing', () => setHeroPlaybackState(true));
+       heroVideo.addEventListener('play', () => setHeroPlaybackState(true));
+       heroVideo.addEventListener('error', () => setHeroPlaybackState(false));
+
        heroVideo.addEventListener('ended', () => {
+         setHeroPlaybackState(false);
          heroVideo.currentTime = 0;
          tryPlayHeroVideo();
        });
@@ -1132,36 +1120,54 @@
        window.addEventListener('focus', tryPlayHeroVideo);
        window.addEventListener('pageshow', tryPlayHeroVideo);
        setTimeout(tryPlayHeroVideo, 0);
-       setTimeout(tryPlayHeroVideo, 250);
-       setTimeout(tryPlayHeroVideo, 1000);
+       setTimeout(tryPlayHeroVideo, 500);
+       setTimeout(tryPlayHeroVideo, 1500);
+
+       heroPlaybackPoll = window.setInterval(() => {
+         if (!document.hidden && heroVideo.paused) {
+           tryPlayHeroVideo();
+         }
+       }, 2500);
      }
 
-     const loadFivePVideo = (video) => {
-       if (!video || video.dataset.loaded === 'true' || !video.dataset.src) return;
-       video.src = video.dataset.src;
-       video.dataset.loaded = 'true';
-       video.load();
+     const fivePBackgroundVideos = Array.from(document.querySelectorAll('.five-p-local-video'));
+     const activateFivePVideo = (video) => {
+       if (!video.dataset.src) return;
+       if (!video.dataset.loaded) {
+         video.src = video.dataset.src;
+         video.dataset.loaded = 'true';
+         video.load();
+       }
      };
 
      fivePBackgroundVideos.forEach((video) => {
-       prepareVideo(video);
-
        const tryPlayFivePVideo = () => {
-         loadFivePVideo(video);
-         safePlay(video);
+         activateFivePVideo(video);
+         video.muted = true;
+         video.defaultMuted = true;
+         video.playsInline = true;
+         video.loop = true;
+         const playAttempt = video.play();
+         if (playAttempt && typeof playAttempt.catch === 'function') {
+           playAttempt.catch(() => {});
+         }
        };
 
-       ['loadeddata', 'canplay', 'playing'].forEach((eventName) => {
+       ['loadedmetadata', 'loadeddata', 'canplay', 'canplaythrough', 'stalled'].forEach((eventName) => {
          video.addEventListener(eventName, tryPlayFivePVideo);
        });
 
-       ['ended', 'pause'].forEach((eventName) => {
-         video.addEventListener(eventName, () => {
-           if (!document.hidden) {
-             tryPlayFivePVideo();
-           }
-         });
+       video.addEventListener('ended', () => {
+         video.currentTime = 0;
+         tryPlayFivePVideo();
        });
+
+       video.addEventListener('pause', () => {
+         if (!document.hidden && video.currentTime > 0 && !video.ended) {
+           tryPlayFivePVideo();
+         }
+       });
+
      });
 
      if ('IntersectionObserver' in window) {
@@ -1169,16 +1175,17 @@
          entries.forEach((entry) => {
            const video = entry.target;
            if (entry.isIntersecting) {
-             loadFivePVideo(video);
-             safePlay(video);
-           } else {
-             video.pause();
+             activateFivePVideo(video);
+             video.play().catch(() => {});
+             return;
            }
+
+           video.pause();
          });
        }, {
          root: null,
-         rootMargin: '240px 0px',
-         threshold: 0.15
+         rootMargin: '180px 0px',
+         threshold: 0.2
        });
 
        fivePBackgroundVideos.forEach((video) => {
@@ -1186,19 +1193,17 @@
        });
      } else {
        fivePBackgroundVideos.forEach((video) => {
-         loadFivePVideo(video);
-         setTimeout(() => safePlay(video), 0);
+         activateFivePVideo(video);
+         setTimeout(() => video.play().catch(() => {}), 0);
        });
      }
 
      document.addEventListener('visibilitychange', () => {
        if (!document.hidden) {
-         if (heroVideo) {
-           safePlay(heroVideo);
-         }
+         tryPlayHeroVideo();
          fivePBackgroundVideos.forEach((video) => {
-           if (video.dataset.loaded === 'true') {
-             safePlay(video);
+           if (video.dataset.loaded && video.paused) {
+             video.play().catch(() => {});
            }
          });
        }
