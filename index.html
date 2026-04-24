@@ -1246,7 +1246,8 @@
         btnIcon: "map-pin",
         btnLink: "https://www.google.com/maps/search/?api=1&query=156+Cleopatra+drive+Ottawa",
         disabled: false,
-        image: "assets/7.webp"
+        image: "assets/7.webp",
+        objectPosition: "center 30%"
       },
       "Toronto": {
         address: "65B Huxley Drive",
@@ -1254,7 +1255,8 @@
         btnIcon: "map-pin",
         btnLink: "https://www.google.com/maps/search/?api=1&query=65B+Huxley+Drive+Toronto",
         disabled: false,
-        image: "assets/3.webp"
+        image: "assets/3.webp",
+        objectPosition: "center center"
       },
       "Montreal": {
         address: "370 rue guy",
@@ -1262,7 +1264,8 @@
         btnIcon: "map-pin",
         btnLink: "https://www.google.com/maps/search/?api=1&query=370+rue+guy+Montreal",
         disabled: false,
-        image: "assets/6.webp"
+        image: "assets/6.webp",
+        objectPosition: "center center"
       },
       "New Jersey": {
         address: "TBD",
@@ -1270,7 +1273,8 @@
         btnIcon: "clock",
         btnLink: "#",
         disabled: true,
-        image: "assets/4.webp"
+        image: "assets/4.webp",
+        objectPosition: "center center"
       }
     };
 
@@ -1305,6 +1309,7 @@
           ${buttonHTML}
         `;
         img.src = data.image;
+        img.style.objectPosition = data.objectPosition || "center center";
         if(window.lucide) {
           window.lucide.createIcons();
         }
@@ -1318,7 +1323,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       const img = document.getElementById('location-image');
       const infoWrapper = document.getElementById('location-info-wrapper');
-      if(img) img.style.transition = "opacity 0.3s ease-in-out";
+      if(img) { img.style.transition = "opacity 0.3s ease-in-out"; img.style.objectPosition = "center 30%"; }
       if(infoWrapper) infoWrapper.style.transition = "opacity 0.3s ease-in-out";
       setTimeout(window.updateLocationView, 100);
     });
