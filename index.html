@@ -1247,7 +1247,7 @@
         btnLink: "https://www.google.com/maps/search/?api=1&query=156+Cleopatra+drive+Ottawa",
         disabled: false,
         image: "assets/7.webp",
-        objectPosition: "center 30%"
+        objectPosition: "center center"
       },
       "Toronto": {
         address: "65B Huxley Drive",
@@ -1323,7 +1323,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       const img = document.getElementById('location-image');
       const infoWrapper = document.getElementById('location-info-wrapper');
-      if(img) { img.style.transition = "opacity 0.3s ease-in-out"; img.style.objectPosition = "center 30%"; }
+      if(img) img.style.transition = "opacity 0.3s ease-in-out";
       if(infoWrapper) infoWrapper.style.transition = "opacity 0.3s ease-in-out";
       setTimeout(window.updateLocationView, 100);
     });
