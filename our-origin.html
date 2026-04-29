@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Origin | Tent Church</title>
+  <meta property="og:title" content="Our Origin | Tent Church" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="The story of how Tent Church came to be — from one yes to a global movement." />
+  <meta property="og:image" content="assets/remote/logo.png" />
+  <link rel="icon" href="assets/remote/favicon.png" type="image/png">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script>
+    const lucideIcons = {
+      menu: '<line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>',
+      x: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+      'arrow-right': '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+    };
+    window.lucide = {
+      createIcons: function() {
+        document.querySelectorAll('[data-lucide]').forEach(el => {
+          const name = el.getAttribute('data-lucide');
+          if (lucideIcons[name]) {
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+            svg.setAttribute('width', '24'); svg.setAttribute('height', '24');
+            svg.setAttribute('viewBox', '0 0 24 24');
+            svg.setAttribute('fill', 'none'); svg.setAttribute('stroke', 'currentColor');
+            svg.setAttribute('stroke-width', '2'); svg.setAttribute('stroke-linecap', 'round');
+            svg.setAttribute('stroke-linejoin', 'round');
+            if (el.className) svg.setAttribute('class', el.className);
+            svg.innerHTML = lucideIcons[name];
+            el.replaceWith(svg);
+          }
+        });
+      }
+    };
+    document.addEventListener('DOMContentLoaded', () => window.lucide.createIcons());
+  </script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { serif: ['Playfair Display', 'serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    .reveal {
+      opacity: 0;
+      transition: all 1000ms ease-out;
+    }
+    .reveal.up { transform: translateY(3rem); }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, #113A28 15%, #113A28 85%, transparent);
+    }
+
+    .director-card {
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease;
+    }
+    .director-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+  </style>
+</head>
+<body class="bg-[#FAF7F0] text-zinc-900 font-sans selection:bg-zinc-900 selection:text-white">
+
+  <!-- Navbar -->
+  <nav id="navbar" class="sticky top-0 w-full z-50 transition-all duration-300 bg-[#FAF7F0] py-5 text-zinc-900 border-b border-zinc-100">
+    <div class="max-w-[96%] mx-auto px-4 md:px-8 flex justify-between items-center">
+      <a href="index.html" class="flex items-center shrink-0">
+        <img src="assets/remote/logo.png" alt="Tent Church" decoding="async" class="h-10 md:h-12 w-auto object-contain">
+      </a>
+      <div class="hidden md:flex flex-1 justify-center space-x-12 text-[13px] font-semibold tracking-wide uppercase">
+        <a href="index.html#about" class="hover:text-zinc-500 transition-colors">About</a>
+        <a href="index.html#locations-marquee" class="hover:text-zinc-500 transition-colors">Locations</a>
+        <a href="meet-our-leaders.html" class="hover:text-zinc-500 transition-colors">Meet Our Leaders</a>
+        <a href="tent-school-of-ministry.html" class="hover:text-zinc-500 transition-colors">TSM</a>
+        <a href="campus-rush.html" class="hover:text-zinc-500 transition-colors">Campus Rush</a>
+        <a href="index.html#connect" class="hover:text-zinc-500 transition-colors">Connect</a>
+      </div>
+      <div class="hidden md:block">
+        <a href="index.html#connect" class="bg-zinc-900 text-white px-6 py-2.5 rounded-xl text-[13px] font-semibold tracking-wide hover:bg-zinc-700 transition-colors uppercase">
+          Plan a visit
+        </a>
+      </div>
+      <button id="mobile-btn" class="md:hidden text-zinc-900 ml-auto">
+        <i id="menu-icon-open" data-lucide="menu" class="w-6 h-6"></i>
+        <i id="menu-icon-close" data-lucide="x" class="w-6 h-6 hidden"></i>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#FAF7F0] py-6 px-6 flex-col space-y-4 shadow-xl z-50 border-t border-zinc-200">
+      <a href="index.html#about" class="mobile-link text-lg font-medium text-zinc-900">About</a>
+      <a href="index.html#locations-marquee" class="mobile-link text-lg font-medium text-zinc-900">Locations</a>
+      <a href="meet-our-leaders.html" class="mobile-link text-lg font-medium text-zinc-900">Meet Our Leaders</a>
+      <a href="tent-school-of-ministry.html" class="mobile-link text-lg font-medium text-zinc-900">TSM</a>
+      <a href="campus-rush.html" class="mobile-link text-lg font-medium text-zinc-900">Campus Rush</a>
+      <a href="index.html#connect" class="mobile-link text-lg font-medium text-zinc-900">Connect</a>
+      <a href="index.html#connect" class="mobile-link bg-zinc-900 text-white px-6 py-4 rounded-xl text-center font-medium mt-4 uppercase">
+        Plan a visit
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- Hero -->
+  <section class="w-full px-4 md:px-6 pb-6 bg-[#FAF7F0] pt-2">
+    <div class="relative w-full min-h-[60vh] md:min-h-[72vh] rounded-[2rem] overflow-hidden flex flex-col justify-end p-8 md:p-14 lg:p-20 text-left bg-[#113A28]">
+      <div class="absolute inset-0 z-0 pointer-events-none opacity-10" style="background-image: url('assets/remote/world-map.svg'); background-size: cover; filter: invert(1);"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-[#113A28]/60 to-[#0a2419]/90 z-10"></div>
+      <div class="relative z-20">
+        <p class="reveal up text-[#EFCA1D] text-sm md:text-base font-bold tracking-[0.15em] uppercase mb-4">Est. 2011</p>
+        <h1 class="reveal up text-white font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] leading-[1] tracking-tight mb-6" style="transition-delay:100ms">
+          Our <span class="italic font-medium">Origin</span>
+        </h1>
+        <p class="reveal up text-white/70 text-lg md:text-xl max-w-xl leading-relaxed" style="transition-delay:200ms">
+          One yes. One family. A movement that touched the nations.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Origin Story -->
+  <section class="py-24 md:py-32 px-6 md:px-12 bg-[#FAF7F0]">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+
+        <!-- Left: Pull quote -->
+        <div class="reveal up lg:sticky lg:top-32">
+          <p class="text-[#113A28] text-xs font-bold tracking-[0.15em] uppercase mb-6">How It Began</p>
+          <h2 class="font-serif text-5xl md:text-6xl lg:text-[4.5rem] leading-[1.05] tracking-tight text-zinc-900 mb-8">
+            One man.<br>One woman.<br><span class="italic text-[#113A28]">One yes.</span>
+          </h2>
+          <div class="w-12 h-0.5 bg-[#EFCA1D] mb-8"></div>
+          <p class="text-zinc-500 text-lg leading-relaxed">
+            A single act of surrender in Ottawa, Canada set in motion a legacy that would span continents and generations.
+          </p>
+        </div>
+
+        <!-- Right: Story text with timeline -->
+        <div class="relative pl-8">
+          <div class="timeline-line"></div>
+
+          <div class="reveal up space-y-10">
+            <!-- Dot -->
+            <div class="absolute left-[-5px] top-2 w-[11px] h-[11px] rounded-full bg-[#113A28] border-2 border-[#FAF7F0]"></div>
+
+            <p class="text-zinc-800 text-lg md:text-xl leading-[1.8] font-sans">
+              Our journey begins with one man and one woman who decided to give Jesus their yes. In 2011, <strong class="text-zinc-900 font-semibold">Dr. Ralph and Pastor Regina Dartey</strong> pioneered <strong class="text-zinc-900 font-semibold">Transforming Life Center</strong> — a life-giving church movement in Ottawa, Canada.
+            </p>
+
+            <p class="text-zinc-700 text-lg md:text-xl leading-[1.8]">
+              Throughout the years, TLC has touched the nations, establishing churches around the world and serving various communities with resources and the Gospel. TLC has birthed movements such as the Bridge YTH, Campus Rush, and now the Tent Church.
+            </p>
+
+            <p class="text-zinc-700 text-lg md:text-xl leading-[1.8]">
+              With the growth of these different movements and expressions, it became clear that a network was necessary for growth. TLC then created the <strong class="text-zinc-900 font-semibold">Transforming Life Centre International Network (TLCIN)</strong> — which serves as the mother organization, housing denominations, organizations, and movements on an apostolic level.
+            </p>
+
+            <div class="bg-[#113A28] rounded-2xl p-8 md:p-10">
+              <p class="text-white/60 text-sm font-bold tracking-widest uppercase mb-3">Our Foundation</p>
+              <p class="text-white font-serif text-2xl md:text-3xl leading-snug italic">
+                "The Collective is an umbrella organization submitted to TLCIN."
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Meet The Collective -->
+  <section class="py-24 md:py-32 px-6 md:px-12 bg-[#F3F0E8]">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="reveal up text-center mb-16 md:mb-20">
+        <p class="text-[#113A28] text-xs font-bold tracking-[0.15em] uppercase mb-4">Structure</p>
+        <h2 class="font-serif text-5xl sm:text-6xl md:text-[5rem] leading-[1] tracking-tight text-zinc-900 mb-6">
+          Meet <span class="italic text-[#113A28]">The Collective</span>
+        </h2>
+        <p class="text-zinc-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+          The organizational umbrella that houses our movements and local churches — ensuring spiritual alignment and administrative cohesion across all our expressions.
+        </p>
+      </div>
+
+      <!-- Movements grid -->
+      <div class="reveal up grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16">
+        <div class="director-card bg-white rounded-2xl p-6 md:p-8 border border-zinc-100 shadow-sm">
+          <div class="w-8 h-8 rounded-full bg-[#113A28] mb-4 flex items-center justify-center">
+            <div class="w-3 h-3 bg-[#EFCA1D] rounded-full"></div>
+          </div>
+          <p class="font-serif text-xl text-zinc-900 leading-tight">Campus Rush</p>
+        </div>
+        <div class="director-card bg-white rounded-2xl p-6 md:p-8 border border-zinc-100 shadow-sm">
+          <div class="w-8 h-8 rounded-full bg-[#113A28] mb-4 flex items-center justify-center">
+            <div class="w-3 h-3 bg-[#EFCA1D] rounded-full"></div>
+          </div>
+          <p class="font-serif text-xl text-zinc-900 leading-tight">The Tent Church</p>
+        </div>
+        <div class="director-card bg-white rounded-2xl p-6 md:p-8 border border-zinc-100 shadow-sm">
+          <div class="w-8 h-8 rounded-full bg-[#113A28] mb-4 flex items-center justify-center">
+            <div class="w-3 h-3 bg-[#EFCA1D] rounded-full"></div>
+          </div>
+          <p class="font-serif text-xl text-zinc-900 leading-tight">Young on Fire Conference</p>
+        </div>
+        <div class="director-card bg-white rounded-2xl p-6 md:p-8 border border-zinc-100 shadow-sm">
+          <div class="w-8 h-8 rounded-full bg-[#113A28] mb-4 flex items-center justify-center">
+            <div class="w-3 h-3 bg-[#EFCA1D] rounded-full"></div>
+          </div>
+          <p class="font-serif text-xl text-zinc-900 leading-tight">Wildfire Revival</p>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="reveal up max-w-3xl mx-auto text-center">
+        <p class="text-zinc-600 text-lg leading-relaxed">
+          This organizational framework exists to ensure spiritual alignment and to steward administrative cohesion within all our expressions — together, moving as one body under one mission.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Global Directors -->
+  <section class="py-24 md:py-32 px-6 md:px-12 bg-[#FAF7F0]">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="reveal up mb-16 md:mb-20">
+        <p class="text-[#113A28] text-xs font-bold tracking-[0.15em] uppercase mb-4">Leadership</p>
+        <h2 class="font-serif text-5xl sm:text-6xl md:text-[5rem] leading-[1] tracking-tight text-zinc-900">
+          Meet our <span class="italic text-[#113A28]">Global Directors</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Spiritual Development -->
+        <div class="reveal up director-card bg-white rounded-2xl p-8 border border-zinc-100 shadow-sm">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-full bg-[#113A28] flex items-center justify-center shrink-0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EFCA1D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <p class="text-[#113A28] text-xs font-bold tracking-widest uppercase">Spiritual Development &amp; Retreats</p>
+          </div>
+          <h3 class="font-serif text-2xl text-zinc-900 mb-1">Pastor Seun</h3>
+          <h3 class="font-serif text-2xl text-zinc-900 text-zinc-500">Pastor Anu</h3>
+        </div>
+
+        <!-- Worship -->
+        <div class="reveal up director-card bg-white rounded-2xl p-8 border border-zinc-100 shadow-sm" style="transition-delay:60ms">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-full bg-[#113A28] flex items-center justify-center shrink-0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EFCA1D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            </div>
+            <p class="text-[#113A28] text-xs font-bold tracking-widest uppercase">Worship &amp; Music</p>
+          </div>
+          <h3 class="font-serif text-2xl text-zinc-900">Pastor Sewa Ayoola</h3>
+        </div>
+
+        <!-- Growth -->
+        <div class="reveal up director-card bg-white rounded-2xl p-8 border border-zinc-100 shadow-sm" style="transition-delay:120ms">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-full bg-[#113A28] flex items-center justify-center shrink-0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EFCA1D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            </div>
+            <p class="text-[#113A28] text-xs font-bold tracking-widest uppercase">Growth &amp; Sustainability</p>
+          </div>
+          <h3 class="font-serif text-2xl text-zinc-900 mb-1">Pastor Daniel Tshamala</h3>
+          <h3 class="font-serif text-2xl text-zinc-500">Olivia Tshamala</h3>
+        </div>
+
+        <!-- Prayer -->
+        <div class="reveal up director-card bg-white rounded-2xl p-8 border border-zinc-100 shadow-sm" style="transition-delay:60ms">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-full bg-[#113A28] flex items-center justify-center shrink-0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EFCA1D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <p class="text-[#113A28] text-xs font-bold tracking-widest uppercase">Prayer</p>
+          </div>
+          <h3 class="font-serif text-2xl text-zinc-900">Pastor Christelle Mutoni</h3>
+        </div>
+
+        <!-- Administration -->
+        <div class="reveal up director-card bg-white rounded-2xl p-8 border border-zinc-100 shadow-sm" style="transition-delay:120ms">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-full bg-[#113A28] flex items-center justify-center shrink-0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EFCA1D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <p class="text-[#113A28] text-xs font-bold tracking-widest uppercase">Administration &amp; Operations</p>
+          </div>
+          <h3 class="font-serif text-2xl text-zinc-900 mb-1">Pastor Hayley</h3>
+          <h3 class="font-serif text-2xl text-zinc-500">Pastor Toro</h3>
+        </div>
+
+        <!-- Coming Soon roles -->
+        <div class="reveal up director-card rounded-2xl p-8 border border-dashed border-zinc-300 bg-transparent" style="transition-delay:180ms">
+          <p class="text-zinc-400 text-xs font-bold tracking-widest uppercase mb-6">Coming Soon</p>
+          <div class="space-y-4">
+            <div>
+              <p class="font-serif text-xl text-zinc-400">Conferences</p>
+            </div>
+            <div class="w-full h-px bg-zinc-100"></div>
+            <div>
+              <p class="font-serif text-xl text-zinc-400">Little Campers</p>
+            </div>
+            <div class="w-full h-px bg-zinc-100"></div>
+            <div>
+              <p class="font-serif text-xl text-zinc-400">People Relations</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer CTA -->
+  <section class="py-24 px-6 md:px-12 bg-[#113A28]">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-[#EFCA1D] text-xs font-bold tracking-[0.15em] uppercase mb-5">Be Part of the Story</p>
+      <h2 class="font-serif text-5xl md:text-6xl text-white leading-tight mb-8">
+        Your yes could be<br><span class="italic">the next chapter.</span>
+      </h2>
+      <a href="index.html#connect" class="inline-flex items-center gap-2 bg-[#EFCA1D] text-[#113A28] px-8 py-4 rounded-xl font-bold tracking-wide hover:bg-white transition-colors shadow-md text-[1rem]">
+        Connect with us
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </section>
+
+
+  <script>
+    // Mobile menu
+    const btn = document.getElementById('mobile-btn');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+    document.querySelectorAll('.mobile-link').forEach(l => {
+      l.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        menu.classList.remove('flex');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      });
+    });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
