@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan My Visit | Tent Church</title>
+  <meta name="description" content="Plan your first visit to Tent Church. Find service times, locations, what to expect, and helpful details for families.">
+  <meta property="og:title" content="Plan My Visit | Tent Church" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Everything you need to know before your first Sunday at Tent Church." />
+  <meta property="og:image" content="assets/remote/logo.png" />
+  <link rel="icon" href="assets/remote/favicon.png" type="image/png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    const lucideIcons = {
+      menu: '<line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>',
+      x: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+      'arrow-right': '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+      'map-pin': '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
+      clock: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+      users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+      music: '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+      heart: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',
+      shield: '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>',
+      sparkles: '<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .962 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .962L15.5 14.064a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.962 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/>'
+    };
+    window.lucide = {
+      createIcons: function() {
+        document.querySelectorAll('[data-lucide]').forEach(el => {
+          const name = el.getAttribute('data-lucide');
+          if (lucideIcons[name]) {
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+            svg.setAttribute('width', '24');
+            svg.setAttribute('height', '24');
+            svg.setAttribute('viewBox', '0 0 24 24');
+            svg.setAttribute('fill', 'none');
+            svg.setAttribute('stroke', 'currentColor');
+            svg.setAttribute('stroke-width', '2');
+            svg.setAttribute('stroke-linecap', 'round');
+            svg.setAttribute('stroke-linejoin', 'round');
+            if (el.className) svg.setAttribute('class', el.className);
+            if (el.id) svg.setAttribute('id', el.id);
+            svg.innerHTML = lucideIcons[name];
+            el.replaceWith(svg);
+          }
+        });
+      }
+    };
+    document.addEventListener('DOMContentLoaded', () => window.lucide.createIcons());
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .reveal { opacity: 0; transition: all 1000ms ease-out; }
+    .reveal.up { transform: translateY(3rem); }
+    .reveal.is-visible { opacity: 1; transform: translate(0, 0); }
+    .visit-step { counter-increment: visit-step; }
+    .visit-step::before {
+      content: counter(visit-step, decimal-leading-zero);
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: #113A28;
+      opacity: 0.35;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 0.9;
+      display: block;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body class="bg-[#FAF7F0] text-zinc-900 font-sans selection:bg-zinc-900 selection:text-white">
+
+  <nav id="navbar" class="sticky top-0 w-full z-50 transition-all duration-300 bg-[#FAF7F0] py-5 text-zinc-900 border-b border-zinc-100">
+    <div class="max-w-[96%] mx-auto px-4 md:px-8 flex justify-between items-center">
+      <a href="index.html" class="flex items-center shrink-0">
+        <img src="assets/remote/logo.png" alt="Tent Church" decoding="async" fetchpriority="high" class="h-10 md:h-12 w-auto object-contain">
+      </a>
+
+      <div class="hidden md:flex flex-1 justify-center space-x-10 text-[12px] font-bold tracking-[0.1em] uppercase">
+        <a href="index.html#about" class="hover:text-zinc-500 transition-colors">Locations</a>
+        <a href="meet-our-leaders.html" class="hover:text-zinc-500 transition-colors">Meet Our Leaders</a>
+        <a href="our-origin.html" class="hover:text-zinc-500 transition-colors">Our Origin</a>
+        <a href="tent-school-of-ministry.html" class="hover:text-zinc-500 transition-colors">TSM</a>
+        <a href="campus-rush.html" class="hover:text-zinc-500 transition-colors">Campus Rush</a>
+        <a href="index.html#connect" class="hover:text-zinc-500 transition-colors">Connect</a>
+      </div>
+
+      <div class="hidden md:block">
+        <a href="plan-my-visit.html" class="bg-zinc-900 text-white px-6 py-2.5 rounded-xl text-[12px] font-bold tracking-wide hover:bg-zinc-700 transition-colors uppercase">
+          Plan a visit
+        </a>
+      </div>
+
+      <button id="mobile-btn" class="md:hidden text-zinc-900 ml-auto">
+        <i id="menu-icon-open" data-lucide="menu" class="w-6 h-6"></i>
+        <i id="menu-icon-close" data-lucide="x" class="w-6 h-6 hidden"></i>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#FAF7F0] py-6 px-6 flex-col space-y-4 shadow-xl z-50 border-t border-zinc-200">
+      <a href="index.html#about" class="mobile-link text-lg font-medium text-zinc-900">Locations</a>
+      <a href="meet-our-leaders.html" class="mobile-link text-lg font-medium text-zinc-900">Meet Our Leaders</a>
+      <a href="our-origin.html" class="mobile-link text-lg font-medium text-zinc-900">Our Origin</a>
+      <a href="tent-school-of-ministry.html" class="mobile-link text-lg font-medium text-zinc-900">TSM</a>
+      <a href="campus-rush.html" class="mobile-link text-lg font-medium text-zinc-900">Campus Rush</a>
+      <a href="index.html#connect" class="mobile-link text-lg font-medium text-zinc-900">Connect</a>
+      <a href="plan-my-visit.html" class="mobile-link bg-zinc-900 text-white px-6 py-4 rounded-xl text-center font-medium mt-4 uppercase">
+        Plan a visit
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="w-full px-4 md:px-6 pb-6 pt-2">
+      <div class="relative min-h-[82vh] rounded-[2rem] overflow-hidden bg-[#113A28] flex items-end">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(239,202,29,0.22),transparent_28%),radial-gradient(circle_at_82%_18%,rgba(250,247,240,0.14),transparent_24%),linear-gradient(135deg,#0a2419_0%,#113A28_42%,#1d5a3f_100%)]"></div>
+        <div class="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(115deg,rgba(250,247,240,0.12),transparent_45%,rgba(239,202,29,0.08))]"></div>
+        <div class="absolute -right-24 -bottom-28 w-[34rem] h-[34rem] rounded-full bg-[#EFCA1D]/15 blur-3xl"></div>
+        <div class="absolute -left-20 bottom-6 w-[26rem] h-[26rem] rounded-full bg-black/20 blur-3xl"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-zinc-950/5 via-zinc-950/10 to-zinc-950/55"></div>
+        <div class="relative z-10 w-full p-7 sm:p-10 md:p-14 lg:p-20">
+          <div class="max-w-5xl reveal up">
+            <p class="text-white/80 text-[11px] md:text-xs font-semibold tracking-[0.2em] uppercase mb-5">First time at Tent?</p>
+            <h1 class="text-white text-5xl sm:text-6xl md:text-8xl lg:text-[8rem] font-serif leading-[0.98] tracking-tight mb-8 drop-shadow-sm">
+              Plan My <span class="italic font-medium text-[#EFCA1D]">Visit.</span>
+            </h1>
+            <p class="text-white/90 text-lg md:text-2xl leading-relaxed max-w-3xl mb-8">
+              We know visiting a church for the first time can feel like a lot. Here is everything you need to feel prepared, welcomed, and at home before you arrive.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="#expect" class="inline-flex items-center justify-center gap-2 border border-white/40 text-white px-8 py-4 rounded-xl text-sm font-bold tracking-wide hover:bg-white hover:text-zinc-900 transition-colors uppercase">
+                What to expect
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 md:py-28 px-6 md:px-12">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="reveal up bg-white/60 border border-zinc-100 rounded-[2rem] p-8 shadow-sm">
+          <i data-lucide="clock" class="w-7 h-7 text-[#113A28] mb-8"></i>
+          <h2 class="text-3xl font-serif mb-4">Service Times</h2>
+          <p class="text-zinc-700 leading-relaxed">Ottawa Valley meets Sundays at 2pm and Thursdays at 7:30pm. Toronto meets Sundays at 5pm and Fridays at 9pm. Montreal meets Sundays at 5pm.</p>
+        </div>
+        <div class="reveal up bg-white/60 border border-zinc-100 rounded-[2rem] p-8 shadow-sm" style="transition-delay: 100ms;">
+          <i data-lucide="heart" class="w-7 h-7 text-[#113A28] mb-8"></i>
+          <h2 class="text-3xl font-serif mb-4">Come As You Are</h2>
+          <p class="text-zinc-700 leading-relaxed">Tent Church is a place for all people to come and experience God. No matter your background or story, everyone is welcome here.</p>
+        </div>
+        <div class="reveal up bg-white/60 border border-zinc-100 rounded-[2rem] p-8 shadow-sm" style="transition-delay: 200ms;">
+          <i data-lucide="users" class="w-7 h-7 text-[#113A28] mb-8"></i>
+          <h2 class="text-3xl font-serif mb-4">Bring the Family</h2>
+          <p class="text-zinc-700 leading-relaxed">Families are welcome. Our team will help you find the right space, get settled, and feel comfortable from the moment you walk in.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="expect" class="py-24 md:py-36 px-6 md:px-12 bg-[#F8F5E9] border-y border-zinc-100">
+      <div class="max-w-7xl mx-auto">
+        <div class="reveal up max-w-4xl mb-16 md:mb-24">
+          <p class="text-[11px] md:text-xs font-bold tracking-[0.25em] uppercase text-zinc-500 mb-5">What to expect</p>
+          <h2 class="text-5xl md:text-7xl lg:text-[6.5rem] font-serif leading-[1] tracking-tight">
+            A Sunday at <span class="italic text-[#113A28]">the Tent.</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <div class="lg:col-span-5 reveal up">
+            <img src="assets/c.JPG" alt="Tent Church worship" loading="lazy" decoding="async" class="w-full aspect-[4/5] object-cover rounded-[2rem] shadow-xl">
+          </div>
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-10 [counter-reset:visit-step]">
+            <div class="visit-step reveal up">
+              <h3 class="text-3xl font-serif mb-4">Worship</h3>
+              <p class="text-zinc-700 leading-relaxed text-lg">Our services are filled with songs of praise and worship that create atmospheres for people to encounter God.</p>
+            </div>
+            <div class="visit-step reveal up" style="transition-delay: 100ms;">
+              <h3 class="text-3xl font-serif mb-4">The Word</h3>
+              <p class="text-zinc-700 leading-relaxed text-lg">You can expect an encouraging, hope-filled message about Jesus with practical teaching you can carry into the week.</p>
+            </div>
+            <div class="visit-step reveal up" style="transition-delay: 200ms;">
+              <h3 class="text-3xl font-serif mb-4">The Spirit</h3>
+              <p class="text-zinc-700 leading-relaxed text-lg">Our services are filled with moments of the spontaneous flow of the Spirit where people encounter God and atmospheres are created for miracles.</p>
+            </div>
+            <div class="visit-step reveal up" style="transition-delay: 300ms;">
+              <h3 class="text-3xl font-serif mb-4">Community</h3>
+              <p class="text-zinc-700 leading-relaxed text-lg">We have a welcoming, friendly atmosphere where people can fellowship, build connection, and feel like they belong.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 md:py-32 px-6 md:px-12">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="reveal up order-2 lg:order-1">
+          <p class="text-[11px] md:text-xs font-bold tracking-[0.25em] uppercase text-zinc-500 mb-5">Getting settled</p>
+          <h2 class="text-5xl md:text-7xl font-serif leading-[1.05] tracking-tight mb-8">Before you walk through the door.</h2>
+          <div class="space-y-6 text-lg text-zinc-700 leading-relaxed">
+            <p>Give yourself a few extra minutes to park, find the entrance, and get comfortable. If you are unsure where to go, look for someone from the team and let them know it is your first time.</p>
+            <p>There is no pressure to have everything figured out. We are simply glad you are coming, and we want your first visit to feel easy.</p>
+          </div>
+        </div>
+        <div class="reveal up order-1 lg:order-2" style="transition-delay: 150ms;">
+          <img src="assets/20.webp" alt="Tent Church location" loading="lazy" decoding="async" class="w-full aspect-[4/3] object-cover rounded-[2rem] shadow-xl">
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 md:py-32 px-6 md:px-12 bg-[#113A28] text-white relative overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(239,202,29,0.18),transparent_30%),radial-gradient(circle_at_88%_72%,rgba(250,247,240,0.10),transparent_28%),linear-gradient(135deg,#0a2419_0%,#113A28_48%,#174b35_100%)]"></div>
+      <div class="absolute -left-24 -bottom-32 w-[30rem] h-[30rem] rounded-full bg-black/20 blur-3xl"></div>
+      <div class="absolute -right-20 top-8 w-[24rem] h-[24rem] rounded-full bg-[#EFCA1D]/10 blur-3xl"></div>
+      <div class="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="reveal up">
+          <img src="assets/k.jpg" alt="Kids at Tent Church" loading="lazy" decoding="async" class="w-full aspect-[4/3] object-cover rounded-[2rem] shadow-2xl">
+        </div>
+        <div class="reveal up" style="transition-delay: 150ms;">
+          <h2 class="text-5xl md:text-7xl font-serif leading-[1.05] tracking-tight mb-8">What about my kids?</h2>
+          <p class="text-white/80 text-lg md:text-xl leading-relaxed mb-6">
+            Kids should be able to enjoy church too. If you are visiting with children, our team can help you get oriented, find the right place, and answer any questions when you arrive.
+          </p>
+          <p class="text-white/80 text-lg md:text-xl leading-relaxed">
+            Safety, cleanliness, and care matter to us, so families can participate in service with confidence and peace.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 md:px-6 pb-6">
+      <div class="bg-[#F8F5E9] border border-zinc-100 rounded-[2rem] py-20 md:py-28 px-6 md:px-12 text-center overflow-hidden">
+        <div class="reveal up max-w-4xl mx-auto">
+          <img src="assets/remote/patch.png" alt="Tent Church Patch" loading="lazy" decoding="async" class="w-24 md:w-32 mx-auto mb-10">
+          <h2 class="text-5xl md:text-7xl font-serif leading-[1] tracking-tight mb-8">
+            We would love to meet <span class="italic text-[#113A28]">you.</span>
+          </h2>
+          <p class="text-lg md:text-xl text-zinc-700 leading-relaxed max-w-2xl mx-auto mb-10">
+            Whether you are exploring faith, returning to church, or looking for a place to grow, there is room for you at Tent.
+          </p>
+          <a href="index.html#connect" class="inline-flex items-center justify-center gap-2 bg-zinc-900 text-white px-8 py-4 rounded-xl text-sm font-bold tracking-wide hover:bg-zinc-700 transition-colors uppercase">
+            Connect with us <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="bg-zinc-900 text-white pt-24 pb-12 px-4 sm:px-6 md:px-12 overflow-hidden">
+    <div class="max-w-7xl mx-auto flex flex-col items-center">
+      <div class="reveal up w-full text-center flex justify-center">
+        <h2 class="text-[12.2vw] sm:text-[11vw] md:text-[10vw] leading-[1] font-serif tracking-tighter mb-20 text-center flex flex-nowrap whitespace-nowrap items-center justify-center drop-shadow-sm w-full mx-auto">
+          <span class="bg-gradient-to-b from-[#F8F5E9] to-[#9a9a9a] bg-clip-text text-transparent uppercase">TENT CHURCH</span>
+          <img src="assets/remote/pointer.png" alt="Pointer" class="inline-block h-[0.7em] shrink-0 w-auto ml-1.5 md:ml-3 align-middle -translate-y-[0.05em]">
+        </h2>
+      </div>
+
+      <div class="w-full border-t border-zinc-800 pt-8 flex flex-col sm:flex-row justify-between items-center text-sm text-zinc-500 font-sans mt-8 lg:mt-16">
+        <p>© 2026 Tent Church. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    const mobileBtn = document.getElementById('mobile-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIconOpen = document.getElementById('menu-icon-open');
+    const menuIconClose = document.getElementById('menu-icon-close');
+
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('flex');
+      menuIconOpen.classList.toggle('hidden');
+      menuIconClose.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.mobile-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+        menuIconOpen.classList.remove('hidden');
+        menuIconClose.classList.add('hidden');
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
