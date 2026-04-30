@@ -218,40 +218,51 @@
     }
   </style>
 </head>
-<body class="bg-brand-cream text-zinc-900 font-sans selection:bg-brand-green selection:text-white pt-[72px] md:pt-[84px]">
+<body class="bg-brand-cream text-zinc-900 font-sans selection:bg-brand-green selection:text-white">
 
   <!-- Navbar -->
-  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4 md:py-5 glass-nav">
+  <nav id="navbar" class="sticky top-0 w-full z-50 transition-all duration-300 bg-[#FAF7F0] py-5 text-zinc-900">
     <div class="max-w-[96%] mx-auto px-4 md:px-8 flex justify-between items-center">
+      <!-- Logo -->
       <a href="index.html" class="flex items-center shrink-0">
-        <img src="assets/remote/logo.png" alt="Tent Church" decoding="async" class="h-10 md:h-12 w-auto object-contain">
+        <img src="assets/remote/logo.png" alt="Tent Church" decoding="async" fetchpriority="high" class="h-10 md:h-12 w-auto object-contain">
       </a>
-      <div class="hidden lg:flex flex-1 justify-center space-x-10 text-[13px] font-semibold tracking-wide uppercase">
-        <a href="index.html#about" class="hover:text-brand-green/70 transition-colors">About</a>
-        <a href="index.html#locations-marquee" class="hover:text-brand-green/70 transition-colors">Locations</a>
-        <a href="meet-our-leaders.html" class="hover:text-brand-green/70 transition-colors">Meet Our Leaders</a>
-        <a href="tent-school-of-ministry.html" class="hover:text-brand-green/70 transition-colors">TSM</a>
-        <a href="campus-rush.html" class="hover:text-brand-green/70 transition-colors">Campus Rush</a>
-        <a href="index.html#connect" class="hover:text-brand-green/70 transition-colors">Connect</a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex flex-1 justify-center space-x-12 text-[13px] font-semibold tracking-wide">
+        <a href="index.html#about" class="hover:text-zinc-500 transition-colors">About</a>
+        <a href="index.html#locations-marquee" class="hover:text-zinc-500 transition-colors">Locations</a>
+        <a href="meet-our-leaders.html" class="hover:text-zinc-500 transition-colors">Meet Our Leaders</a>
+        <a href="our-origin.html" class="hover:text-zinc-500 transition-colors">Our Origin</a>
+        <a href="tent-school-of-ministry.html" class="hover:text-zinc-500 transition-colors">TSM</a>
+        <a href="campus-rush.html" class="hover:text-zinc-500 transition-colors">Campus Rush</a>
+        <a href="index.html#connect" class="hover:text-zinc-500 transition-colors">Connect</a>
       </div>
-      <div class="hidden lg:block">
-        <a href="index.html#connect" class="bg-brand-green text-white px-7 py-3.5 rounded-xl text-[13px] font-bold tracking-wider hover:bg-brand-darkgreen transition-all shadow-lg hover:shadow-xl uppercase">
+
+      <!-- Desktop CTA Button -->
+      <div class="hidden md:block">
+        <a href="index.html#connect" class="bg-zinc-900 text-white px-6 py-2.5 rounded-xl text-[13px] font-semibold tracking-wide hover:bg-zinc-700 transition-colors uppercase">
           Plan a visit
         </a>
       </div>
-      <button id="mobile-btn" class="lg:hidden text-brand-green ml-auto">
-        <i id="menu-icon-open" data-lucide="menu" class="w-7 h-7"></i>
-        <i id="menu-icon-close" data-lucide="x" class="w-7 h-7 hidden"></i>
+
+      <!-- Mobile Toggle -->
+      <button id="mobile-btn" class="md:hidden text-zinc-900 ml-auto">
+        <i id="menu-icon-open" data-lucide="menu" class="w-6 h-6"></i>
+        <i id="menu-icon-close" data-lucide="x" class="w-6 h-6 hidden"></i>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-brand-cream/95 backdrop-blur-xl py-10 px-8 flex-col space-y-8 shadow-2xl z-50 border-t border-brand-green/10 h-[calc(100vh-80px)]">
-      <a href="index.html#about" class="mobile-link text-3xl font-serif text-brand-green">About</a>
-      <a href="index.html#locations-marquee" class="mobile-link text-3xl font-serif text-brand-green">Locations</a>
-      <a href="meet-our-leaders.html" class="mobile-link text-3xl font-serif text-brand-green">Meet Our Leaders</a>
-      <a href="tent-school-of-ministry.html" class="mobile-link text-3xl font-serif text-brand-green">TSM</a>
-      <a href="campus-rush.html" class="mobile-link text-3xl font-serif text-brand-green">Campus Rush</a>
-      <a href="index.html#connect" class="mobile-link text-3xl font-serif text-brand-green">Connect</a>
-      <a href="index.html#connect" class="mobile-link bg-brand-green text-white px-6 py-5 rounded-xl text-center font-bold mt-8 uppercase tracking-widest text-sm shadow-xl">
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#FAF7F0] py-6 px-6 flex-col space-y-4 shadow-xl z-50 border-t border-zinc-200">
+      <a href="index.html#about" class="mobile-link text-lg font-medium text-zinc-900">About</a>
+      <a href="index.html#locations-marquee" class="mobile-link text-lg font-medium text-zinc-900">Locations</a>
+      <a href="meet-our-leaders.html" class="mobile-link text-lg font-medium text-zinc-900">Meet Our Leaders</a>
+      <a href="our-origin.html" class="mobile-link text-lg font-medium text-zinc-900">Our Origin</a>
+      <a href="tent-school-of-ministry.html" class="mobile-link text-lg font-medium text-zinc-900">TSM</a>
+      <a href="campus-rush.html" class="mobile-link text-lg font-medium text-zinc-900">Campus Rush</a>
+      <a href="index.html#connect" class="mobile-link text-lg font-medium text-zinc-900">Connect</a>
+      <a href="index.html#about" class="mobile-link bg-zinc-900 text-white px-6 py-4 rounded-xl text-center font-medium mt-4 uppercase">
         Plan a visit
       </a>
     </div>
@@ -568,6 +579,20 @@
         iconOpen.classList.remove('hidden');
         iconClose.classList.add('hidden');
       });
+    });
+
+    // Sticky Navbar Styling on Scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        navbar.classList.add('shadow-sm');
+        navbar.classList.remove('py-5');
+        navbar.classList.add('py-4');
+      } else {
+        navbar.classList.remove('shadow-sm');
+        navbar.classList.add('py-5');
+        navbar.classList.remove('py-4');
+      }
     });
 
     // Scroll reveal
